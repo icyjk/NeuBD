@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1876D958-BC27-8E81-AFE6-2FC9EE01F99B" name="GRUPOS_POR_ASIGNATURA">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>773E4F1D-6A96-EB8C-8B13-452EA9B4B969</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Curso_Academico" id="83FA2BC7-C532-31F0-7065-E5D6CDF17088">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>C4D7DD61-7015-F704-3C76-2A05309D264C</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Oferta" id="3D4C1FD3-D3A7-3C54-12F2-FB0B7C99B481">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>37DA5A95-BCFC-D740-16CF-33F1C136A301</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Referencia" id="9C71737F-60DB-70CE-C9D6-519C7225F7C1">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<generatorID>51E2D7DC-3059-4D14-1035-5A288DF4557A</generatorID>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>D80A91EB-1143-E69F-C3CD-4729E94C126F</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<referedAttribute>97141A2B-947F-A9C5-D9E7-FDF1D2491CAA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Código1" id="3B2E838F-4225-4B03-3542-7690AA10EF36">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<generatorID>51E2D7DC-3059-4D14-1035-5A288DF4557A</generatorID>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>D5B310F9-1302-6EDC-C59B-39893A2A0EDE</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<referedAttribute>1EF07749-937D-EA87-12C6-669A6348FFF2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID" id="52BDC2CE-18D9-B0C1-D4FB-FAA54E673616">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<generatorID>BBB69449-8DEC-60AB-FB57-D4C83ECCE114</generatorID>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>BEB5347B-D46E-8E20-DA81-11BB0976A19C</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<referedAttribute>D828646C-3BEE-C083-A440-4C8CA346576E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="19C98CC0-2CDF-5713-14D6-B8352362FD77" name="GRUPOS_POR_ASIGNATURA PK">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>41C091A1-4B53-F921-294D-D867DF3D2076</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9C71737F-60DB-70CE-C9D6-519C7225F7C1</attributeRef>
+<attributeRef>3B2E838F-4225-4B03-3542-7690AA10EF36</attributeRef>
+<attributeRef>52BDC2CE-18D9-B0C1-D4FB-FAA54E673616</attributeRef>
+<attributeRef>83FA2BC7-C532-31F0-7065-E5D6CDF17088</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,462 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="640252D4-C917-700B-8DDD-C2A8C94D22A1" name="DATOS_ALUMNADO">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>567B1217-8920-6A11-7493-E0D7AF68383B</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="DNI" id="0849A42C-7043-D171-B6BC-8EDA62D6E25F">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>0096FE44-3561-BD1A-3368-153E87C9AA6B</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nombre" id="441A2395-684A-88DD-9199-5C8D37674872">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>CE4E911A-0580-9B5B-AA94-B7053B5764CE</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Primer Apellido" id="DA2A368C-03FE-4C53-DD7C-84F3B29FAEDB">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>30396219-203C-7F2F-5D4A-956B55241F6A</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Segundo Apellido" id="9FBE4323-E02E-A67A-4F2B-C8346012E6E3">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>1CF0AF92-73B2-1488-F445-1C06149A6BCD</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Número Expediente" id="42AB6D83-5570-1EEC-B052-B12EDA87249C">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>01C9CFEA-0EDD-7B7C-0661-A21BB9E13C8E</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Email Institucional" id="88485263-4E21-1A5D-D30C-853AC7BB3259">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>26D7C678-E617-8280-D7CD-ECF1301CE9B7</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Email Personal" id="E3B5F76B-8455-2834-DA84-883FAFCD172E">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>64D1DE3A-78B6-B652-5689-BE031DF3C24B</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Teléfono" id="BE0E04CD-F8FE-5C1A-8980-BDA2BBF87F00">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>58F6D6EE-3E08-7264-987E-A695B9093B98</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Móvil" id="D7335B5C-24D3-6FED-2103-C3AFD94FE030">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>D19B82B3-0B1B-D731-8D96-C3E7B7F8115D</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Dirección Notificación" id="CE41E9BB-8A5D-99A3-ED39-97A45A41CAF4">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>0372CD03-67F5-92F7-B912-7CD0AD45D5ED</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Localidad Notificación" id="385B31C0-6C59-7ACD-F675-3887C4EBF470">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>01444722-C518-9472-7F6D-1B37A55B1F5C</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Provincia Notificación" id="F30BA689-24B6-2252-F497-942CC945D409">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>35FEA7E2-1508-0E3D-11E9-D98C7EE3DD3D</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CP Notificación" id="75351791-F018-023F-979D-29547AC3B4A1">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>E3B23B76-913F-1E51-4261-2A3126426073</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fecha Matrícula" id="FC65EF8F-64CB-800A-28B7-961DE3BFEB25">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>AB04A8E6-C8DA-3D44-733C-1D19D9A36933</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Turno Preferente" id="99ED6126-6136-C503-BB51-B8268EF383BE">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>9000F874-4002-3731-DB6D-CA21B13DD23A</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Grupos Asignados" id="CA0FC8CF-9598-981B-3C1F-66C4F61A5CFD">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>FEC50C1B-CA22-D7AA-E0EB-625DE3C7A4E8</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nota media" id="0038FC40-0058-0FB3-7989-38AE83B54EE6">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>25CA945B-EF6F-C73D-7D2A-7701821C77A0</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos Superados" id="D6387737-2CFC-46C8-8349-43012652E357">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>C0D5EE8F-9B44-F003-40C5-F9C5479335D2</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos FB" id="FCA7062F-3F4C-AF6A-7CA5-E1D6C019293E">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>772B3989-C6D6-CFBA-FCAE-416807CACB37</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos OB" id="AB293BC5-5505-36CC-A463-56EE9880A482">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>2F87D20B-9A0E-FBE7-4B05-D7E55F7E6D46</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos OP" id="5D0D591B-5484-81F2-0DC7-E971606673D4">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>4BDC3158-21A8-19B0-9F94-33CA1FA322FC</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos CF" id="EE338C1E-C94F-E2FA-27B4-1B6604FA1AE5">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>12FA02AE-7C71-7B81-3510-0AEC84421D98</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos PE" id="B81CD072-AA8A-141D-21E1-B962565DB1CB">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>2644F106-3F1A-A4E2-1AA3-C71750AA5462</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Créditos TF" id="D77A811C-970C-4602-D744-10C3C6A5A7B0">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>3FF63582-B131-BBDE-8F11-50B8E8557BFA</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>180 CHAR</dataTypeSize>
+<ownDataTypeParameters>180 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6857467B-A21E-3648-5E09-87BBE5C128B0" name="DATOS_ALUMNADO PK">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>49F753AA-D51F-9BC0-E84E-E29DC28D9DDE</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0849A42C-7043-D171-B6BC-8EDA62D6E25F</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="600266B6-12B2-187C-ED6D-71E2CF10CF6F" name="Key_2">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>421AB44E-5199-18FF-16DC-33F0FC719D71</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>42AB6D83-5570-1EEC-B052-B12EDA87249C</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="D4F68AFF-027B-8C9C-6483-B586A9CECF82" name="Key_3">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>A2174090-3E08-5AF5-927A-5C791FA14EE5</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>88485263-4E21-1A5D-D30C-853AC7BB3259</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="93630856-CCD5-DA1A-A05E-CAAB643CE5DE" name="Key_4">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>C97304BF-8AC4-11F8-7512-CF2109931CD5</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>E3B5F76B-8455-2834-DA84-883FAFCD172E</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="C4FE78B9-D88D-A65A-64B6-CEDD488229DE" name="Key_5">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>DA77AF59-B63D-857F-D3EB-C23474AEAF57</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>BE0E04CD-F8FE-5C1A-8980-BDA2BBF87F00</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="49375438-0320-1251-52A8-9281130844A0" name="Key_6">
+<createdBy>JUANKA</createdBy>
+<createdTime>2021-04-01 09:18:31 UTC</createdTime>
+<ownerDesignName>EntidadRelacionFinal</ownerDesignName>
+<importedID>E264C3A7-E966-C6C1-242D-FCA95267A4C0</importedID>
+<engineerTo>
+<item key="32BC3F49-CA9F-3F1B-BC11-CC8FE8B84DEE" value="true"/>
+<item key="78CF1A61-6F94-91F7-94B2-01E730B1C647" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>D7335B5C-24D3-6FED-2103-C3AFD94FE030</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
