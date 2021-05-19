@@ -1,64 +1,64 @@
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/main.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/MatriculaNoEncontradaException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/GrupoPorAsignaturaYaExistenteException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/AsignaturaNoEncontradaException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/CentroYaExistenteException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GrupoEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionTitulacion.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionCentro.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/LeerArchivoExcelEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/ExpedienteNoEncontradoException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionGrupo.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/AsignaturaEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionAsignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/ClaseEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/App.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/AlumnoEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Matricula.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionAlumno.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/NeuBDExceptions.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Asignatura_matricula.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/NoTodasLasClasesSonCoincidentes.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/GrupoNoEncontrado.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Centro.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Asignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/CentroEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Datos_alumnado.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/AsignaturaPorMatriculaNoEncontradaException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_Clase_grupo.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Grupo.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Grupos_por_asignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/ExpedienteEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_Matricula_expediente.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/CentroNoExistente.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Clase.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionMatricula.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/AlumnoSInDatosParaCrearException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/TItulacionNoEncontradaException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionAsigMatri.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/TitulacionEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/MatriculaSinDatosParaCrearException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Expedientes.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/usuarioNoEncontradoException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionGrupoPorAsignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/EncuestaEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/MatriculaEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionLeerCSV.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Alumno.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/Grupos_por_asignatura_Ejb.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/OptativaEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_Asignatura_matricula.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Prueba.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_GrupoPorAsignatura_grupo_asignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/LeerCSVEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Oferta_asignaturas.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionOptativa.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionClase.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionExpediente.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/AsigMatriEJB.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionEncuesta.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/GruposPorAsignaturaNoEncontradoException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Encuesta.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Optativa.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/EncuestaNoEncontradaException.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Titulacion.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/TItulacionNoEncontradaException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/LeerCSVEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/AsigMatriEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionTitulacion.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/Grupos_por_asignatura_Ejb.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Datos_alumnado.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/MatriculaSinDatosParaCrearException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_GrupoPorAsignatura_grupo_asignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Titulacion.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/GrupoNoEncontrado.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/AlumnoEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/AlumnoSInDatosParaCrearException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/TitulacionEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Grupos_por_asignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionAsigMatri.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionMatricula.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/GrupoPorAsignaturaYaExistenteException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/App.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionAsignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/MatriculaEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/NeuBDExceptions.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Grupo.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/ExpedienteEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/EncuestaEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/CentroNoExistente.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Asignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionGrupoPorAsignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/LeerArchivoExcelEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Alumno.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/GruposPorAsignaturaNoEncontradoException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Clase.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/usuarioNoEncontradoException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/main.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/OptativaEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/CentroYaExistenteException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionExpediente.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Centro.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Oferta_asignaturas.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionClase.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/NoTodasLasClasesSonCoincidentes.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/EncuestaNoEncontradaException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionEncuesta.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionOptativa.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/AsignaturaNoEncontradaException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionLeerCSV.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionCentro.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionAlumno.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GestionGrupo.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/CentroEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/GrupoEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/ExpedienteNoEncontradoException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/AsignaturaEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Matricula.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Encuesta.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Optativa.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Asignatura_matricula.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Expedientes.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/Prueba.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_Asignatura_matricula.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIEjb/ClaseEJB.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_Clase_grupo.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/AsignaturaPorMatriculaNoEncontradaException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSIIexceptions/MatriculaNoEncontradaException.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/main/java/NeuBDProyectoSII/NewId_Matricula_expediente.java

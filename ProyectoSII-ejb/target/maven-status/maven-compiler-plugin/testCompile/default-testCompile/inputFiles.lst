@@ -1,13 +1,13 @@
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestTitulacion.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestEncuesta.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestAlumno.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestMatricula.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestLeerCSV.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestCentro.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestExpediente.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestGrupoPorAsignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestAsignatura.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestOptativa.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestGrupo.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestAsigMatri.java
-/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/BaseDatos.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestAlumno.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestAsigMatri.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestMatricula.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestCentro.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestEncuesta.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestOptativa.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestAsignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/BaseDatos.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestGrupoPorAsignatura.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestLeerCSV.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestTitulacion.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestExpediente.java
+/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII/ProyectoSII-ejb/src/test/java/NeuBDProyectoSIIEjbTest/TestGrupo.java

@@ -10,9 +10,7 @@ public class NewId_GrupoPorAsignatura_grupo_asignatura implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		@ManyToOne
 		private int grupo;
-		@ManyToOne
 		private int asignatura;
 		private int Curso_academico;
 		

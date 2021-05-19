@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
 
 @NamedQuery(name = "Clase.todos", query= "select c from Clase c")
 @Entity
@@ -19,9 +23,10 @@ public class Clase implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id @ManyToOne private Grupo grupo;
 	@Id private String dia;
+	@Temporal(TemporalType.DATE)
 	@Id private Date hora_inicio;
 	
-	
+	@Temporal(TemporalType.DATE)
 	private Date hora_fin;
 	@ManyToOne
 	private Asignatura asignaturas;

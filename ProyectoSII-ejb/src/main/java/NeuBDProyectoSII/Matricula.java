@@ -3,13 +3,15 @@ package NeuBDProyectoSII;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @NamedQuery(name = "Matricula.todos", query= "select m from Matricula m")
 @Entity
@@ -21,8 +23,10 @@ public class Matricula {
 	private String estado;
 	private int num_archivo;
 	private String turno_preferente;
+	@Temporal(TemporalType.DATE)
 	private Date fecha_matricula;
 	private String nuevo_ingreso;
+	@ManyToMany
 	private List<Asignatura> listado_asignaturas;
 	@OneToMany
 	private List<Asignatura_matricula> asignatura_matricula;

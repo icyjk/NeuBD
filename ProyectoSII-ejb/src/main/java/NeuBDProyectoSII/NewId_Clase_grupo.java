@@ -11,7 +11,6 @@ public class NewId_Clase_grupo implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
 	private int grupo;
 	private String dia;
 	private Date hora_inicio;

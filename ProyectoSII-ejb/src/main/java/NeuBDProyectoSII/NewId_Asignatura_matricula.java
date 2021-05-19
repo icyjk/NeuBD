@@ -10,9 +10,7 @@ public class NewId_Asignatura_matricula implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
 	private int asignatura;
-	@ManyToOne
 	private NewId_Matricula_expediente matricula;
 	
 	
