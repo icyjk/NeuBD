@@ -11,6 +11,7 @@
   	<module>ProyectoSII-ejb</module>
   	<module>ProyectoSII-war</module>
   	<module>ProyectoSII-ear</module>
+  	<module>ProyectoSII-tests</module>
   </modules>
 
 </project>

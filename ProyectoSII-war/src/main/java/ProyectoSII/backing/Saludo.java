@@ -9,7 +9,7 @@ public class Saludo {
 
 
 	public String getSaludo() {
-		return "holaa";
+		return "Hola Mundo";
 	}
 
 }
