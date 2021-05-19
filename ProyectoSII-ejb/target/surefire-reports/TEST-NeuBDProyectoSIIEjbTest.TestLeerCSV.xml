@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="5" failures="0" name="NeuBDProyectoSIIEjbTest.TestLeerCSV" time="0" errors="0" skipped="5">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.292-b10"/>
+    <property name="java.vm.vendor" value="Private Build"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/alumno/Escritorio/ProyectoSII V3.1.Final/ProyectoSII V2.6/ProyectoSII 2.6"/>
+    <property name="java.runtime.version" value="1.8.0_292-8u292-b10-0ubuntu1~18.04-b10"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="maven.conf" value="/usr/share/maven/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="5.4.0-73-generic"/>
+    <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
+    <property name="user.home" value="/home/alumno"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="alumno"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="es"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_292"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="java.vendor" value="Private Build"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVOptativa" time="0">
+    <skipped/>
+    <system-out>PlainTextActionReporterSUCCESSNo monitoring data to report.
+JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]
+JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]
+</system-out>
+    <system-err>may 19, 2021 1:01:31 AM org.eclipse.persistence.session./file:/tmp/gfembed3523368444002186359tmp/applications/classes/_ProyectoSII.connection
+INFORMACIÓN: /file:/tmp/gfembed3523368444002186359tmp/applications/classes/_ProyectoSII logout successful
+may 19, 2021 1:01:31 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+GRAVE: RAR7133: Unable to remove resource [ java:jboss/datasources/sii ] from jndi
+may 19, 2021 1:01:31 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+GRAVE: 
+com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi
+	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:157)
+	at com.sun.enterprise.connectors.ConnectorRuntime.deleteConnectorResource(ConnectorRuntime.java:356)
+	at org.glassfish.jdbc.deployer.JdbcResourceDeployer.deleteResource(JdbcResourceDeployer.java:133)
+	at org.glassfish.jdbc.deployer.JdbcResourceDeployer.undeployResource(JdbcResourceDeployer.java:128)
+	at org.glassfish.resourcebase.resources.listener.ResourceManager.undeployResources(ResourceManager.java:213)
+	at com.sun.enterprise.connectors.ConnectorRuntime.cleanUpResourcesAndShutdownAllActiveRAs(ConnectorRuntime.java:976)
+	at org.glassfish.ejb.embedded.EJBContainerImpl.cleanupConnectorRuntime(EJBContainerImpl.java:228)
+	at org.glassfish.ejb.embedded.EJBContainerImpl.forceClose(EJBContainerImpl.java:168)
+	at org.glassfish.ejb.embedded.EJBContainerImpl.close(EJBContainerImpl.java:155)
+	at NeuBDProyectoSIIEjbTest.TestCentro.tearDownClass(TestCentro.java:146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: javax.naming.NamingException: java:comp namespace cannot be modified
+	at com.sun.enterprise.naming.impl.JavaURLContext.unbind(JavaURLContext.java:273)
+	at com.sun.enterprise.naming.impl.SerialContext.unbind(SerialContext.java:681)
+	at javax.naming.InitialContext.unbind(InitialContext.java:441)
+	at javax.naming.InitialContext.unbind(InitialContext.java:441)
+	at com.sun.enterprise.naming.impl.GlassfishNamingManagerImpl.unpublishObject(GlassfishNamingManagerImpl.java:226)
+	at org.glassfish.resourcebase.resources.naming.ResourceNamingService.unpublishObject(ResourceNamingService.java:175)
+	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:142)
+	... 32 more
+
+may 19, 2021 1:01:31 AM org.glassfish.resourcebase.resources.listener.ResourceManager undeployResources
+ADVERTENCIA: Unable to undeploy resource [java:jboss/datasources/sii] due to following exception: [com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi].
+may 19, 2021 1:01:31 AM com.sun.enterprise.connectors.service.ResourceAdapterAdminServiceImpl sendStopToResourceAdapter
+INFORMACIÓN: RAR7094: __ds_jdbc_ra shutdown successful.
+may 19, 2021 1:01:31 AM org.glassfish.admin.mbeanserver.JMXStartupService shutdown
+INFORMACIÓN: JMXStartupService and JMXConnectors have been shut down.
+may 19, 2021 1:01:31 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+GRAVE: RAR7133: Unable to remove resource [ java:jboss/datasources/sii ] from jndi
+may 19, 2021 1:01:31 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+GRAVE: 
+com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi
+	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:157)
+	at com.sun.enterprise.connectors.ConnectorRuntime.deleteConnectorResource(ConnectorRuntime.java:356)
+	at org.glassfish.jdbc.deployer.JdbcResourceDeployer.deleteResource(JdbcResourceDeployer.java:133)
+	at org.glassfish.jdbc.deployer.JdbcResourceDeployer.undeployResource(JdbcResourceDeployer.java:128)
+	at org.glassfish.resourcebase.resources.listener.ResourceManager.undeployResources(ResourceManager.java:213)
+	at com.sun.enterprise.connectors.ConnectorRuntime.cleanUpResourcesAndShutdownAllActiveRAs(ConnectorRuntime.java:976)
+	at com.sun.appserv.connectors.internal.ConnectorResourceManagerLifecycleListener.resourceManagerShutdown(ConnectorResourceManagerLifecycleListener.java:169)
+	at com.sun.appserv.connectors.internal.ConnectorResourceManagerLifecycleListener.resourceManagerLifecycleEvent(ConnectorResourceManagerLifecycleListener.java:155)
+	at org.glassfish.resourcebase.resources.listener.ResourceManager.notifyListeners(ResourceManager.java:113)
+	at org.glassfish.resourcebase.resources.listener.ResourceManager.preDestroy(ResourceManager.java:187)
+	at org.jvnet.hk2.internal.ClazzCreator.preDestroyMe(ClazzCreator.java:316)
+	at org.jvnet.hk2.internal.ClazzCreator.dispose(ClazzCreator.java:381)
+	at org.jvnet.hk2.internal.SystemDescriptor.dispose(SystemDescriptor.java:518)
+	at org.glassfish.hk2.runlevel.internal.AsyncRunLevelContext.destroyOne(AsyncRunLevelContext.java:403)
+	at org.glassfish.hk2.runlevel.RunLevelContext.destroyOne(RunLevelContext.java:81)
+	at org.jvnet.hk2.internal.ServiceHandleImpl.destroy(ServiceHandleImpl.java:165)
+	at org.glassfish.hk2.runlevel.internal.CurrentTaskFuture$DownQueueRunner.run(CurrentTaskFuture.java:1270)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.naming.NamingException: java:comp namespace cannot be modified
+	at com.sun.enterprise.naming.impl.JavaURLContext.unbind(JavaURLContext.java:273)
+	at com.sun.enterprise.naming.impl.SerialContext.unbind(SerialContext.java:681)
+	at javax.naming.InitialContext.unbind(InitialContext.java:441)
+	at javax.naming.InitialContext.unbind(InitialContext.java:441)
+	at com.sun.enterprise.naming.impl.GlassfishNamingManagerImpl.unpublishObject(GlassfishNamingManagerImpl.java:226)
+	at org.glassfish.resourcebase.resources.naming.ResourceNamingService.unpublishObject(ResourceNamingService.java:175)
+	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:142)
+	... 19 more
+
+may 19, 2021 1:01:31 AM org.glassfish.resourcebase.resources.listener.ResourceManager undeployResources
+ADVERTENCIA: Unable to undeploy resource [java:jboss/datasources/sii] due to following exception: [com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi].
+may 19, 2021 1:01:31 AM com.sun.enterprise.v3.server.AppServerStartup stop
+INFORMACIÓN: Shutdown procedure finished
+</system-err>
+  </testcase>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVTitulacion" time="0">
+    <skipped/>
+  </testcase>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVAsignatura" time="0">
+    <skipped/>
+  </testcase>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVEncuesta" time="0">
+    <skipped/>
+  </testcase>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVAlumno" time="0">
+    <skipped/>
+  </testcase>
+</testsuite>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ProyectoSII" transaction-type="JTA">
+	    <jta-data-source>java:jboss/datasources/sii</jta-data-source>
+	    <class>NeuBDProyectoSII.Alumno</class>
+	    <class>NeuBDProyectoSII.Asignatura</class>
+	    <class>NeuBDProyectoSII.Asignatura_matricula</class>
+	    <class>NeuBDProyectoSII.Centro</class>
+	    <class>NeuBDProyectoSII.Clase</class>
+	    <class>NeuBDProyectoSII.Datos_alumnado</class>
+	    <class>NeuBDProyectoSII.Encuesta</class>
+	    <class>NeuBDProyectoSII.Expedientes</class>
+	    <class>NeuBDProyectoSII.Grupo</class>
+	    <class>NeuBDProyectoSII.Grupos_por_asignatura</class>
+	    <class>NeuBDProyectoSII.Matricula</class>
+	    <class>NeuBDProyectoSII.Oferta_asignaturas</class>
+	    <class>NeuBDProyectoSII.Optativa</class>
+	    <class>NeuBDProyectoSII.Prueba</class>
+		<class>NeuBDProyectoSII.Titulacion</class>
+		<shared-cache-mode>NONE</shared-cache-mode>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<property name="javax.persistence.schema-generation.scripts.action" value="create"/>
+			<property name="javax.persistence.schema-generation.scripts.create-target" value="nuevo-esquema.sql"/>
+		</properties>
+	</persistence-unit>
+</persistence>
