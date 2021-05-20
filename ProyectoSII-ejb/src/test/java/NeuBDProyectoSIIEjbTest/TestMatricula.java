@@ -21,6 +21,7 @@ import org.junit.Test;
 import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSII.Matricula;
+import NeuBDProyectoSII.NewId_Matricula_expediente;
 import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 import es.uma.informatica.sii.anotaciones.Requisitos;
@@ -81,7 +82,7 @@ public class TestMatricula {
 		try {
 			
 			Expedientes expediente = new Expedientes(true, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
-			Matricula m = new Matricula(expediente, 0, null, 0, null, null, null, null, null);
+			Matricula m = new Matricula(expediente, "20/21", null, 0, null, null, null, null, null);
 			gestionMatricula.eliminarMatricula(m);
 			
 			fail("Deberia lanzar excepcion");
@@ -96,8 +97,9 @@ public class TestMatricula {
 				
 			Matricula matricula = gestionMatricula.listaMatricula().get(0);
 							
-			
-			assertTrue(matricula.equals(gestionMatricula.visualizarMatricula(matricula)));	
+			NewId_Matricula_expediente id = new NewId_Matricula_expediente(matricula.getExpedientes().getNum_expediente(), matricula.getCurso_academico());
+			NewId_Matricula_expediente id2 = new NewId_Matricula_expediente(gestionMatricula.visualizarMatricula(matricula).getExpedientes().getNum_expediente(), matricula.getCurso_academico());
+			assertEquals(id,id2);	
 				
 				
 			} catch (NeuBDExceptions e) {
@@ -115,8 +117,8 @@ public class TestMatricula {
 			
 			Expedientes expediente = new Expedientes(true, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
 			
-			Matricula matricula = new Matricula(expediente, 0, null, 0, null, null, null, null, null);
-			matricula.setCurso_academico(267);
+			Matricula matricula = new Matricula(expediente, "00/01", null, 0, null, null, null, null, null);
+			matricula.setCurso_academico("21/22");
 			
 			gestionMatricula.visualizarMatricula(matricula);
 		
@@ -154,7 +156,7 @@ public class TestMatricula {
 		try {
 			
 			Expedientes expediente = new Expedientes(true, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
-			Matricula m = new Matricula(expediente, 0, null, 0, null, null, null, null, null);
+			Matricula m = new Matricula(expediente, "00/01", null, 0, null, null, null, null, null);
 			m.setEstado("12131123");
 			gestionMatricula.modificarMatricula(m);
 			
@@ -175,7 +177,7 @@ public class TestMatricula {
 			
 			List<Matricula> listaMatricula = gestionMatricula.listaMatricula();
 			int tam = listaMatricula.size();
-			Matricula m = new Matricula(expediente, 0, null, 0, null, null, null, null, null);
+			Matricula m = new Matricula(expediente,"20/21", null, 0, null, null, null, null, null);
 			gestionMatricula.anyadirMatricula(m);
 			int tamNuevo=gestionMatricula.listaMatricula().size();
 			
@@ -202,7 +204,7 @@ public class TestMatricula {
 			
 			int tamañoinicial = listaMatricula.size();
 			
-			Matricula matricula = new Matricula(expediente, 0, null, 0, null, null, null, null, null); 
+			Matricula matricula = new Matricula(expediente, "20/21", null, 0, null, null, null, null, null); 
 			
 			gestionMatricula.anyadirMatricula(matricula);
 			

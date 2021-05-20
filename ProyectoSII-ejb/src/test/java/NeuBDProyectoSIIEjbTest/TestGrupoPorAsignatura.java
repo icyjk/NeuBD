@@ -88,7 +88,7 @@ public class TestGrupoPorAsignatura {
 						
 						//Grupo
 						Grupo grupoAinf = new Grupo(1,'A',"Mañana",true, true, "", 50 , titulacionInf, null, null,null,null);
-			gestionGrupoPorAsignatura.buscarGrupoPorAsignatura(new NewId_GrupoPorAsignatura_grupo_asignatura(grupoAinf.getId(), calculo.getReferencia(), 1));
+			gestionGrupoPorAsignatura.buscarGrupoPorAsignatura(new NewId_GrupoPorAsignatura_grupo_asignatura(grupoAinf.getId(), calculo.getReferencia(), "20/21"));
 			int numActualizado = gestionGrupoPorAsignatura.listaGruposPorAsignatura().size();
 			assertEquals(numAsignaturas+1, numActualizado);
 		} catch (NeuBDExceptions e) {
@@ -122,7 +122,7 @@ public class TestGrupoPorAsignatura {
 	@Test
 	public void testBuscarGrupoPorAsignaturaViaCursoAcademic() {
 		try {
-			gestionGrupoPorAsignatura.buscarGrupoPorAsignaturaViaCursoAcademic(2020);//Esta metido en la BD
+			gestionGrupoPorAsignatura.buscarGrupoPorAsignaturaViaCursoAcademic("20/21");//Esta metido en la BD
 			
 		} catch (NeuBDExceptions e) {
 			// TODO Auto-generated catch block
@@ -133,7 +133,7 @@ public class TestGrupoPorAsignatura {
 	@Test
 	public void testBuscarGrupoPorAsignaturaViaCursoAcademicNo() {
 		try {
-			gestionGrupoPorAsignatura.buscarGrupoPorAsignaturaViaCursoAcademic(1999);//No esta metido en la BD
+			gestionGrupoPorAsignatura.buscarGrupoPorAsignaturaViaCursoAcademic("64/65");//No esta metido en la BD
 			fail("Deberia de dar una excepcion");
 			
 		} catch (NeuBDExceptions e) {
@@ -147,7 +147,7 @@ public class TestGrupoPorAsignatura {
 		try {
 			List<Grupo> grupos = gestionGrupo.listaGrupos();
 			Grupo aInf = grupos.get(0);
-			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 666, 2020);
+			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 666, "20/21");
 			gestionGrupoPorAsignatura.buscarGrupoPorAsignatura(id);
 			
 		} catch (NeuBDExceptions e) {
@@ -161,7 +161,7 @@ public class TestGrupoPorAsignatura {
 		try {
 			List<Grupo> grupos = gestionGrupo.listaGrupos();
 			Grupo aInf = grupos.get(0);
-			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 0, 2020);
+			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 0, "99/00");
 			gestionGrupoPorAsignatura.buscarGrupoPorAsignatura(id);
 			fail("Deberia de dar una excepcion");
 			
@@ -180,7 +180,7 @@ public class TestGrupoPorAsignatura {
 			grupo.setOferta(false);
 			List<Grupo> grupos = gestionGrupo.listaGrupos();
 			Grupo aInf = grupos.get(0);
-			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 0, 2020);
+			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 0, "20/21");
 			gestionGrupoPorAsignatura.modificarGruposPorAsignatura(grupo);
 			Grupos_por_asignatura aux = gestionGrupoPorAsignatura.buscarGrupoPorAsignatura(id);
 			assertEquals(valorAntiguo, aux.getOferta());
@@ -199,7 +199,7 @@ public class TestGrupoPorAsignatura {
 			grupo.setOferta(false);
 			List<Grupo> grupos = gestionGrupo.listaGrupos();
 			Grupo aInf = grupos.get(0);
-			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 0, 1999);//No existe
+			NewId_GrupoPorAsignatura_grupo_asignatura id = new NewId_GrupoPorAsignatura_grupo_asignatura(aInf.getId(), 0, "00/01");//No existe
 			gestionGrupoPorAsignatura.modificarGruposPorAsignatura(grupo);
 			Grupos_por_asignatura aux = gestionGrupoPorAsignatura.buscarGrupoPorAsignatura(id);
 			fail("Deberia de haber saltado la excepcion");
@@ -250,7 +250,7 @@ public class TestGrupoPorAsignatura {
 			Grupo aInf = grupos.get(0);
 			List<Asignatura> listAsi = gestionAsignatura.listaAsignatura();
 			Asignatura asi = listAsi.get(0);
-			Grupos_por_asignatura grupo = new Grupos_por_asignatura(aInf, asi, 2021, true, null);
+			Grupos_por_asignatura grupo = new Grupos_por_asignatura(aInf, asi, "21/22", true, null);
 			gestionGrupoPorAsignatura.crearGrupoPorAsignatura(grupo);
 			gruposAs = gestionGrupoPorAsignatura.listaGruposPorAsignatura();
 			int numNuevo = gruposAs.size();
@@ -270,7 +270,7 @@ public class TestGrupoPorAsignatura {
 			Grupo aInf = grupos.get(0);
 			List<Asignatura> listAsi = gestionAsignatura.listaAsignatura();
 			Asignatura asi = listAsi.get(0);
-			Grupos_por_asignatura grupo = new Grupos_por_asignatura(aInf, asi, 2020, true, null);//Ya existe
+			Grupos_por_asignatura grupo = new Grupos_por_asignatura(aInf, asi, "20/21", true, null);//Ya existe
 			gestionGrupoPorAsignatura.crearGrupoPorAsignatura(grupo);
 			gruposAs = gestionGrupoPorAsignatura.listaGruposPorAsignatura();
 			int numNuevo = gruposAs.size();

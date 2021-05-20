@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 public class Matricula {
 	@Id @ManyToOne
 	private Expedientes expedientes;
-	@Id private int curso_academico;
+	@Id private String curso_academico;
 	private String estado;
 	private int num_archivo;
 	private String turno_preferente;
@@ -34,7 +34,7 @@ public class Matricula {
 		
 	}
 	
-	public Matricula(Expedientes expedientes, int curso_academico, String estado, int num_archivo,
+	public Matricula(Expedientes expedientes, String curso_academico, String estado, int num_archivo,
 			String turno_preferente, Date fecha_matricula, String nuevo_ingreso, String listado_asignaturas,
 			List<Asignatura_matricula> asignatura_matricula) {
 		super();
@@ -61,10 +61,10 @@ public class Matricula {
 	public void setExpedientes(Expedientes expedientes) {
 		this.expedientes = expedientes;
 	}
-	public int getCurso_academico() {
+	public String getCurso_academico() {
 		return curso_academico;
 	}
-	public void setCurso_academico(int curso_academico) {
+	public void setCurso_academico(String curso_academico) {
 		this.curso_academico = curso_academico;
 	}
 	public String getEstado() {
@@ -104,14 +104,18 @@ public class Matricula {
 		this.listado_asignaturas = listado_asignaturas;
 	}
 
+	
+	
+	/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + curso_academico;
+		result = prime * result + ((curso_academico == null) ? 0 : curso_academico.hashCode());
 		result = prime * result + ((expedientes == null) ? 0 : expedientes.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -121,7 +125,10 @@ public class Matricula {
 		if (getClass() != obj.getClass())
 			return false;
 		Matricula other = (Matricula) obj;
-		if (curso_academico != other.curso_academico)
+		if (curso_academico == null) {
+			if (other.curso_academico != null)
+				return false;
+		} else if (!curso_academico.equals(other.curso_academico))
 			return false;
 		if (expedientes == null) {
 			if (other.expedientes != null)
@@ -130,6 +137,7 @@ public class Matricula {
 			return false;
 		return true;
 	}
+*/
 	@Override
 	public String toString() {
 		return "Matricula [expedientes=" + expedientes + ", curso_academico=" + curso_academico + ", estado=" + estado

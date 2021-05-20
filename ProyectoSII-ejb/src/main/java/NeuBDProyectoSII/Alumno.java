@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -22,7 +20,7 @@ public class Alumno {
 	@Id @GeneratedValue
 	private int ID;
 	private String dni,nombre,primer_apellido,segundo_apellido,email_personal,email_institucional,movil,telefono,direccion,localidad,provincia,cp;
-	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private List<Expedientes> expedientes;
 
 	

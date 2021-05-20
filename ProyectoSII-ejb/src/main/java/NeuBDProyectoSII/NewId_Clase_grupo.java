@@ -2,9 +2,6 @@ package NeuBDProyectoSII;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
-
 
 public class NewId_Clase_grupo implements Serializable {
 	/**

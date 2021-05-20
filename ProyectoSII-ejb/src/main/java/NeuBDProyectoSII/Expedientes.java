@@ -1,5 +1,6 @@
 package NeuBDProyectoSII;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,11 +28,11 @@ public class Expedientes {
 	private int credito_tf;
 	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private Titulacion titulaciones;
-	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private Alumno alumno;
 	@OneToMany(mappedBy = "expedientes")
 	private List<Encuesta> encuestas;
-	@OneToMany(mappedBy = "expedientes",cascade = {CascadeType.PERSIST,CascadeType.REMOVE} )
+	@OneToMany(mappedBy = "expedientes",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE} )
 	private List<Matricula> matricula;
 	
 	
@@ -57,6 +58,7 @@ public class Expedientes {
 		this.titulaciones = titulaciones;
 		this.alumno = alumno;
 		this.encuestas = encuestas;
+		matricula = new ArrayList<Matricula>();
 	}
 	public Titulacion getTitulaciones() {
 		return titulaciones;
@@ -136,6 +138,23 @@ public class Expedientes {
 	public void setCredito_tf(int credito_tf) {
 		this.credito_tf = credito_tf;
 	}
+	
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+
+	public List<Matricula> getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(List<Matricula> matricula) {
+		this.matricula = matricula;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -158,13 +177,9 @@ public class Expedientes {
 	}
 	@Override
 	public String toString() {
-		return "Expedientes [num_expediente=" + num_expediente + ", activo=" + activo + ", nota_media_provisional="
-				+ nota_media_provisional + ", creditos_superado=" + creditos_superado + ", credito_fb=" + credito_fb
-				+ ", credito_ob=" + credito_ob + ", credito_op=" + credito_op + ", credito_cf=" + credito_cf
-				+ ", credito_pe=" + credito_pe + ", credito_tf=" + credito_tf + ", titulaciones=" + titulaciones
-				+ ", alumnos=" + alumno + ", encuestas=" + encuestas + "]";
+		return "Expedientes [num_expediente=" + num_expediente +"]";
 	}
-	
+
 	
 	
 }

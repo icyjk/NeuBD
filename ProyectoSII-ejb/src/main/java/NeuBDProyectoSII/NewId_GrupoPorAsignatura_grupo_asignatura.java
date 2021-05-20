@@ -1,9 +1,6 @@
 package NeuBDProyectoSII;
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
-
 
 public class NewId_GrupoPorAsignatura_grupo_asignatura implements Serializable{
 		/**
@@ -12,12 +9,12 @@ public class NewId_GrupoPorAsignatura_grupo_asignatura implements Serializable{
 	private static final long serialVersionUID = 1L;
 		private int grupo;
 		private int asignatura;
-		private int Curso_academico;
+		private String Curso_academico;
 		
 		
 		public NewId_GrupoPorAsignatura_grupo_asignatura() {
 		}
-		public NewId_GrupoPorAsignatura_grupo_asignatura(int grupo, int asignatura, int curso_academico) {
+		public NewId_GrupoPorAsignatura_grupo_asignatura(int grupo, int asignatura, String curso_academico) {
 			super();
 			this.grupo = grupo;
 			this.asignatura = asignatura;
@@ -35,21 +32,22 @@ public class NewId_GrupoPorAsignatura_grupo_asignatura implements Serializable{
 		public void setAsignatura(int asignatura) {
 			this.asignatura = asignatura;
 		}
-		public int getCurso_academico() {
+		public String getCurso_academico() {
 			return Curso_academico;
 		}
-		public void setCurso_academico(int curso_academico) {
+		public void setCurso_academico(String curso_academico) {
 			Curso_academico = curso_academico;
 		}
 		public static long getSerialversionuid() {
 			return serialVersionUID;
 		}
 		
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + Curso_academico;
+			result = prime * result + ((Curso_academico == null) ? 0 : Curso_academico.hashCode());
 			result = prime * result + asignatura;
 			result = prime * result + grupo;
 			return result;
@@ -63,7 +61,10 @@ public class NewId_GrupoPorAsignatura_grupo_asignatura implements Serializable{
 			if (getClass() != obj.getClass())
 				return false;
 			NewId_GrupoPorAsignatura_grupo_asignatura other = (NewId_GrupoPorAsignatura_grupo_asignatura) obj;
-			if (Curso_academico != other.Curso_academico)
+			if (Curso_academico == null) {
+				if (other.Curso_academico != null)
+					return false;
+			} else if (!Curso_academico.equals(other.Curso_academico))
 				return false;
 			if (asignatura != other.asignatura)
 				return false;

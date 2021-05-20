@@ -64,7 +64,7 @@ public class BaseDatos {
 
 		//Grupo Por Asignatura
 		 */
-		Grupos_por_asignatura calculoA = new Grupos_por_asignatura(grupoAinf, calculo, 1, true, null);
+		Grupos_por_asignatura calculoA = new Grupos_por_asignatura(grupoAinf, calculo, "20/21", true, null);
 		em.persist(calculoA);
 		
 		
@@ -79,7 +79,7 @@ public class BaseDatos {
 		
 		//Matricula
 		
-		Matricula matricula = new Matricula(expediente, 0, null, 0, null, null, null, null, null);
+		Matricula matricula = new Matricula(expediente, "20/21", null, 0, null, null, null, null, null);
 		
 		em.persist(matricula); 
 		/*

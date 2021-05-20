@@ -1,7 +1,9 @@
 package NeuBDProyectoSII;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Entity implementation class for Entity: Prueba

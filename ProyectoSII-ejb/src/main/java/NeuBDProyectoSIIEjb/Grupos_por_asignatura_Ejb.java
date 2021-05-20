@@ -53,7 +53,7 @@ public class Grupos_por_asignatura_Ejb implements GestionGrupoPorAsignatura{
 	}
 
 	@Override
-	public List<Grupos_por_asignatura> buscarGrupoPorAsignaturaViaCursoAcademic(int ca)
+	public List<Grupos_por_asignatura> buscarGrupoPorAsignaturaViaCursoAcademic(String ca)
 			throws NeuBDExceptions {
 		
 		List<Grupos_por_asignatura> grupos = em.createQuery("Select g from Grupos_por_asignatura g where g.Curso_academico = :curacad")

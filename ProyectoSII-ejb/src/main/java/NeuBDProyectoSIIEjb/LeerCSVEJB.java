@@ -37,35 +37,38 @@ import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 public class LeerCSVEJB implements GestionLeerCSV{
 	@PersistenceContext(name="ProyectoSII")
 	private EntityManager em;
-	/*
-	@EJB
-	private AlumnoEJB alumnoEJB;
-	@EJB
-	private MatriculaEJB matriculaEJB;
-	@EJB
-	private ExpedienteEJB expedienteEJB;
-	@EJB
-	private AsignaturaEJB asignaturaEJB;
-	
-	*/
 	@Override
 	public void insertarAlumnoCSV(Titulacion titu,String route)throws AlumnoSInDatosParaCrearException, ParseException{
         try { 
         	Reader reader = Files.newBufferedReader(Paths.get(route));
         	CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
-              
         	//CSVParser parser=new CSVParser(reader, CSVFormat.DEFAULT);
+        	boolean activo=true;String curso ="20/21";
             for (CSVRecord csvRecord : csvParser) {
+            	if(csvRecord.getRecordNumber()==1) {
+            		//Estado matricula
+            		curso= csvRecord.get(1);
+            		
+            	}
+            	if(csvRecord.getRecordNumber()==3) {
+            		//Estado matricula
+            		String strActivo = csvRecord.get(1);
+            		if(strActivo.equalsIgnoreCase("Activa")) {
+            			activo=true;
+            		}else {
+            			activo=false;
+            		}
+            		
+            	}
             	if((csvRecord.getRecordNumber() >=5 ) && (csvRecord.get(0).length() >= 1)) {
                 // Accediendo a los valores por el indice de la columna
-            		
+            		//System.out.println("\n\n\n\n\n\nNuevo alumno");
 	                String DNI = csvRecord.get(0);
 	                String nombre = csvRecord.get(1);
 	                String priApellido = csvRecord.get(2);
 	                String secApellido = csvRecord.get(3);
 	                String numExp = csvRecord.get(4);
 	                int numArchivo = Integer.parseInt(csvRecord.get(5));
-	                System.out.println(csvRecord.size());
 	                String emInstitucional = csvRecord.get(6);
 	                String emPersonal = csvRecord.get(7);
 	                String telefono = csvRecord.get(8);
@@ -85,23 +88,34 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                int CREDITOS_CF = Integer.parseInt(csvRecord.get(22));
 	                int CREDITOS_PE = Integer.parseInt(csvRecord.get(23));
 	                int CREDITOS_TF = Integer.parseInt(csvRecord.get(24));
-	                System.out.println("pruwba");
-	                Alumno alum=new Alumno(DNI,nombre,priApellido,secApellido,emPersonal, emInstitucional, movil, telefono, direccion, localidad, null, cp, provincia);
+	                //System.out.println("pruwba");
+	                List<Expedientes> lista=new ArrayList<Expedientes>();
+	                Alumno alum=new Alumno(DNI,nombre,priApellido,secApellido,emPersonal, emInstitucional, movil, telefono, direccion, localidad, lista, cp, provincia);
 	                
 	                Alumno a = em.merge(alum); //Por si el alumno pasado ya existia en la BD
-	               // System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +a);
-	                /*
-	                Expedientes e= new Expedientes(true, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, a, null);
-	                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-	                Date parsedDate = dateFormat.parse(fechaMatricula);
-	                Matricula m = new Matricula(e, 2021, "activo", numArchivo, turnoPref, parsedDate, "", gruposAsig, null);
-	                List<Expedientes> lista=new ArrayList<Expedientes>();
+	                //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +a);
+	                Expedientes e= new Expedientes(true, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, a,null);
+	                em.merge(e);
+	                lista = a.getExpedientes();
 	                lista.add(e);
-	                alum.setExpedientes(lista);
-	                //alumnoEJB.anyadirAlumno(alum);     
-	        		em.merge(e);
-	        		*/
-	        		
+	                alum.setExpedientes(lista); 
+	                Alumno al = em.merge(alum);
+	                
+	                String strActivo;
+	                if(activo) {
+	                	strActivo= "activo";
+	                }{
+	                	strActivo="inactivo";
+	                }
+	                Expedientes expe = al.getExpedientes().get(al.getExpedientes().size()-1);
+	                Matricula m = new Matricula(expe, curso, strActivo, numArchivo, turnoPref, cambiarAFecha(fechaMatricula), "", gruposAsig, null);
+	                System.out.println(m);
+	                em.merge(m);
+	                List<Matricula> list = e.getMatricula();
+	                list.add(m);
+	                e.setMatricula(list);
+	                em.merge(e);	
+	                
             	}
             }
             csvParser.close();
@@ -236,7 +250,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
     	}
 	}
 	public Date cambiarAFecha(String fecha) throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         String dateInString = fecha;
         Date fechaR;
         fechaR = formatter.parse(dateInString);

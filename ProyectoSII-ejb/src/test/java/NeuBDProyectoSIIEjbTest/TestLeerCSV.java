@@ -22,6 +22,7 @@ import org.junit.Test;
 import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Expedientes;
+import NeuBDProyectoSII.Matricula;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionAlumno;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
@@ -30,6 +31,7 @@ import NeuBDProyectoSIIEjb.GestionExpediente;
 import NeuBDProyectoSIIEjb.GestionLeerCSV;
 import NeuBDProyectoSIIEjb.GestionOptativa;
 import NeuBDProyectoSIIEjb.GestionTitulacion;
+import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 import es.uma.informatica.sii.anotaciones.Requisitos;
 
@@ -41,6 +43,7 @@ public class TestLeerCSV {
 	private static final String Asignatura_EJB = "java:global/classes/AsignaturaEJB";
 	private static final String Optativa_EJB = "java:global/classes/OptativaEJB";
 	private static final String Expedientes_EJB = "java:global/classes/ExpedienteEJB";
+	private static final String Matricula_EJB = "java:global/classes/MatriculaEJB";
 	private static final String GLASSFISH_CONFIGI_FILE_PROPERTY = "org.glassfish.ejb.embedded.glassfish.configuration.file";
 	private static final String CONFIG_FILE = "target/test-classes/META-INF/domain.xml";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "ProyectoTest";
@@ -55,6 +58,7 @@ public class TestLeerCSV {
 	private GestionAsignatura gestionAsignatura;
 	private GestionOptativa gestionOptativa;
 	private GestionExpediente gestionExpediente;
+	private GestionMatricula gestionMatricula;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -73,6 +77,7 @@ public class TestLeerCSV {
 		gestionAsignatura = (GestionAsignatura) ctx.lookup(Asignatura_EJB);
 		gestionOptativa = (GestionOptativa) ctx.lookup(Optativa_EJB);
 		gestionExpediente = (GestionExpediente) ctx.lookup(Expedientes_EJB);
+		gestionMatricula = (GestionMatricula) ctx.lookup(Matricula_EJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 	}
 	@Requisitos({"RF-01,RF-02"})
@@ -84,14 +89,30 @@ public class TestLeerCSV {
 			String route="/home/alumno/Escritorio/AlumnoPrueba.csv";
 			
 			int tam=gestionAlumno.listaAlumno().size();
+			int tamExpedientes = gestionExpediente.listaExpedientes().size();
+			int tamMatriculas = gestionMatricula.listaMatricula().size();
 			try {
 				gestionLeerCSV.insertarAlumnoCSV(titu, route);
 			}catch(ParseException e) {
 				fail("No deberia lanzarse excepcion");
 			}
+			List<Expedientes> lista = gestionAlumno.listaAlumno().get(5).getExpedientes();
+			int numeroExpedientes = lista.size();
+			assertNotEquals(0, numeroExpedientes);
+			List<Matricula>list= gestionExpediente.listaExpedientes().get(2).getMatricula();
+			int numeroMatriculas = list.size();
+			;
 			int tam2=gestionAlumno.listaAlumno().size();
-			
-			assertNotEquals(tam+1, tam2);;
+			int tamExpedientes2 = gestionExpediente.listaExpedientes().size();
+			int tamMatriculas2 = gestionMatricula.listaMatricula().size();
+			System.out.println("NUMERO DE MATRICULAS TOTALES"+tamMatriculas2);
+			assertNotEquals(tam+1, tam2);
+			assertNotEquals(tamExpedientes+1, tamExpedientes2);
+			//assertNotEquals(tamMatriculas+1, tamMatriculas2);
+			assertNotEquals(tam, tam2);
+			assertNotEquals(tamExpedientes, tamExpedientes2);
+			//assertNotEquals(tamMatriculas, tamMatriculas2);
+			//assertNotEquals(0, numeroMatriculas);
 			
 		} catch (NeuBDExceptions e) {
 			fail("No debería lanzarse excepción");

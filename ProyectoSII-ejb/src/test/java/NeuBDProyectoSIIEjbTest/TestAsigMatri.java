@@ -89,7 +89,7 @@ public class TestAsigMatri {
 		try {
 			
 			
-			NewId_Matricula_expediente IdMatriExp = new NewId_Matricula_expediente(1234,1);
+			NewId_Matricula_expediente IdMatriExp = new NewId_Matricula_expediente(1234,"20/21");
 			NewId_Asignatura_matricula ID  = new NewId_Asignatura_matricula(12,IdMatriExp);
 			
 			
@@ -144,7 +144,7 @@ public class TestAsigMatri {
 			Asignatura calculo = new Asignatura(616, 1201, 1, 3, 6, false, "MAINCRAo", 1, "ter", 0, "SegundoCuatri", "Español"
 					,titulacionInf , null, null, null);
 			Expedientes expediente = new Expedientes(true, 3,1, 6, 3, 0, 5, 0, 0, null, null, null);
-			Matricula matricula = new Matricula(expediente, 23, null,5, null, null, null, null, null);
+			Matricula matricula = new Matricula(expediente, "20/21", null,5, null, null, null, null, null);
 			
 			
 			Asignatura_matricula asig_ma= new Asignatura_matricula(calculo,matricula,grupoAinf,false,false);

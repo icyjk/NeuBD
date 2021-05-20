@@ -1,9 +1,6 @@
 package NeuBDProyectoSII;
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
-
 
 public class NewId_Asignatura_matricula implements Serializable {
 	/**

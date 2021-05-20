@@ -17,7 +17,7 @@ public class Grupos_por_asignatura {
 
 	@Id @ManyToOne private Grupo grupo;
 	@Id @ManyToOne private Asignatura asignatura;
-	@Id private int Curso_academico;
+	@Id private String Curso_academico;
 	private boolean oferta;
 	@ManyToMany(mappedBy = "grupos_por_asignatura", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Encuesta> encuestas;
@@ -26,7 +26,7 @@ public class Grupos_por_asignatura {
 	
 	public Grupos_por_asignatura() {
 	}
-	public Grupos_por_asignatura(Grupo grupo, Asignatura asignatura, int curso_academico, boolean oferta,
+	public Grupos_por_asignatura(Grupo grupo, Asignatura asignatura, String curso_academico, boolean oferta,
 			List<Encuesta> encuestas) {
 		super();
 		this.grupo = grupo;
@@ -54,10 +54,10 @@ public class Grupos_por_asignatura {
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
-	public int getCurso_academico() {
+	public String getCurso_academico() {
 		return Curso_academico;
 	}
-	public void setCurso_academico(int curso_academico) {
+	public void setCurso_academico(String curso_academico) {
 		Curso_academico = curso_academico;
 	}
 	public boolean getOferta() {
@@ -66,11 +66,13 @@ public class Grupos_por_asignatura {
 	public void setOferta(boolean oferta) {
 		this.oferta = oferta;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Curso_academico;
+		result = prime * result + ((Curso_academico == null) ? 0 : Curso_academico.hashCode());
 		result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
 		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
 		return result;
@@ -84,7 +86,10 @@ public class Grupos_por_asignatura {
 		if (getClass() != obj.getClass())
 			return false;
 		Grupos_por_asignatura other = (Grupos_por_asignatura) obj;
-		if (Curso_academico != other.Curso_academico)
+		if (Curso_academico == null) {
+			if (other.Curso_academico != null)
+				return false;
+		} else if (!Curso_academico.equals(other.Curso_academico))
 			return false;
 		if (asignatura == null) {
 			if (other.asignatura != null)
