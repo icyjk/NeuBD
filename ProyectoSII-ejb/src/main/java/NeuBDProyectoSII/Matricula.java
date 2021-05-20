@@ -23,11 +23,10 @@ public class Matricula {
 	private String estado;
 	private int num_archivo;
 	private String turno_preferente;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_matricula;
 	private String nuevo_ingreso;
-	@ManyToMany
-	private List<Asignatura> listado_asignaturas;
+	private String listado_asignaturas;
 	@OneToMany
 	private List<Asignatura_matricula> asignatura_matricula;
 	
@@ -36,7 +35,7 @@ public class Matricula {
 	}
 	
 	public Matricula(Expedientes expedientes, int curso_academico, String estado, int num_archivo,
-			String turno_preferente, Date fecha_matricula, String nuevo_ingreso, List<Asignatura> listado_asignaturas,
+			String turno_preferente, Date fecha_matricula, String nuevo_ingreso, String listado_asignaturas,
 			List<Asignatura_matricula> asignatura_matricula) {
 		super();
 		this.expedientes = expedientes;
@@ -98,10 +97,10 @@ public class Matricula {
 	public void setNuevo_ingreso(String nuevo_ingreso) {
 		this.nuevo_ingreso = nuevo_ingreso;
 	}
-	public List<Asignatura> getListado_asignaturas() {
+	public String getListado_asignaturas() {
 		return listado_asignaturas;
 	}
-	public void setListado_asignaturas(List<Asignatura> listado_asignaturas) {
+	public void setListado_asignaturas(String listado_asignaturas) {
 		this.listado_asignaturas = listado_asignaturas;
 	}
 

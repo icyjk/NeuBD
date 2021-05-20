@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: NeuBDProyectoSIIEjbTest.TestLeerCSV
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 0.002 sec
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 9.14 sec

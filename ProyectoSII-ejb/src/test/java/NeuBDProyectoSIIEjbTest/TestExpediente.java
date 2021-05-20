@@ -134,12 +134,12 @@ public class TestExpediente {
 			
 			Expedientes e = gestionExpediente.listaExpedientes().get(0);
 			
-			e.setCreditos_superado(100);
+			e.setCredito_fb(10);;
 			
 			gestionExpediente.modificarExpediente(e);
 			
 			
-			assertEquals(100,gestionExpediente.visualizarExpediente(e).getCreditos_superado());
+			assertEquals(10,gestionExpediente.visualizarExpediente(e).getCredito_fb());
 		}catch(NeuBDExceptions e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

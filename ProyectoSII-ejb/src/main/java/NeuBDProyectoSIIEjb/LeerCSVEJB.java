@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -21,33 +25,47 @@ import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Expedientes;
+import NeuBDProyectoSII.Matricula;
 import NeuBDProyectoSII.Optativa;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIexceptions.AlumnoSInDatosParaCrearException;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
-import NeuBDProyectoSIIexceptions.TItulacionNoEncontradaException;
 
 
 
 @Stateless
 public class LeerCSVEJB implements GestionLeerCSV{
+	@PersistenceContext(name="ProyectoSII")
+	private EntityManager em;
+	/*
+	@EJB
+	private AlumnoEJB alumnoEJB;
+	@EJB
+	private MatriculaEJB matriculaEJB;
+	@EJB
+	private ExpedienteEJB expedienteEJB;
+	@EJB
+	private AsignaturaEJB asignaturaEJB;
 	
-	public void insertarAlumnoCSV(Titulacion titu,String route)throws AlumnoSInDatosParaCrearException{
+	*/
+	@Override
+	public void insertarAlumnoCSV(Titulacion titu,String route)throws AlumnoSInDatosParaCrearException, ParseException{
         try { 
         	Reader reader = Files.newBufferedReader(Paths.get(route));
-        	 CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
-                     
+        	CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
+              
         	//CSVParser parser=new CSVParser(reader, CSVFormat.DEFAULT);
-        	 
             for (CSVRecord csvRecord : csvParser) {
-            	if(csvRecord.getRecordNumber() !=1) {
+            	if((csvRecord.getRecordNumber() >=5 ) && (csvRecord.get(0).length() >= 1)) {
                 // Accediendo a los valores por el indice de la columna
+            		
 	                String DNI = csvRecord.get(0);
 	                String nombre = csvRecord.get(1);
 	                String priApellido = csvRecord.get(2);
 	                String secApellido = csvRecord.get(3);
 	                String numExp = csvRecord.get(4);
-	                String numArchivo = csvRecord.get(5);
+	                int numArchivo = Integer.parseInt(csvRecord.get(5));
+	                System.out.println(csvRecord.size());
 	                String emInstitucional = csvRecord.get(6);
 	                String emPersonal = csvRecord.get(7);
 	                String telefono = csvRecord.get(8);
@@ -60,45 +78,41 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                String turnoPref = csvRecord.get(15);
 	                String gruposAsig = csvRecord.get(16);
 	                double notaMedia = Double.parseDouble(csvRecord.get(17));
-	                int credSuperados = Integer.parseInt(csvRecord.get(18));
+	                double credSuperados = Double.parseDouble(csvRecord.get(18));
 	                int CREDITOS_FB = Integer.parseInt(csvRecord.get(19));
 	                int CREDITOS_OB = Integer.parseInt(csvRecord.get(20));
-	                int CREDITOS_OP = Integer.parseInt(csvRecord.get(21));
+	                double CREDITOS_OP = Double.parseDouble(csvRecord.get(21));
 	                int CREDITOS_CF = Integer.parseInt(csvRecord.get(22));
 	                int CREDITOS_PE = Integer.parseInt(csvRecord.get(23));
 	                int CREDITOS_TF = Integer.parseInt(csvRecord.get(24));
-
+	                System.out.println("pruwba");
 	                Alumno alum=new Alumno(DNI,nombre,priApellido,secApellido,emPersonal, emInstitucional, movil, telefono, direccion, localidad, null, cp, provincia);
-	                Expedientes e= new Expedientes(true, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, alum, null);
-	                AlumnoEJB ej=new AlumnoEJB();
+	                
+	                Alumno a = em.merge(alum); //Por si el alumno pasado ya existia en la BD
+	               // System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +a);
+	                /*
+	                Expedientes e= new Expedientes(true, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, a, null);
+	                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+	                Date parsedDate = dateFormat.parse(fechaMatricula);
+	                Matricula m = new Matricula(e, 2021, "activo", numArchivo, turnoPref, parsedDate, "", gruposAsig, null);
 	                List<Expedientes> lista=new ArrayList<Expedientes>();
 	                lista.add(e);
 	                alum.setExpedientes(lista);
-	                ej.anyadirAlumno(alum);
-	                
-	                
-	                /// TIENES QUE AÑADIR LA MATRICULA Y EL EXPEDIENTE
-	                //// Y CON gruposAsig TIENES QUE LLAMAR A ASIG MATRI
-	                //// LA COSA ES QE TE PASA UN -303, -305 O ALGO ASI Y TIENES QUE HACER
-	                /// USE DELIMITER Y Y CON ESA ASIGNATURA BUSCARLA EN LA BASE DE DATOS Y AÑADIR ESA ASIG MATRI
-
-//                System.out.println("Record No - " + csvRecord.getRecordNumber());
-//                System.out.println("---------------");
-//                System.out.println("DNI : " + DNI);
-//                System.out.println("Nombre : " + nombre);
-//                System.out.println("priApellido : " + priApellido);
-//                System.out.println("secApellido : " + secApellido);
-//                System.out.println("---------------\n\n");
-	                
-               
+	                //alumnoEJB.anyadirAlumno(alum);     
+	        		em.merge(e);
+	        		*/
+	        		
             	}
             }
+            csvParser.close();
+            reader.close();
         }
         catch (IOException e) {  
 	        e.printStackTrace();  
 	    } 
     }
 	
+	@Override
 	public void insertarTitulacionCSV(Centro cen, String route)throws NeuBDExceptions{
 		 try { 
 	        	Reader reader = Files.newBufferedReader(Paths.get(route));
@@ -126,7 +140,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		 } 
 	            
 	}
-	
+	@Override
 	public void insertarAsignaturaCSV(String route)throws NeuBDExceptions{
 		
 		 try { 
@@ -171,7 +185,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		 } 
 	            
 	}
-	
+	@Override
 	public void insertarOptativaCSV(String route,Titulacion tit)throws NeuBDExceptions{
 		try { 
         	Reader reader = Files.newBufferedReader(Paths.get(route));
@@ -200,6 +214,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	        e.printStackTrace();
 	 } 
 	}
+	@Override
 	public void insertarEncuestaCSV(String route, Expedientes exp) throws NeuBDExceptions{
 		try { 
         	Reader reader = Files.newBufferedReader(Paths.get(route));
@@ -227,6 +242,6 @@ public class LeerCSVEJB implements GestionLeerCSV{
         fechaR = formatter.parse(dateInString);
         return fechaR;
     }
-		
+
 	
 }

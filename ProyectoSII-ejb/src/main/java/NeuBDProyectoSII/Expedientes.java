@@ -18,10 +18,10 @@ public class Expedientes {
 	private long num_expediente;
 	private boolean activo;
 	private double nota_media_provisional;
-	private int creditos_superado;
+	private double creditos_superado;
 	private int credito_fb;
 	private int credito_ob;
-	private int credito_op;
+	private double credito_op;
 	private int credito_cf;
 	private int credito_pe;
 	private int credito_tf;
@@ -41,8 +41,8 @@ public class Expedientes {
 		
 	}
 	
-	public Expedientes(boolean activo, double nota_media_provisional, int creditos_superado,
-			int credito_fb, int credito_ob, int credito_op, int credito_cf, int credito_pe, int credito_tf,
+	public Expedientes(boolean activo, double nota_media_provisional, double creditos_superado,
+			int credito_fb, int credito_ob, double credito_op, int credito_cf, int credito_pe, int credito_tf,
 			Titulacion titulaciones, Alumno alumno, List<Encuesta> encuestas) {
 		super();
 		this.activo = activo;
@@ -94,10 +94,10 @@ public class Expedientes {
 	public void setNota_media_provisional(double nota_media_provisional) {
 		this.nota_media_provisional = nota_media_provisional;
 	}
-	public int getCreditos_superado() {
+	public double getCreditos_superado() {
 		return creditos_superado;
 	}
-	public void setCreditos_superado(int creditos_superado) {
+	public void setCreditos_superado(double creditos_superado) {
 		this.creditos_superado = creditos_superado;
 	}
 	public int getCredito_fb() {
@@ -112,10 +112,10 @@ public class Expedientes {
 	public void setCredito_ob(int credito_ob) {
 		this.credito_ob = credito_ob;
 	}
-	public int getCredito_op() {
+	public double getCredito_op() {
 		return credito_op;
 	}
-	public void setCredito_op(int credito_op) {
+	public void setCredito_op(double credito_op) {
 		this.credito_op = credito_op;
 	}
 	public int getCredito_cf() {

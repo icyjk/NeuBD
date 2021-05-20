@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="NeuBDProyectoSIIEjbTest.TestAsigMatri" time="0.024" errors="0" skipped="6">
+<testsuite tests="6" failures="0" name="NeuBDProyectoSIIEjbTest.TestAsigMatri" time="0" errors="0" skipped="6">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -62,17 +62,17 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatriMAL" time="0.004">
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatriMAL" time="0">
     <skipped/>
     <system-out>PlainTextActionReporterSUCCESSNo monitoring data to report.
 JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]
 JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool]
 </system-out>
-    <system-err>may 19, 2021 4:15:43 AM org.eclipse.persistence.session./file:/tmp/gfembed4103302781138630380tmp/applications/classes/_ProyectoSII.connection
-INFORMACIÓN: /file:/tmp/gfembed4103302781138630380tmp/applications/classes/_ProyectoSII logout successful
-may 19, 2021 4:15:44 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+    <system-err>may 20, 2021 6:40:18 AM org.eclipse.persistence.session./file:/tmp/gfembed6812560858255789938tmp/applications/classes/_ProyectoSII.connection
+INFORMACIÓN: /file:/tmp/gfembed6812560858255789938tmp/applications/classes/_ProyectoSII logout successful
+may 20, 2021 6:40:18 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
 GRAVE: RAR7133: Unable to remove resource [ java:jboss/datasources/sii ] from jndi
-may 19, 2021 4:15:44 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+may 20, 2021 6:40:18 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
 GRAVE: 
 com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi
 	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:157)
@@ -118,15 +118,15 @@ Caused by: javax.naming.NamingException: java:comp namespace cannot be modified
 	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:142)
 	... 32 more
 
-may 19, 2021 4:15:44 AM org.glassfish.resourcebase.resources.listener.ResourceManager undeployResources
+may 20, 2021 6:40:18 AM org.glassfish.resourcebase.resources.listener.ResourceManager undeployResources
 ADVERTENCIA: Unable to undeploy resource [java:jboss/datasources/sii] due to following exception: [com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi].
-may 19, 2021 4:15:44 AM com.sun.enterprise.connectors.service.ResourceAdapterAdminServiceImpl sendStopToResourceAdapter
+may 20, 2021 6:40:18 AM com.sun.enterprise.connectors.service.ResourceAdapterAdminServiceImpl sendStopToResourceAdapter
 INFORMACIÓN: RAR7094: __ds_jdbc_ra shutdown successful.
-may 19, 2021 4:15:44 AM org.glassfish.admin.mbeanserver.JMXStartupService shutdown
+may 20, 2021 6:40:18 AM org.glassfish.admin.mbeanserver.JMXStartupService shutdown
 INFORMACIÓN: JMXStartupService and JMXConnectors have been shut down.
-may 19, 2021 4:15:44 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+may 20, 2021 6:40:18 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
 GRAVE: RAR7133: Unable to remove resource [ java:jboss/datasources/sii ] from jndi
-may 19, 2021 4:15:44 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
+may 20, 2021 6:40:18 AM com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl deleteConnectorResource
 GRAVE: 
 com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi
 	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:157)
@@ -159,25 +159,25 @@ Caused by: javax.naming.NamingException: java:comp namespace cannot be modified
 	at com.sun.enterprise.connectors.service.ConnectorResourceAdminServiceImpl.deleteConnectorResource(ConnectorResourceAdminServiceImpl.java:142)
 	... 19 more
 
-may 19, 2021 4:15:44 AM org.glassfish.resourcebase.resources.listener.ResourceManager undeployResources
+may 20, 2021 6:40:18 AM org.glassfish.resourcebase.resources.listener.ResourceManager undeployResources
 ADVERTENCIA: Unable to undeploy resource [java:jboss/datasources/sii] due to following exception: [com.sun.appserv.connectors.internal.api.ConnectorRuntimeException: Failed to delete connector resource from jndi].
-may 19, 2021 4:15:44 AM com.sun.enterprise.v3.server.AppServerStartup stop
+may 20, 2021 6:40:18 AM com.sun.enterprise.v3.server.AppServerStartup stop
 INFORMACIÓN: Shutdown procedure finished
 </system-err>
   </testcase>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatriMAL" time="0.004">
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatriMAL" time="0">
     <skipped/>
   </testcase>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matricula" time="0.004">
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matricula" time="0">
     <skipped/>
   </testcase>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatri" time="0.004">
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatri" time="0">
     <skipped/>
   </testcase>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatri" time="0.004">
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatri" time="0">
     <skipped/>
   </testcase>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matriculaMAL" time="0.004">
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matriculaMAL" time="0">
     <skipped/>
   </testcase>
 </testsuite>

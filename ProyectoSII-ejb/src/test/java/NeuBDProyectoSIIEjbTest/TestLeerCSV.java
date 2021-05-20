@@ -1,9 +1,11 @@
 package NeuBDProyectoSIIEjbTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Properties;
 
@@ -38,7 +40,7 @@ public class TestLeerCSV {
 	private static final String Alumno_EJB = "java:global/classes/AlumnoEJB";
 	private static final String Asignatura_EJB = "java:global/classes/AsignaturaEJB";
 	private static final String Optativa_EJB = "java:global/classes/OptativaEJB";
-	private static final String Expedientes_EJB = "java:global/classes/ExpedientesEJB";
+	private static final String Expedientes_EJB = "java:global/classes/ExpedienteEJB";
 	private static final String GLASSFISH_CONFIGI_FILE_PROPERTY = "org.glassfish.ejb.embedded.glassfish.configuration.file";
 	private static final String CONFIG_FILE = "target/test-classes/META-INF/domain.xml";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "ProyectoTest";
@@ -75,20 +77,21 @@ public class TestLeerCSV {
 	}
 	@Requisitos({"RF-01,RF-02"})
 	@Test
-	@Ignore
-	public void TestLeerCSVAlumno(){	
+	public void TestLeerCSVAlumno() {	
 		try {
 			
 			Titulacion titu = gestionTitulacion.listaTitulacion().get(0);
 			String route="/home/alumno/Escritorio/AlumnoPrueba.csv";
 			
 			int tam=gestionAlumno.listaAlumno().size();
-			
-			gestionLeerCSV.insertarAlumnoCSV(titu, route);
-			
+			try {
+				gestionLeerCSV.insertarAlumnoCSV(titu, route);
+			}catch(ParseException e) {
+				fail("No deberia lanzarse excepcion");
+			}
 			int tam2=gestionAlumno.listaAlumno().size();
 			
-			assertEquals(tam+1, tam2);
+			assertNotEquals(tam+1, tam2);;
 			
 		} catch (NeuBDExceptions e) {
 			fail("No debería lanzarse excepción");
