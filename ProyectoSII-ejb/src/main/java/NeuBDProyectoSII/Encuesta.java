@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @NamedQuery(name = "Encuesta.todos", query= "select e from Encuesta e")
 @Entity
 public class Encuesta {
 	
-	@Id 
+	@Id @Temporal(TemporalType.DATE)
 	private Date Fecha_de_envio;
 	@ManyToOne
 	private Expedientes expedientes;

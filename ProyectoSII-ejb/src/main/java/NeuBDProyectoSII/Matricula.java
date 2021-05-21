@@ -3,6 +3,7 @@ package NeuBDProyectoSII;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @IdClass(NewId_Matricula_expediente.class)
 public class Matricula {
-	@Id @ManyToOne
+	@Id @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private Expedientes expedientes;
 	@Id private String curso_academico;
 	private String estado;
@@ -27,7 +28,7 @@ public class Matricula {
 	private Date fecha_matricula;
 	private String nuevo_ingreso;
 	private String listado_asignaturas;
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Asignatura_matricula> asignatura_matricula;
 	
 	public Matricula () {

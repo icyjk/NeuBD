@@ -17,5 +17,5 @@ public interface GestionLeerCSV {
 	public void insertarTitulacionCSV(Centro cen, String route)throws  NeuBDExceptions;
 	public void insertarAsignaturaCSV(String route)throws  NeuBDExceptions;
 	public void insertarOptativaCSV(String route,Titulacion tit)throws  NeuBDExceptions;
-	public void insertarEncuestaCSV(String route, Expedientes exp)throws  NeuBDExceptions;
+	public void insertarEncuestaCSV(String route)throws  NeuBDExceptions;
 }

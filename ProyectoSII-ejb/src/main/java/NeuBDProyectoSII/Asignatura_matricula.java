@@ -2,6 +2,7 @@ package NeuBDProyectoSII;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -14,8 +15,8 @@ import javax.persistence.NamedQuery;
 public class Asignatura_matricula implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	@Id @ManyToOne private Asignatura asignatura;
-	@Id @ManyToOne private Matricula matricula;
+	@Id @ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})private Asignatura asignatura;
+	@Id @ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})private Matricula matricula;
 	@ManyToOne(optional = true)
 	private Grupo grupo;
 	private boolean idioma,asignacionManual;
@@ -69,6 +70,7 @@ public class Asignatura_matricula implements Serializable {
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
+	/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,10 +100,10 @@ public class Asignatura_matricula implements Serializable {
 			return false;
 		return true;
 	}
+	*/
 	@Override
 	public String toString() {
-		return "Asignatura_matricula [asignatura=" + asignatura + ", matricula=" + matricula + ", grupo=" + grupo
-				+ ", idioma=" + idioma + ", asignacionManual=" + asignacionManual + "]";
+		return "Asignatura_matricula [asignatura="+ ", asignacionManual=" + asignacionManual + "]";
 	}
 	
 	

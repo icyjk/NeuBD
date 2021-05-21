@@ -17,15 +17,15 @@ public class Titulacion {
 	private int codigo;
 	private String nombre;
 	private int creditos;
-	@ManyToMany(mappedBy = "titulaciones",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@ManyToMany(mappedBy = "titulaciones",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Centro> centros;
-	@OneToMany(mappedBy = "titulaciones",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(mappedBy = "titulaciones",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Expedientes> expedientes;
-	@OneToMany(mappedBy = "titulacion",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(mappedBy = "titulacion",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Asignatura> asignaturas;
-	@OneToMany(mappedBy = "titulacion",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(mappedBy = "titulacion",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Grupo> grupos;
-	@OneToMany(mappedBy = "titulacion")
+	@OneToMany(mappedBy = "titulacion",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Optativa> optativa;
 	
 	

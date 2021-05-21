@@ -71,10 +71,11 @@ public class BaseDatos {
 		
 		
 		//Expediente 
-		Expedientes expediente = new Expedientes(true, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
+		Expedientes expediente = new Expedientes(true, 0, 0, 0, 0, 0, 0, 0, 0, titulacionInf, null, null);
 		List<Expedientes> listaExpedientes = new ArrayList<Expedientes>();
 		em.persist(expediente);
 		listaExpedientes.add(em.merge(expediente));
+		titulacionInf.setExpedientes(listaExpedientes);
 		
 		
 		//Matricula
@@ -82,7 +83,7 @@ public class BaseDatos {
 		Matricula matricula = new Matricula(expediente, "20/21", null, 0, null, null, null, null, null);
 		
 		em.persist(matricula); 
-		/*
+		
 		//AsigMatri
 		Asignatura_matricula asigmatri = new Asignatura_matricula(calculo, matricula, null, false, false);
 		em.persist(asigmatri);
@@ -95,7 +96,7 @@ public class BaseDatos {
 		em.merge(matricula);
 		grupoAinf.setAsigMatriculas(listaAsigMatri);
 		em.merge(grupoAinf);
-		*/
+		
 		
 		//Encuesta
 		Date fecha2 = new Date(116,5,4);

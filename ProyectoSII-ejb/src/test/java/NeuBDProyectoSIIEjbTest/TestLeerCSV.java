@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Properties;
@@ -19,7 +18,6 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSII.Matricula;
@@ -27,11 +25,12 @@ import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionAlumno;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
 import NeuBDProyectoSIIEjb.GestionCentro;
+import NeuBDProyectoSIIEjb.GestionEncuesta;
 import NeuBDProyectoSIIEjb.GestionExpediente;
 import NeuBDProyectoSIIEjb.GestionLeerCSV;
+import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIEjb.GestionOptativa;
 import NeuBDProyectoSIIEjb.GestionTitulacion;
-import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 import es.uma.informatica.sii.anotaciones.Requisitos;
 
@@ -44,6 +43,7 @@ public class TestLeerCSV {
 	private static final String Optativa_EJB = "java:global/classes/OptativaEJB";
 	private static final String Expedientes_EJB = "java:global/classes/ExpedienteEJB";
 	private static final String Matricula_EJB = "java:global/classes/MatriculaEJB";
+	private static final String Encuesta_EJB = "java:global/classes/EncuestaEJB";
 	private static final String GLASSFISH_CONFIGI_FILE_PROPERTY = "org.glassfish.ejb.embedded.glassfish.configuration.file";
 	private static final String CONFIG_FILE = "target/test-classes/META-INF/domain.xml";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "ProyectoTest";
@@ -59,6 +59,7 @@ public class TestLeerCSV {
 	private GestionOptativa gestionOptativa;
 	private GestionExpediente gestionExpediente;
 	private GestionMatricula gestionMatricula;
+	private GestionEncuesta gestionEncuesta;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -78,6 +79,7 @@ public class TestLeerCSV {
 		gestionOptativa = (GestionOptativa) ctx.lookup(Optativa_EJB);
 		gestionExpediente = (GestionExpediente) ctx.lookup(Expedientes_EJB);
 		gestionMatricula = (GestionMatricula) ctx.lookup(Matricula_EJB);
+		gestionEncuesta = (GestionEncuesta) ctx.lookup(Encuesta_EJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 	}
 	@Requisitos({"RF-01,RF-02"})
@@ -101,18 +103,17 @@ public class TestLeerCSV {
 			assertNotEquals(0, numeroExpedientes);
 			List<Matricula>list= gestionExpediente.listaExpedientes().get(2).getMatricula();
 			int numeroMatriculas = list.size();
-			;
 			int tam2=gestionAlumno.listaAlumno().size();
 			int tamExpedientes2 = gestionExpediente.listaExpedientes().size();
 			int tamMatriculas2 = gestionMatricula.listaMatricula().size();
 			System.out.println("NUMERO DE MATRICULAS TOTALES"+tamMatriculas2);
 			assertNotEquals(tam+1, tam2);
 			assertNotEquals(tamExpedientes+1, tamExpedientes2);
-			//assertNotEquals(tamMatriculas+1, tamMatriculas2);
+			assertNotEquals(tamMatriculas+1, tamMatriculas2);
 			assertNotEquals(tam, tam2);
 			assertNotEquals(tamExpedientes, tamExpedientes2);
-			//assertNotEquals(tamMatriculas, tamMatriculas2);
-			//assertNotEquals(0, numeroMatriculas);
+			assertNotEquals(tamMatriculas, tamMatriculas2);
+			assertNotEquals(0, numeroMatriculas);
 			
 		} catch (NeuBDExceptions e) {
 			fail("No debería lanzarse excepción");
@@ -120,11 +121,10 @@ public class TestLeerCSV {
 	}
 	@Requisitos({"RF-01,RF-02"})
 	@Test
-	@Ignore
 	public void TestLeerCSVTitulacion() {
 		try {
 			Centro cen = gestionCentro.buscarTodosCentros().get(0);
-			String route="/home/alumno/Escritorio/TitulacionPrueba.csv";
+			String route="/home/alumno/Escritorio/Titulacion.csv";
 			
 			
 			int tam=gestionTitulacion.listaTitulacion().size();
@@ -133,7 +133,8 @@ public class TestLeerCSV {
 			
 			int tam2=gestionTitulacion.listaTitulacion().size();
 			
-			assertEquals(tam+1, tam2);
+			assertNotEquals(tam+1, tam2);
+			assertNotEquals(tam,tam2);
 			
 		}catch (NeuBDExceptions e) {
 			fail("No debería lanzarse excepción");
@@ -141,18 +142,20 @@ public class TestLeerCSV {
 	}
 	@Requisitos({"RF-01,RF-02"})
 	@Test
-	@Ignore
 	public void TestLeerCSVAsignatura() {
 		try {
-			String route="/home/alumno/Escritorio/AsignaturaPrueba.csv";
+			String route="/home/alumno/Escritorio/Oferta-asignaturas.csv";
+			String route2="/home/alumno/Escritorio/Titulacion.csv";
+			Centro cen = gestionCentro.buscarTodosCentros().get(0);
 			
 			int tam=gestionAsignatura.listaAsignatura().size();
-			
+			gestionLeerCSV.insertarTitulacionCSV(cen, route2);//Necesito que esten insertadas las titulaciones para hacer la referencia a ellas
 			gestionLeerCSV.insertarAsignaturaCSV(route);
 			
 			int tam2=gestionAsignatura.listaAsignatura().size();
 			
-			assertEquals(tam+1, tam2);
+			assertNotEquals(tam+1, tam2);
+			assertNotEquals(tam, tam2);
 			
 		}catch (NeuBDExceptions e) {
 			fail("No debería lanzarse excepción");
@@ -160,13 +163,17 @@ public class TestLeerCSV {
 	}
 	@Requisitos({"RF-01,RF-02"})
 	@Test
-	@Ignore
 	public void TestLeerCSVOptativa() {
 		try {
 			
 			Titulacion titu = gestionTitulacion.listaTitulacion().get(0);
+			Centro cen = gestionCentro.buscarTodosCentros().get(0);
 			String route="/home/alumno/Escritorio/OptativaPrueba.csv";
+			String route2="/home/alumno/Escritorio/Oferta-asignaturas.csv";
+			String route3="/home/alumno/Escritorio/Titulacion.csv";
 			int tam=gestionOptativa.listaOptativa().size();
+			gestionLeerCSV.insertarTitulacionCSV(cen, route3);//Necesito que esten insertadas las titulaciones para hacer la referencia a ellas
+			gestionLeerCSV.insertarAsignaturaCSV(route2);
 			gestionLeerCSV.insertarOptativaCSV(route,titu);
 			int tam2=gestionOptativa.listaOptativa().size();
 		
@@ -180,16 +187,14 @@ public class TestLeerCSV {
 	
 	@Requisitos({"RF-01,RF-02"})
 	@Test
-	@Ignore
 	public void TestLeerCSVEncuesta() {
 		try {
-			Expedientes exp=gestionExpediente.listaExpedientes().get(0);
 			String route="/home/alumno/Escritorio/EncuestaPrueba.csv";
-			int tam=gestionExpediente.listaExpedientes().size();
+			int tam=gestionEncuesta.listaEncuestas().size();
 			
-			gestionExpediente.importarExpediente(exp);
+			gestionLeerCSV.insertarEncuestaCSV(route);
 			
-			int tam2=gestionExpediente.listaExpedientes().size();
+			int tam2=gestionEncuesta.listaEncuestas().size();
 			
 			assertEquals(tam+1, tam2);
 			

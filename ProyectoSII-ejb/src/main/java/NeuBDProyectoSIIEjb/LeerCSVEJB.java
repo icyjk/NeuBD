@@ -9,10 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
+import javax.ejb.embeddable.EJBContainer;
+import javax.naming.Context;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -22,6 +23,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Asignatura;
+import NeuBDProyectoSII.Asignatura_matricula;
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Expedientes;
@@ -37,6 +39,17 @@ import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 public class LeerCSVEJB implements GestionLeerCSV{
 	@PersistenceContext(name="ProyectoSII")
 	private EntityManager em;
+	
+	
+	
+	private Expedientes insertarExpediente(Expedientes expe) {
+		return em.merge(expe);
+		
+	}
+	private void insertarAsigMatri(Asignatura_matricula am) {
+		
+		
+	}
 	@Override
 	public void insertarAlumnoCSV(Titulacion titu,String route)throws AlumnoSInDatosParaCrearException, ParseException{
         try { 
@@ -53,6 +66,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
             	if(csvRecord.getRecordNumber()==3) {
             		//Estado matricula
             		String strActivo = csvRecord.get(1);
+            		//System.out.println(strActivo);
             		if(strActivo.equalsIgnoreCase("Activa")) {
             			activo=true;
             		}else {
@@ -94,22 +108,21 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                
 	                Alumno a = em.merge(alum); //Por si el alumno pasado ya existia en la BD
 	                //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +a);
-	                Expedientes e= new Expedientes(true, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, a,null);
-	                em.merge(e);
+	                Expedientes e= new Expedientes(activo, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, a,null);
+	                Expedientes expe = insertarExpediente(e);
 	                lista = a.getExpedientes();
-	                lista.add(e);
+	                lista.add(expe);
 	                alum.setExpedientes(lista); 
 	                Alumno al = em.merge(alum);
-	                
 	                String strActivo;
 	                if(activo) {
 	                	strActivo= "activo";
 	                }{
 	                	strActivo="inactivo";
 	                }
-	                Expedientes expe = al.getExpedientes().get(al.getExpedientes().size()-1);
 	                Matricula m = new Matricula(expe, curso, strActivo, numArchivo, turnoPref, cambiarAFecha(fechaMatricula), "", gruposAsig, null);
-	                System.out.println(m);
+	                
+	                //System.out.println(m);
 	                em.merge(m);
 	                List<Matricula> list = e.getMatricula();
 	                list.add(m);
@@ -145,8 +158,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		                lista.add(cen);
 		                
 		                Titulacion titu=new Titulacion(codigo,nombre, creditos, lista, null, null, null);
-		                TitulacionEJB ejb= new TitulacionEJB();
-		                ejb.ImportarTitulacion(titu);
+		                em.merge(titu);
 	            	}
 	            }
 		 }catch (IOException e) {  
@@ -164,7 +176,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	        	//CSVParser parser=new CSVParser(reader, CSVFormat.DEFAULT);
 	        	boolean ofertadaB;
 	            for (CSVRecord csvRecord : csvParser) {
-	            	if(csvRecord.getRecordNumber() !=1) {
+	            	if(csvRecord.getRecordNumber() !=1 && (csvRecord.get(0).length() >= 1)) {
 	                // Accediendo a los valores por el indice de la columna
 		                int titulacion = Integer.parseInt(csvRecord.get(0));
 		                String ofertada = csvRecord.get(1);
@@ -182,16 +194,15 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		                String unidadTemporal = csvRecord.get(8);
 		                String plazas = csvRecord.get(9);
 		                String otroIdioma = csvRecord.get(10);
-		                TitulacionEJB ejb1 =new TitulacionEJB();
-		                Titulacion titu= ejb1.visualizartitulacion(titulacion);
+		                Titulacion titu = em.find(Titulacion.class, titulacion);
 		                Asignatura asig=new Asignatura(referencia, codigo, crePrac, creTeo, creditos, ofertadaB, nombre, codigo/100, "", 60, unidadTemporal, otroIdioma, titu, null, null, null);
-		                
+		                //System.out.println(asig);
 		                List<Asignatura> lista=new ArrayList<Asignatura>();
 		                lista.add(asig);
-		               
-		                AsignaturaEJB ejb = new AsignaturaEJB();
 		                
-		                ejb.ImportarAsignatura(asig);
+		                titu.setAsignaturas(lista);
+		                em.merge(asig);
+		                em.merge(titu);
 	            	}
 	            }
 		 }catch (IOException e) {  
@@ -206,7 +217,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
         	 CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
                      
         	//CSVParser parser=new CSVParser(reader, CSVFormat.DEFAULT);
-        	List<Optativa> lista = new ArrayList<>();
+        	List<Optativa> lista =tit.getOptativa();
             for (CSVRecord csvRecord : csvParser) {
             	if(csvRecord.getRecordNumber() !=1) {
                 // Accediendo a los valores por el indice de la columna
@@ -215,21 +226,32 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                String mencion = csvRecord.get(2);
 	                
 	                Optativa op=new Optativa(plazas, mencion,tit);
+	                op.setReferencia(referencia);
+	                Asignatura a = em.find(Asignatura.class, referencia);
+	                op.setCodigo(a.getCodigo());
+	                op.setCreditos(a.getCreditos());
+	                op.setCreditos_practica(a.getCreditos_practica());
+	                op.setCreditos_teoria(a.getCreditos_teoria());
+	                op.setCurso(a.getCurso());
+	                op.setDuracion(a.getDuracion());
+	                op.setIdioma_imparticion(a.getIdioma_imparticion());
+	                op.setNombre(a.getNombre());
+	                op.setUnidad_temporal(a.getUnidad_temporal());
 	                lista.add(op);
-	                OptativaEJB ejb=new OptativaEJB();
-	                ejb.insertarOptativa(op, referencia);
+	                em.merge(op);
+	                
+	                lista.add(op);
 	               
             	}
-            	 tit.setOptativa(lista);
-            	 TitulacionEJB ejb2 = new TitulacionEJB();
-            	 ejb2.modificarTitulacion(tit);
             }
+            tit.setOptativa(lista);
+            em.merge(tit);
 	 }catch (IOException e) {  
 	        e.printStackTrace();
 	 } 
 	}
 	@Override
-	public void insertarEncuestaCSV(String route, Expedientes exp) throws NeuBDExceptions{
+	public void insertarEncuestaCSV(String route) throws NeuBDExceptions{
 		try { 
         	Reader reader = Files.newBufferedReader(Paths.get(route));
         	 CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
@@ -240,7 +262,10 @@ public class LeerCSVEJB implements GestionLeerCSV{
             	if(csvRecord.getRecordNumber() !=1) {
             		String fecha = csvRecord.get(0);
             		Date fechax=cambiarAFecha(fecha);
+            		long refExp = Long.parseLong(csvRecord.get(1));
+            		Expedientes exp = em.find(Expedientes.class, refExp);
             		Encuesta enc=new Encuesta(fechax, exp, null);
+            		em.merge(enc);
             	}
             }
            

@@ -15,10 +15,8 @@ import javax.naming.NamingException;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Asignatura_matricula;
 import NeuBDProyectoSII.Centro;
@@ -28,8 +26,9 @@ import NeuBDProyectoSII.Matricula;
 import NeuBDProyectoSII.NewId_Asignatura_matricula;
 import NeuBDProyectoSII.NewId_Matricula_expediente;
 import NeuBDProyectoSII.Titulacion;
-import NeuBDProyectoSIIEjb.AsigMatriEJB;
 import NeuBDProyectoSIIEjb.GestionAsigMatri;
+import NeuBDProyectoSIIEjb.GestionAsignatura;
+import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 import es.uma.informatica.sii.anotaciones.Requisitos;
 
@@ -37,6 +36,8 @@ public class TestAsigMatri {
 
 
 	private static final String AsigMatriEJB = "java:global/classes/AsigMatriEJB";
+	private static final String AsignaturaEJB = "java:global/classes/AsignaturaEJB";
+	private static final String MatriculaEJB = "java:global/classes/MatriculaEJB";
 	private static final String GLASSFISH_CONFIGI_FILE_PROPERTY = "org.glassfish.ejb.embedded.glassfish.configuration.file";
 	private static final String CONFIG_FILE = "target/test-classes/META-INF/domain.xml";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "ProyectoTest";
@@ -45,6 +46,8 @@ public class TestAsigMatri {
 	private static Context ctx;
 	
 	private GestionAsigMatri gestionAsigMatri;
+	private GestionAsignatura gestionAsignatura;
+	private GestionMatricula gestionMatricula;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -57,13 +60,14 @@ public class TestAsigMatri {
 	
 	@Before
 	public void setup() throws NamingException  {
-		gestionAsigMatri = (AsigMatriEJB) ctx.lookup(AsigMatriEJB);
+		gestionAsigMatri = (GestionAsigMatri) ctx.lookup(AsigMatriEJB);
+		gestionAsignatura = (GestionAsignatura) ctx.lookup(AsignaturaEJB);
+		gestionMatricula = (GestionMatricula) ctx.lookup(MatriculaEJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 	}
 	
 	@Requisitos({"RF-17"})
 	@Test
-	@Ignore
 	public void testVisualizarAsigMatri() {
 		try {
 			
@@ -71,9 +75,13 @@ public class TestAsigMatri {
 			NewId_Matricula_expediente IdMatriExp = new NewId_Matricula_expediente(asigMa.getMatricula().getExpedientes().getNum_expediente(),asigMa.getMatricula().getCurso_academico());
 			
 			
+			NewId_Asignatura_matricula idAsigMatri = new NewId_Asignatura_matricula(asigMa.getAsigantura().getReferencia(),IdMatriExp);
+			Asignatura_matricula asigMa2 = gestionAsigMatri.visualizarAsigMatri(idAsigMatri);
+			NewId_Asignatura_matricula idAsigMatri2 = new NewId_Asignatura_matricula(asigMa2.getAsigantura().getReferencia(),IdMatriExp);
+			
 			
 		
-			assertTrue(asigMa.equals(gestionAsigMatri.visualizarAsigMatri(new NewId_Asignatura_matricula(asigMa.getAsigantura().getReferencia(),IdMatriExp))));	
+			assertTrue(idAsigMatri.equals(idAsigMatri2));	
 			
 			
 		} catch (NeuBDExceptions e) {
@@ -84,7 +92,6 @@ public class TestAsigMatri {
 	
 	@Requisitos({"RF-17"})
 	@Test
-	@Ignore
 	public void testVisualizarAsigMatriMAL() {
 		try {
 			
@@ -107,7 +114,6 @@ public class TestAsigMatri {
 	
 	@Requisitos({"RF-17"})
 	@Test
-	@Ignore
 	public void testModificarAsigMatri() {
 	
 		try {
@@ -116,6 +122,7 @@ public class TestAsigMatri {
 			NewId_Matricula_expediente IdMatriExp = new NewId_Matricula_expediente(asigMa.getMatricula().getExpedientes().getNum_expediente(),asigMa.getMatricula().getCurso_academico());
 			NewId_Asignatura_matricula ID  = new NewId_Asignatura_matricula(asigMa.getAsigantura().getReferencia(),IdMatriExp);
 			asigMa.setAsignacionManual(true);
+			
 			
 			gestionAsigMatri.modificarAsigMatri(asigMa);
 			
@@ -130,7 +137,6 @@ public class TestAsigMatri {
 	
 	@Requisitos({"RF-17"})
 	@Test
-	@Ignore
 	public void testModificarAsigMatriMAL() {
 	
 		try {
@@ -162,15 +168,18 @@ public class TestAsigMatri {
 	
 	@Requisitos({"RF-17,RF-01,RF-02"})
 	@Test
-	@Ignore
 	public void testAnyadirAsignatura_matricula() {
 		try {
 			
 			List<Asignatura_matricula> listaAsigMatri = gestionAsigMatri.listaAsigMatri();
 			
 			int tamañoinicial = listaAsigMatri.size();
+
+			Asignatura a = gestionAsignatura.listaAsignatura().get(1); // la opcional
 			
-			Asignatura_matricula asig_anyadir = new Asignatura_matricula();
+			Matricula m = gestionMatricula.listaMatricula().get(0);
+					
+			Asignatura_matricula asig_anyadir = new Asignatura_matricula(a, m, null, true, false);
 			
 			gestionAsigMatri.anyadirAsignatura_matricula(asig_anyadir);
 			
@@ -191,7 +200,6 @@ public class TestAsigMatri {
 	
 	@Requisitos({"RF-17,RF-01,RF-02"})
 	@Test
-	@Ignore
 	public void testAnyadirAsignatura_matriculaMAL() {
 	try {
 			

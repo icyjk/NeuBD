@@ -11,6 +11,7 @@ import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Grupo;
 import NeuBDProyectoSII.Grupos_por_asignatura;
 import NeuBDProyectoSII.NewId_Asignatura_matricula;
+import NeuBDProyectoSII.NewId_Matricula_expediente;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIexceptions.AlumnoSInDatosParaCrearException;
 import NeuBDProyectoSIIexceptions.AsignaturaPorMatriculaNoEncontradaException;
@@ -32,7 +33,7 @@ public class AsigMatriEJB implements GestionAsigMatri{
 			throw new AlumnoSInDatosParaCrearException();
 		}
 		
-		
+		System.out.println(asig_matri.getAsigantura()+" "+asig_matri.getMatricula());
 		Titulacion titAlum= asig_matri.getMatricula().getExpedientes().getTitulaciones();
 		List<Grupo> grupos = em.createNamedQuery("Grupo.todos", Grupo.class).getResultList();
 		
@@ -94,15 +95,16 @@ public class AsigMatriEJB implements GestionAsigMatri{
 	}
 
 	@Override
-	public void modificarAsigMatri(Asignatura_matricula AsigMatri) throws NeuBDExceptions {
-		Asignatura_matricula AsigMatri1 = em.find(Asignatura_matricula.class, AsigMatri);
+	public void modificarAsigMatri(Asignatura_matricula asigMatri) throws NeuBDExceptions {
+		NewId_Matricula_expediente id2 = new NewId_Matricula_expediente(asigMatri.getMatricula().getExpedientes().getNum_expediente(), asigMatri.getMatricula().getCurso_academico());
+		NewId_Asignatura_matricula id = new NewId_Asignatura_matricula(asigMatri.getAsigantura().getReferencia(), id2);
+		Asignatura_matricula AsigMatri1 = em.find(Asignatura_matricula.class, id);
 		
 		
 		if (AsigMatri1 == null) {
 			throw new usuarioNoEncontradoException();
 		}
-		
-		em.merge(AsigMatri1); //Manda a la base de datos el grupo modificado, y lo mezcla con el grupo que habia
+		em.merge(asigMatri); //Manda a la base de datos el grupo modificado, y lo mezcla con el grupo que habia
 	}
 
 
@@ -110,7 +112,7 @@ public class AsigMatriEJB implements GestionAsigMatri{
 
 	@Override
 	public List<Asignatura_matricula> listaAsigMatri() throws NeuBDExceptions {
-		return em.createNamedQuery("AsigMatr.todos",Asignatura_matricula.class).getResultList();
+		return em.createNamedQuery("AsigMatri.todos",Asignatura_matricula.class).getResultList();
 	}
 
 }
