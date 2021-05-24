@@ -1,20 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+	<h:head>	  
+		<title>
+			<h:outputText value="#{centro.accion} centro"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>CENTRO</h1>
+			<h2>#{centro.accion} Centro</h2>
+
+		<h:form id="centro">
+        	<h:panelGrid columns="3">
+            	<h:outputText value="Id"/>
+                <h:outputText id ="Id" value="#{centro.centro.id}"/>
+                <h:message for="Id"/>
+
+                <h:outputText value="nombre"/>
+                <h:inputText id ="nombre" value="#{centro.centro.nombre}"/>
+                <h:message for="nombre"/>
+
+                <h:outputText value="direccion"/>
+                <h:inputText id ="direccion" value="#{centro.centro.direccion}"/>
+                <h:message for="direccion"/>
+                
+                <h:outputText value="telefono"/>
+                <h:inputText id ="telefono" value="#{centro.centro.tlf_conserjeria}"/>
+                <h:message for="telefono"/>
+                
+                <h:commandButton value="#{centro.accion}" action="#{centro.ejecutarAccion()}"/>
+                <h:commandButton value="Volver" action="Centros.xhtml"/>
+
+                <h:inputHidden value="#{centro.modo}"/>
+                <h:inputHidden value="#{centro.centro.id}"/>
+
+            </h:panelGrid>
+		</h:form>		
+		
+		</f:view>
+
+	</h:body>
+	
 </html>

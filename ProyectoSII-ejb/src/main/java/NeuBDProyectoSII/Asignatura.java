@@ -1,5 +1,6 @@
 package NeuBDProyectoSII;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 @NamedQuery(name = "Asignatura.todos", query= "select a from Asignatura a")
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Asignatura {
+public class Asignatura implements Serializable{
 	@Id private int referencia;
 	
 	private int codigo;

@@ -1,82 +1,84 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    <h:head>
-        <title>
-           edicionAsignaturas
-        </title>
-    </h:head>
-    <h:body>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j">
 
-    	<h1>#{asignaturas.accion}</h1>
-        	<h:form id="asignatura">
-            	<h:panelGrid columns="11">
-                	<h:outputText value="Nombre Asignatura"/>
-                	<h:inputText id ="nombreAsignatura" value="#{asignaturas.asignatura.nombre}"/>
-                	<h:message for="nombreAsignatura"/>
+	<h:head>	  
+		<title>
+			<h:outputText value="#{asignaturas.accion} asignatura"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>ASIGNATURA</h1>
+			<h2>#{asignaturas.accion} Asignatura</h2>
 
-                	<h:outputText value="codigo"/>
-                	<h:inputText id ="codigoAsignatura" value="#{asignaturas.asignatura.codigo}"/>
-                	<h:message for="codigoAsignatura"/>
-                        
-                        
-                	<h:outputText value="creditos_practica"/>
-                	<h:inputText id ="creditos_practicaAsignatura" value="#{asignaturas.asignatura.creditos_practica}"/>
-                	<h:message for="creditos_practicaAsignatura"/>
-                        
-                        
-                	<h:outputText value="creditos_teoria"/>
-                	<h:inputText id ="creditos_teoriaAsignatura" value="#{asignaturas.asignatura.creditos_teoria}"/>
-                	<h:message for="creditos_teoriaAsignatura"/>
-                        
-                	<h:outputText value="creditos"/>
-                	<h:inputText id ="creditosAsignatura" value="#{asignaturas.asignatura.creditos}"/>
-                	<h:message for="creditosAsignatura"/>
-                        
-                        
-                	<h:outputText value="ofertada"/>
-                	<h:inputText id ="ofertadaAsignatura" value="#{asignaturas.asignatura.ofertada}"/>
-                	<h:message for="ofertadaAsignatura"/>
-                        
-                        
-                        
-                 	<h:outputText value="curso"/>
-                 	<h:inputText id ="cursoAsignatura" value="#{asignaturas.asignatura.curso}"/>
-                 	<h:message for="cursoAsignatura"/>
-                        
-                        
-                 	<h:outputText value="caracter"/>
-                 	<h:inputText id ="caracterAsignatura" value="#{asignaturas.asignatura.caracter}"/>
-                 	<h:message for="caracterAsignatura"/>
-                        
-                        
-                 	<h:outputText value="duracion"/>
-                 	<h:inputText id ="duracionAsignatura" value="#{asignaturas.asignatura.duracion}"/>
-                	 <h:message for="duracionAsignatura"/>
-                        
-                        
-                 	<h:outputText value="unidad_temporal"/>
-                 	<h:inputText id ="unidad_temporalAsignatura" value="#{asignaturas.asignatura.unidad_temporal}"/>
-                 	<h:message for="unidad_temporalAsignatura"/>
-                        
-                        
-                 	<h:outputText value="idioma_imparticion"/>
-                 	<h:inputText id ="idioma_imparticionAsignatura" value="#{asignaturas.asignatura.idioma_imparticion}"/>
-                 	<h:message for="idioma_imparticionAsignatura"/>
-                        
-                        
-          
-                 	<h:commandButton value="#{asignaturas.accion}" action="#{asignaturas.ejecutarAccion()}"/>
-                 	<h:commandButton value="Cancelar" action="index.xhtml"/>
+		<h:form id="Asignatura">
+        	<h:panelGrid columns="3">
+            	<h:outputText value="codigo"/>
+                <h:outputText id ="codigo" value="#{asignaturas.asignatura.codigo}"/>
+                <h:message for="codigo"/>
 
-                 	<h:inputHidden value="#{asignaturas.modo}"/>
-                 	<h:inputHidden value="#{asignaturas.asignatura.id}"/>
+                <h:outputText value="nombre"/>
+                <h:inputText id ="nombre" value="#{asignaturas.asignatura.nombre}"/>
+                <h:message for="nombre"/>
 
-                  </h:panelGrid>
-                </h:form>
-       
+                <h:outputText value="creditos"/>
+                <h:inputText id ="creditos" value="#{asignaturas.asignatura.creditos}"/>
+                <h:message for="creditos"/>
+                
+                <h:outputText value="creditos_teoria"/>
+                <h:inputText id ="creditos_teoria" value="#{asignaturas.asignatura.creditos_teoria}"/>
+                <h:message for="creditos_teoria"/>
+                
+                
+                <h:outputText value="creditos_practica"/>
+                <h:inputText id ="creditos_practica" value="#{asignaturas.asignatura.creditos_practica}"/>
+                <h:message for="creditos_practica"/>
+                
+                <h:outputText value="curso"/>
+                <h:inputText id ="curso" value="#{asignaturas.asignatura.curso}"/>
+                <h:message for="curso"/>
+                
+                
+                <h:outputText value="caracter"/>
+                <h:inputText id ="caracter" value="#{asignaturas.asignatura.caracter}"/>
+                <h:message for="caracter"/>
+                
+                
+                <h:outputText value="duracion"/>
+                <h:inputText id ="duracion" value="#{asignaturas.asignatura.duracion}"/>
+                <h:message for="duracion"/>
+                
+                <h:outputText value="unidad_temporal"/>
+                <h:inputText id ="unidad_temporal" value="#{asignaturas.asignatura.unidad_temporal}"/>
+                <h:message for="unidad_temporal"/>
+                
+                <h:outputText value="idioma_imparticion"/>
+                <h:inputText id ="idioma_imparticion" value="#{asignaturas.asignatura.idioma_imparticion}"/>
+                <h:message for="idioma_imparticion"/>
+                
+                
+                
+                
+                
+                
+                <h:commandButton value="#{asignaturas.accion}" action="#{asignaturas.ejecutarAccion()}"/>
+                <h:commandButton value="Volver" action="Asignaturas.xhtml"/>
 
-    </h:body>
+                <h:inputHidden value="#{asignaturas.modo}"/>
+                <h:inputHidden value="#{asignaturas.asignatura.codigo}"/>
+
+            </h:panelGrid>
+		</h:form>		
+		
+		</f:view>
+
+	</h:body>
+	
+	
+	
 </html>
+

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
 import javax.ejb.Stateless;
 import javax.ejb.embeddable.EJBContainer;
@@ -27,10 +28,13 @@ import NeuBDProyectoSII.Asignatura_matricula;
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Expedientes;
+import NeuBDProyectoSII.Grupo;
+import NeuBDProyectoSII.Grupos_por_asignatura;
 import NeuBDProyectoSII.Matricula;
 import NeuBDProyectoSII.Optativa;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIexceptions.AlumnoSInDatosParaCrearException;
+import NeuBDProyectoSIIexceptions.GrupoPorAsignaturaYaExistenteException;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 
 
@@ -46,8 +50,57 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		return em.merge(expe);
 		
 	}
-	private void insertarAsigMatri(Asignatura_matricula am) {
+	private void insertarAsigMatri(Asignatura_matricula asig_matri) throws GrupoPorAsignaturaYaExistenteException, NeuBDExceptions {
+		int i=0;
 		
+		if (asig_matri == null) {
+			throw new AlumnoSInDatosParaCrearException();
+		}
+		
+		System.out.println(asig_matri.getAsigantura()+" "+asig_matri.getMatricula());
+		Titulacion titAlum= asig_matri.getMatricula().getExpedientes().getTitulaciones();
+		List<Grupo> grupos = em.createNamedQuery("Grupo.todos", Grupo.class).getResultList();
+		
+		
+		
+		
+		//Algoritmo de asignacion
+		while(i<grupos.size()) {
+			if(grupos.get(i).getTitulacion().equals(titAlum) && grupos.get(i).getGrupo_por_asignatura().get(0).getCurso_academico()==asig_matri.getMatricula().getCurso_academico() ) {
+				int j=0;
+				while(j<grupos.get(i).getGrupo_por_asignatura().size()) {
+					if(asig_matri.getAsigantura().equals(grupos.get(i).getGrupo_por_asignatura().get(0).getAsignatura())) {
+						asig_matri.setGrupo(grupos.get(i));
+					}
+				j++;
+				}
+			}
+		i++;
+		}
+		//En el caso que no existiera
+		//Tendremos que crear ese grupos
+		// EN EL MOMENTO QE UNA ASIG MATRI TENGA YA UN GRUPO HABRA QUE CREAR UN GRUPO POR ASIGNATURA 
+		
+		if(asig_matri.getGrupo() == null) {
+			i = 0;
+			
+			while(i<grupos.size()) {
+				if(grupos.get(i).getCurso() == asig_matri.getAsigantura().getCurso()
+						&& grupos.get(i).getTitulacion().equals(asig_matri.getAsigantura().getTitulacion())) {
+					
+					Grupos_por_asignatura_Ejb g = new Grupos_por_asignatura_Ejb();
+					
+					g.crearGrupoPorAsignatura(new Grupos_por_asignatura(grupos.get(i), asig_matri.getAsigantura(), 
+							asig_matri.getMatricula().getCurso_academico(), true, null));
+					
+					asig_matri.setGrupo(grupos.get(i));
+				}
+				i++;
+			}
+			
+		}
+		
+		em.merge(asig_matri); //Por si el alumno pasado ya existia en la BD
 		
 	}
 	@Override
@@ -128,6 +181,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                list.add(m);
 	                e.setMatricula(list);
 	                em.merge(e);	
+	                crearMatri(m);
 	                
             	}
             }
@@ -138,7 +192,33 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	        e.printStackTrace();  
 	    } 
     }
-	
+	private void crearMatri(Matricula m) {
+		String listado = m.getListado_asignaturas();
+		Scanner scan = new Scanner(listado);
+		scan.useDelimiter(",");
+		while(scan.hasNext()) {
+			String codigo = scan.next().substring(0,3);
+			Asignatura a = buscarAsignatura(codigo);
+			try {
+				insertarAsigMatri(new Asignatura_matricula(a, m, null, false, false));
+			} catch (NeuBDExceptions e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	private Asignatura buscarAsignatura(String codigo) {
+		List<Asignatura> lista = em.createNamedQuery("Asignatura.todos", Asignatura.class).getResultList();
+		int cont = 0;boolean encontrado= false;Asignatura resultado = null;
+		while(encontrado || cont<lista.size()) {
+			Asignatura a = lista.get(cont);
+			if(a.getCodigo()==Integer.parseInt(codigo)) {
+				resultado = a;
+				encontrado=true;
+			}
+		}
+		return resultado;
+	}
 	@Override
 	public void insertarTitulacionCSV(Centro cen, String route)throws NeuBDExceptions{
 		 try { 

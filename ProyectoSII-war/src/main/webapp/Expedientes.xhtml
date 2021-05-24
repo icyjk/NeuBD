@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Lista de expedientes</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Expedientes">           
+			<h:dataTable value="#{expedientes.listaExpediente()}" var="c">
+	
+            	<h:column>
+                	<f:facet name="header">Numero Expediente</f:facet>
+                 	<h:outputText value="#{c.num_expediente}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Activo</f:facet>
+                 	<h:outputText value="#{c.activo}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Nota Media Provisional</f:facet>
+                 	<h:outputText value="#{c.nota_media_provisional}"/>
+                </h:column>
+                
+             	<h:column>
+                	<f:facet name="header">Creditos superados</f:facet>
+                 	<h:outputText value="#{c.creditos_superado}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Creditos fb</f:facet>
+                 	<h:outputText value="#{c.credito_fb}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Creditos ob</f:facet>
+                 	<h:outputText value="#{c.credito_ob}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Creditos op</f:facet>
+                 	<h:outputText value="#{c.credito_op}"/>
+                </h:column>               
+                
+                <h:column>
+                	<f:facet name="header">Creditos cf</f:facet>
+                 	<h:outputText value="#{c.credito_cf}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Creditos pe</f:facet>
+                 	<h:outputText value="#{c.credito_pe}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Creditos tf</f:facet>
+                 	<h:outputText value="#{c.credito_tf}"/>
+                </h:column> 
+                
+                <h:column>
+                	<h:commandButton value="Modificar" action="#{expedientes.modificar(c)}"/>
+                	<h:commandButton value="Eliminar" action="#{expedientes.eliminar(c)}"/>
+                </h:column>
+                        
+			</h:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+			<h:commandButton value="Edicion" action="edicionExpediente.xhtml"/>
+		</h:form>
+	</h:body>
+	</html>

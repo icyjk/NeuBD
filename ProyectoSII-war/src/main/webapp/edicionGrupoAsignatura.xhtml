@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>	  
+		<title>
+			<h:outputText value="#{gruposAsig.accion} Grupo por Asignatura"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>Grupo por Asignatura</h1>
+			<h2>#{gruposAsig.accion} Grupos por Asignatura</h2>
+
+		<h:form id="centro">
+        	<h:panelGrid columns="3">
+            	<h:outputText value="Grupo"/>
+                <h:outputText id ="grupo" value="#{gruposAsig.gpa.grupo}"/>
+                <h:message for="grupo"/>
+
+                <h:outputText value="Asignatura"/>
+                <h:outputText id ="asignatura" value="#{gruposAsig.gpa.asignatura}"/>
+                <h:message for="asignatura"/>
+				
+                <h:outputText value="Curso Académico"/>
+                <h:outputText id ="curso" value="#{gruposAsig.gpa.curso_academico}"/>
+                <h:message for="curso"/>
+                
+                <h:outputText value="oferta"/>
+                <h:inputText id ="oferta" value="#{gruposAsig.gpa.oferta}"/>
+                <h:message for="telefono"/>
+                
+                <h:commandButton value="#{gruposAsig.accion}" action="#{gruposAsig.ejecutarAccion()}"/>
+                <h:commandButton value="Volver" action="grupoAsig.xhtml"/>
+
+                <h:inputHidden value="#{gruposAsig.modo}"/>
+				<h:inputHidden value="#{gruposAsig.gpa.curso_academico}"/>
+            </h:panelGrid>
+		</h:form>		
+		
+		</f:view>
+
+	</h:body>
+	
+</html>

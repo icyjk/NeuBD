@@ -1,11 +1,11 @@
 package NeuBDProyectoSII;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 @NamedQuery(name = "Matricula.todos", query= "select m from Matricula m")
 @Entity
 @IdClass(NewId_Matricula_expediente.class)
-public class Matricula {
+public class Matricula implements Serializable{
 	@Id @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private Expedientes expedientes;
 	@Id private String curso_academico;
@@ -28,7 +28,7 @@ public class Matricula {
 	private Date fecha_matricula;
 	private String nuevo_ingreso;
 	private String listado_asignaturas;
-	@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
+	@OneToMany(mappedBy = "matricula",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Asignatura_matricula> asignatura_matricula;
 	
 	public Matricula () {

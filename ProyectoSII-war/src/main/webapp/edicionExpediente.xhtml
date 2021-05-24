@@ -1,20 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+	<h:head>	  
+		<title>
+			<h:outputText value="#{expediente.accion} expedientes"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>EXPEDIENTE</h1>
+			<h2>#{expediente.accion} expediente</h2>
+
+		<h:form id="expediente">
+        	<h:panelGrid columns="3">
+            	<h:outputText value="num_expediente"/>
+                <h:outputText id ="num_expediente" value="#{expediente.expediente.num_expediente}"/>
+                <h:message for="num_expediente"/>
+
+                <h:outputText value="activo"/>
+                <h:inputText id ="activo" value="#{expediente.expediente.activo}"/>
+                <h:message for="activo"/>
+
+                <h:outputText value="nota_media_provisional"/>
+                <h:inputText id ="nota_media_provisional" value="#{expediente.expediente.nota_media_provisional}"/>
+                <h:message for="nota_media_provisional"/>
+                
+                <h:outputText value="creditos_superado"/>
+                <h:inputText id ="creditos_superado" value="#{expediente.expediente.creditos_superado}"/>
+                <h:message for="creditos_superado"/>
+                
+                <h:outputText value="credito_fb"/>
+                <h:inputText id ="credito_fb" value="#{expediente.expediente.credito_fb}"/>
+                <h:message for="credito_fb"/>
+                
+                <h:outputText value="credito_ob"/>
+                <h:inputText id ="credito_ob" value="#{expediente.expediente.credito_ob}"/>
+                <h:message for="credito_ob"/>
+                
+                <h:outputText value="credito_op"/>
+                <h:inputText id ="credito_op" value="#{expediente.expediente.credito_op}"/>
+                <h:message for="credito_op"/>
+                
+                <h:outputText value="credito_cf"/>
+                <h:inputText id ="credito_cf" value="#{expediente.expediente.credito_cf}"/>
+                <h:message for="credito_cf"/>
+                
+                <h:outputText value="credito_pe"/>
+                <h:inputText id ="credito_pe" value="#{expediente.expediente.credito_pe}"/>
+                <h:message for="credito_pe"/>
+                
+                <h:outputText value="credito_tf"/>
+                <h:inputText id ="credito_tf" value="#{expediente.expediente.credito_tf}"/>
+                <h:message for="credito_tf"/>
+                                           
+                <h:commandButton value="#{expediente.accion}" action="#{expediente.ejecutarAccion()}"/>
+                <h:commandButton value="Cancelar" action="Expedientes.xhtml"/>
+
+                <h:inputHidden value="#{expediente.modo}"/>
+                <h:inputHidden value="#{expediente.expediente.num_expediente}"/>
+
+            </h:panelGrid>
+		</h:form>		
+		
+		</f:view>
+
+	</h:body>
+	
+	
+	
 </html>

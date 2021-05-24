@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Lista de centros</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Centros">           
+			<h:dataTable value="#{centro.listaCentro()}" var="c">
+	
+            	<h:column>
+                	<f:facet name="header">ID</f:facet>
+                 	<h:outputText value="#{c.id}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Nombre</f:facet>
+                 	<h:outputText value="#{c.nombre}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Direccion</f:facet>
+                 	<h:outputText value="#{c.direccion}"/>
+                </h:column>
+             	<h:column>
+                	<f:facet name="header">Telefono</f:facet>
+                 	<h:outputText value="#{c.tlf_conserjeria}"/>
+                </h:column>               
+                
+                
+                <h:column>
+                	<h:commandButton value="Modificar" action="#{centro.modificar(c)}"/>
+                	<h:commandButton value="Eliminar" action="#{centro.eliminarCentro(c)}"/>
+                </h:column>
+                        
+			</h:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+			<h:commandButton value="Crear" action="#{centro.crearCentro()}"/>
+		</h:form>
+	</h:body>
+	</html>

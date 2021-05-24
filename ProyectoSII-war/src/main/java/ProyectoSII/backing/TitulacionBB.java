@@ -25,7 +25,7 @@ public class TitulacionBB {
     private  Titulacion titulacion;
     private Modo modo;
     @Inject
-    private GestionTitulacion gestionTitulacion;
+    GestionTitulacion gestionTitulacion;
     
     
 	public TitulacionBB() {

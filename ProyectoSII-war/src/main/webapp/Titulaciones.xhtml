@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Lista de titulaciones</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Titulaciones">
+			<h:dataTable value="#{Titulacion.listaTitulacion()}" var="t">
+	
+            	<h:column>
+                	<f:facet name="header">Codigo</f:facet>
+                 	<h:outputText value="#{t.codigo}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Nombre</f:facet>
+                 	<h:outputText value="#{t.nombre}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Creditos</f:facet>
+                 	<h:outputText value="#{t.creditos}"/>
+                </h:column>
+                
+                <h:column>
+                	<h:commandButton value="Modificar" action="#{Titulacion.modificar(t)}"/>
+                </h:column>
+                        
+                <h:column>
+                	<h:commandButton value="Eliminar" action="#{Titulacion.eliminar(t)}"/>
+                </h:column>	
+	
+			</h:dataTable>
+			
+			<h:commandButton action="edicionTitulacion.xhtml" value="edicionTitulacion" />
+			<h:commandButton action="index.xhtml" value="Inicio" />
+		</h:form>
+	</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

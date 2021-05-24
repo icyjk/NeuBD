@@ -79,8 +79,6 @@ public class CentroBB {
 	                    
 	                    gestionCentro.modificarCentro(centro);
 	                    break;
-	                
-	                   
 	                case CREAR:
 	                	gestionCentro.CrearCentro(centro);
 	                
@@ -95,12 +93,12 @@ public class CentroBB {
 	  
 	
 	 
-	  public Centro buscarCentro(Centro c) throws NeuBDExceptions {
+	  public Centro buscarCentro(int id) throws NeuBDExceptions {
 		  Centro enc=null;
 		  
 		  try {
 	           
-			   enc = gestionCentro.buscarCentro(c.getId());
+			   enc = gestionCentro.buscarCentro(id);
 	    
 	        } catch (NeuBDExceptions e) {
 	            System.out.println("Centro no encontrada");
@@ -112,10 +110,15 @@ public class CentroBB {
 	  
 	  public String crearCentro() {
 	        setModo(Modo.CREAR);
-	        return "edicionCentros.xhtml";
+	        return "edicionCentro.xhtml";
 	    }
-		
 	  
+	  public void eliminarCentro(Centro c) throws NeuBDExceptions {
+		  //gestionCentro.eliminarCentro(c);
+	        
+	    }
+	  
+
 		
 		public List<Centro> listaCentro() throws NeuBDExceptions {
 			return gestionCentro.buscarTodosCentros();

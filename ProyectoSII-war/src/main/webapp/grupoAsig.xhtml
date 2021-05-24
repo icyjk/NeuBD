@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Lista de grupos por Asignatura</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="gruposAsig">
+			<h:dataTable value="#{gruposAsig.listaGrupoPorAsignatura()}" var="g" >
+	
+            	<h:column>
+                	<f:facet name="header">Grupo</f:facet>
+                 	<h:outputText value="#{g.grupo}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Asignatura</f:facet>
+                 	<h:outputText value="#{g.asignatura.nombre}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Curso Academico</f:facet>
+                 	<h:outputText value="#{g.Curso_academico}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Ofertada</f:facet>
+                 	<h:outputText value="#{g.ofertada}"/>
+                </h:column>
+                
+                <h:column>
+                	<h:commandButton value="Modificar" action="#{gruposAsig.modificar(g)}"/>
+                	<h:commandButton value="Eliminar" action="#{gruposAsig.eliminar(g)}"/>
+                </h:column>	
+	
+			</h:dataTable>
+			<h:commandButton action="edicionGrupoAsignatura.xhtml" value="edicionGrupoAsignatura" />
+			<h:commandButton action="index.xhtml" value="Volver" />
+		</h:form>
+	</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

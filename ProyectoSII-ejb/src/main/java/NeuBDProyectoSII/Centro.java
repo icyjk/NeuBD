@@ -23,12 +23,7 @@ public class Centro {
 	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	@JoinTable(name = "jnd_centro_titulacion" , joinColumns = @JoinColumn(name = "centro_fk"), inverseJoinColumns = @JoinColumn(name = "titulacion_fk"))
 	private List<Titulacion> titulaciones;
-	
-	
-	
-	
-	
-	
+
 	public Centro() {
 		
 	}

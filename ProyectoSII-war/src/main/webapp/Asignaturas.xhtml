@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Lista de Asignaturas</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Asignaturas">           
+			<h:dataTable value="#{asignaturas.listaAsignatura()}" var="a">
+	
+            	<h:column>
+                	<f:facet name="header">Codigo</f:facet>
+                 	<h:outputText value="#{a.codigo}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Nombre</f:facet>
+                 	<h:outputText value="#{a.nombre}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Creditos</f:facet>
+                 	<h:outputText value="#{a.creditos}"/>
+                </h:column>
+             	<h:column>
+                	<f:facet name="header">Creditos Prácticos</f:facet>
+                 	<h:outputText value="#{a.creditos_practica}"/>
+                </h:column>    
+                
+                <h:column>
+                	<f:facet name="header">Creditos Teóricos</f:facet>
+                 	<h:outputText value="#{a.creditos_teoria}"/>
+                </h:column>  
+                
+                  <h:column>
+                	<f:facet name="header">Curso</f:facet>
+                 	<h:outputText value="#{a.creditos_teoria}"/>
+                </h:column> 
+                
+                  <h:column>
+                	<f:facet name="header">Carácter</f:facet>
+                 	<h:outputText value="#{a.caracter}"/>
+                </h:column> 
+                
+                 <h:column>
+                	<f:facet name="header">Duración</f:facet>
+                 	<h:outputText value="#{a.duracion}"/>
+                </h:column> 
+                
+                 <h:column>
+                	<f:facet name="header">Unidad Temporal</f:facet>
+                 	<h:outputText value="#{a.unidad_temporal}"/>
+                </h:column> 
+                
+                 <h:column>
+                	<f:facet name="header">Inglés</f:facet>
+                 	<h:outputText value="#{a.idioma_imparticion}"/>
+                </h:column> 
+                    
+                
+                
+                <h:column>
+                	<h:commandButton value="Modificar" action="#{asignaturas.modificar(a)}"/>
+                	<h:commandButton value="Eliminar" action="#{asignaturas.eliminar(a)}"/>
+                </h:column>
+                        
+			</h:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+		</h:form>
+	</h:body>
+	
+	
+</html>

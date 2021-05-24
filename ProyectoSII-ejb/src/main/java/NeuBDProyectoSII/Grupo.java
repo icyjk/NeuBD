@@ -1,5 +1,6 @@
 package NeuBDProyectoSII;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 
 @NamedQuery(name = "Grupo.todos", query= "select g from Grupo g")
 @Entity
-public class Grupo {
+public class Grupo implements Serializable{
 	@Id @GeneratedValue
 	private int id;
 	private int curso;
@@ -173,10 +174,7 @@ public class Grupo {
 
 	@Override
 	public String toString() {
-		return "Grupo [id=" + id + ", curso=" + curso + ", letra=" + letra + ", turno_mañana_tarde="
-				+ turno_mañana_tarde + ", ingles=" + ingles + ", visible=" + visible + ", asignar=" + asignar
-				+ ", plazas=" + plazas + ", titulacion=" + titulacion + ", grupo_por_asignatura=" + grupo_por_asignatura
-				+ ", grupos=" + grupos + "]";
+		return curso + "º" + letra ;
 	}
 	
 	
