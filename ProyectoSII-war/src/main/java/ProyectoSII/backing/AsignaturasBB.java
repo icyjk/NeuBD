@@ -18,7 +18,6 @@ public class AsignaturasBB {
 	public static enum Modo {
         MODIFICAR, 
         ELIMINAR,
-        CREAR,
         NOACCION
     };
 	
@@ -46,10 +45,8 @@ public class AsignaturasBB {
 	        switch (modo) {
 	            case MODIFICAR:
 	                return "Modificar";
-	            case ELIMINAR:
-	                return "Eliminar";
-	            case CREAR:
-	            	return "Crear";
+	           
+	           
 	        }
 	        return null;
 	 }
@@ -71,11 +68,7 @@ public class AsignaturasBB {
 	        setModo(Modo.MODIFICAR);
 	        return "edicionAsignatura.xhtml";
 	    }
-	  public String crear() {
-	        setModo(Modo.CREAR);
-	        return "edicionAsignatura.xhtml";
-	    }
-	  
+	 
 	  
 	  public String ejecutarAccion() {
 	        try {
@@ -83,7 +76,9 @@ public class AsignaturasBB {
 	                case MODIFICAR:
 	                    
 	                    gestionAsignatura.modificarAsignatura(asignatura);
-	                    break;	                	
+	                    break;	  
+	                   
+	                 
 	            }
 	           
 	            return "edicionAsignaturas.xhtml";

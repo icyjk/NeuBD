@@ -84,7 +84,7 @@ public class CentroBB {
 	                
 	            }
 	           
-	            return "edicionCentro.xhtml";
+	            return "Centros.xhtml";
 	        } catch (NeuBDExceptions e) {
 	            return "index.xhtml";
 	        }

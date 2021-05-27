@@ -17,8 +17,15 @@
 
 		<h:form id="Asignatura">
         	<h:panelGrid columns="3">
+            	
+            	
+            	
+            	<h:outputText value="referencia"/>
+                <h:outputText id ="referencia" value="#{asignaturas.asignatura.referencia}"/>
+                <h:message for="referencia"/>
+            	
             	<h:outputText value="codigo"/>
-                <h:outputText id ="codigo" value="#{asignaturas.asignatura.codigo}"/>
+                <h:inputText id ="codigo" value="#{asignaturas.asignatura.codigo}"/>
                 <h:message for="codigo"/>
 
                 <h:outputText value="nombre"/>
@@ -69,7 +76,7 @@
                 <h:commandButton value="Volver" action="Asignaturas.xhtml"/>
 
                 <h:inputHidden value="#{asignaturas.modo}"/>
-                <h:inputHidden value="#{asignaturas.asignatura.codigo}"/>
+                <h:inputHidden value="#{asignaturas.asignatura.referencia}"/>
 
             </h:panelGrid>
 		</h:form>		

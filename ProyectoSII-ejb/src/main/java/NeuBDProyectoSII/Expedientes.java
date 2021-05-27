@@ -26,9 +26,9 @@ public class Expedientes {
 	private int credito_cf;
 	private int credito_pe;
 	private int credito_tf;
-	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	private Titulacion titulaciones;
-	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	private Alumno alumno;
 	@OneToMany(mappedBy = "expedientes")
 	private List<Encuesta> encuestas;

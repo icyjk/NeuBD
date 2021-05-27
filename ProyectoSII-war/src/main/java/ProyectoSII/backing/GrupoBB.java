@@ -1,13 +1,16 @@
 package ProyectoSII.backing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Grupo;
+import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionEncuesta;
 import NeuBDProyectoSIIEjb.GestionGrupo;
 import NeuBDProyectoSIIexceptions.AsignaturaNoEncontradaException;
@@ -134,7 +137,19 @@ public class GrupoBB {
 
 
 	public List<Grupo> listaGrupo() throws NeuBDExceptions {
-		return gestionGrupo.listaGrupos();
+		
+		List<Grupo> lista = new ArrayList<Grupo>();
+		
+		lista=gestionGrupo.listaGrupos();
+		
+		
+		Centro centroETSI = new Centro("ETSI","Calle ruben del pozo","639004675",null);
+		List<Centro> listacentros = new ArrayList<Centro>();
+		listacentros.add(centroETSI);
+		Titulacion titulacionInf = new Titulacion(66,"Informatica", 360,listacentros, null, null, null);
+		Grupo grupoAinf = new Grupo(1,'A',"Mañana",true, true, "", 50 , titulacionInf, null, null,null,null);
+		lista.add(grupoAinf);
+		return lista ;
 	}
 
 

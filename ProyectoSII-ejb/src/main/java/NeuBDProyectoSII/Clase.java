@@ -3,6 +3,7 @@ package NeuBDProyectoSII;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -21,17 +22,31 @@ public class Clase implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id @ManyToOne private Grupo grupo;
+	@Id @ManyToOne(cascade = CascadeType.MERGE) private Grupo grupo;
 	@Id private String dia;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIME)
 	@Id private Date hora_inicio;
-	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIME)
 	private Date hora_fin;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Asignatura asignaturas;
 	
 	
+	
+	
+	public Clase() {
+		super();
+	}
+	
+	public Clase(Grupo grupo, String dia, Date hora_inicio, Date hora_fin, Asignatura asignaturas) {
+		super();
+		this.grupo = grupo;
+		this.dia = dia;
+		this.hora_inicio = hora_inicio;
+		this.hora_fin = hora_fin;
+		this.asignaturas = asignaturas;
+	}
+
 	public Asignatura getAsignaturas() {
 		return asignaturas;
 	}

@@ -13,6 +13,13 @@
 		<h:form id="Asignaturas">           
 			<h:dataTable value="#{asignaturas.listaAsignatura()}" var="a">
 	
+            	
+            	<h:column>
+                	<f:facet name="header">Referencia</f:facet>
+                 	<h:outputText value="#{a.referencia}"/>
+                </h:column>
+            	
+            	
             	<h:column>
                 	<f:facet name="header">Codigo</f:facet>
                  	<h:outputText value="#{a.codigo}"/>
@@ -67,6 +74,7 @@
                 <h:column>
                 	<h:commandButton value="Modificar" action="#{asignaturas.modificar(a)}"/>
                 	<h:commandButton value="Eliminar" action="#{asignaturas.eliminar(a)}"/>
+                	<h:commandButton value="Horario" action="#{horario.verHorarioAsignatura(a)}"/>
                 </h:column>
                         
 			</h:dataTable>

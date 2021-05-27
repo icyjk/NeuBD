@@ -67,6 +67,20 @@ public class GruposAsigBB {
 	public void setListaFiltrado(List<Grupos_por_asignatura> listaFiltrado) {
 		this.listaFiltrado = listaFiltrado;
 	}
+	 public String ejecutarAccion() {
+	        try {
+	            switch (modo) {
+	                case MODIFICAR:
+	                    gestionGrupoAsig.modificarGruposPorAsignatura(gpa);
+	                    break;
+	                
+	            }
+	           
+	            return "grupoAsig.xhtml";
+	        } catch (NeuBDExceptions e) {
+	            return "index.xhtml";
+	        }
+	    }
 	public String getAccion() throws NeuBDExceptions {
         switch (modo) {
             case MODIFICAR:

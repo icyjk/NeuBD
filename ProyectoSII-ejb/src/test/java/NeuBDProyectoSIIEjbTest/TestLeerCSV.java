@@ -87,14 +87,13 @@ public class TestLeerCSV {
 	public void TestLeerCSVAlumno() {	
 		try {
 			
-			Titulacion titu = gestionTitulacion.listaTitulacion().get(0);
 			String route="/home/alumno/Escritorio/AlumnoPrueba.csv";
 			
 			int tam=gestionAlumno.listaAlumno().size();
 			int tamExpedientes = gestionExpediente.listaExpedientes().size();
 			int tamMatriculas = gestionMatricula.listaMatricula().size();
 			try {
-				gestionLeerCSV.insertarAlumnoCSV(titu, route);
+				gestionLeerCSV.insertarAlumnoCSV(route);
 			}catch(ParseException e) {
 				fail("No deberia lanzarse excepcion");
 			}

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Horarios</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Horarios">           
+			<h:dataTable value="#{horario.ejecutarAccion() }" var="h">
+	
+            	<h:column>
+                	<f:facet name="header">Dia</f:facet>
+                 	<h:outputText value="#{h.dia}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Hora Inicio</f:facet>
+                 	<h:outputText value="#{h.hora_inicio}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Hora Fin</f:facet>
+                 	<h:outputText value="#{h.hora_fin}"/>
+                </h:column>
+                
+                <h:column>
+                	<f:facet name="header">Asignatura</f:facet>
+                 	<h:outputText value="#{h.asignaturas.nombre}"/>
+                </h:column>
+                
+                
+                <h:column>
+                	<f:facet name="header">Grupo</f:facet>
+                 	<h:outputText value="#{h.grupo}"/>
+                </h:column>
+                        
+			</h:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+		</h:form>
+	</h:body>
+	</html>

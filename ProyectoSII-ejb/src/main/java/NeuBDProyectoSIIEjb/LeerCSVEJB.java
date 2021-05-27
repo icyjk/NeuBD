@@ -26,6 +26,7 @@ import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Asignatura_matricula;
 import NeuBDProyectoSII.Centro;
+import NeuBDProyectoSII.Clase;
 import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSII.Grupo;
@@ -49,6 +50,9 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	private Expedientes insertarExpediente(Expedientes expe) {
 		return em.merge(expe);
 		
+	}
+	private Alumno insertarAlumno(Alumno alum) {
+		return em.merge(alum);
 	}
 	private void insertarAsigMatri(Asignatura_matricula asig_matri) throws GrupoPorAsignaturaYaExistenteException, NeuBDExceptions {
 		int i=0;
@@ -104,7 +108,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		
 	}
 	@Override
-	public void insertarAlumnoCSV(Titulacion titu,String route)throws AlumnoSInDatosParaCrearException, ParseException{
+	public void insertarAlumnoCSV(String route)throws AlumnoSInDatosParaCrearException, ParseException{
         try { 
         	Reader reader = Files.newBufferedReader(Paths.get(route));
         	CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
@@ -159,14 +163,13 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                List<Expedientes> lista=new ArrayList<Expedientes>();
 	                Alumno alum=new Alumno(DNI,nombre,priApellido,secApellido,emPersonal, emInstitucional, movil, telefono, direccion, localidad, lista, cp, provincia);
 	                
-	                Alumno a = em.merge(alum); //Por si el alumno pasado ya existia en la BD
+	                Alumno a = insertarAlumno(alum); //Por si el alumno pasado ya existia en la BD
+	                
 	                //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +a);
+	                int refTitul = Integer.parseInt(numExp.substring(0, 4));
+	                Titulacion titu = em.find(Titulacion.class, refTitul);
 	                Expedientes e= new Expedientes(activo, notaMedia, credSuperados, CREDITOS_FB, CREDITOS_OB, CREDITOS_OP, CREDITOS_CF, CREDITOS_PE, CREDITOS_TF, titu, a,null);
 	                Expedientes expe = insertarExpediente(e);
-	                lista = a.getExpedientes();
-	                lista.add(expe);
-	                alum.setExpedientes(lista); 
-	                Alumno al = em.merge(alum);
 	                String strActivo;
 	                if(activo) {
 	                	strActivo= "activo";
@@ -174,15 +177,30 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                	strActivo="inactivo";
 	                }
 	                Matricula m = new Matricula(expe, curso, strActivo, numArchivo, turnoPref, cambiarAFecha(fechaMatricula), "", gruposAsig, null);
+	                em.merge(m);
+	                /*
+	                lista = a.getExpedientes();
+	                lista.add(expe);
+	                alum.setExpedientes(lista); 
+	                Alumno al = em.merge(alum);
+	               
+	                String strActivo;
+	                if(activo) {
+	                	strActivo= "activo";
+	                }{
+	                	strActivo="inactivo";
+	                }
+	                List<Asignatura_matricula> vacia = new ArrayList<>();
+	                Matricula m = new Matricula(expe, curso, strActivo, numArchivo, turnoPref, cambiarAFecha(fechaMatricula), "", gruposAsig, vacia);
 	                
-	                //System.out.println(m);
+	                //System.out.println(al);
 	                em.merge(m);
 	                List<Matricula> list = e.getMatricula();
 	                list.add(m);
 	                e.setMatricula(list);
 	                em.merge(e);	
-	                crearMatri(m);
-	                
+	                //crearMatri(m);
+	                */
             	}
             }
             csvParser.close();
@@ -193,29 +211,41 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	    } 
     }
 	private void crearMatri(Matricula m) {
+		
 		String listado = m.getListado_asignaturas();
 		Scanner scan = new Scanner(listado);
+		//System.out.println(listado);
+
 		scan.useDelimiter(",");
+		
 		while(scan.hasNext()) {
-			String codigo = scan.next().substring(0,3);
+			String aux = scan.next();
+			
+			String codigo = aux.substring(0,3);
 			Asignatura a = buscarAsignatura(codigo);
+			/*
 			try {
-				insertarAsigMatri(new Asignatura_matricula(a, m, null, false, false));
+				//insertarAsigMatri(new Asignatura_matricula(a, m, null, false, false));
 			} catch (NeuBDExceptions e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			*/
 		}
+		scan.close();
+		
 	}
 	private Asignatura buscarAsignatura(String codigo) {
 		List<Asignatura> lista = em.createNamedQuery("Asignatura.todos", Asignatura.class).getResultList();
 		int cont = 0;boolean encontrado= false;Asignatura resultado = null;
+
 		while(encontrado || cont<lista.size()) {
 			Asignatura a = lista.get(cont);
 			if(a.getCodigo()==Integer.parseInt(codigo)) {
 				resultado = a;
 				encontrado=true;
 			}
+			cont++;
 		}
 		return resultado;
 	}
@@ -361,6 +391,51 @@ public class LeerCSVEJB implements GestionLeerCSV{
         fechaR = formatter.parse(dateInString);
         return fechaR;
     }
+	public Date cambiarAFechaDia(String fecha) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String dateInString = fecha;
+        Date fechaR;
+        fechaR = formatter.parse(dateInString);
+        return fechaR;
+    }
+	public Date cambiarAHora(String fecha) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+        String dateInString = fecha;
+        Date fechaR;
+        fechaR = formatter.parse(dateInString);
+        return fechaR;
+    }
+	@Override
+	public void insertarClasesCSV(String route) throws NeuBDExceptions {
+		try { 
+        	Reader reader = Files.newBufferedReader(Paths.get(route));
+        	 CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
+                     
+        	//CSVParser parser=new CSVParser(reader, CSVFormat.DEFAULT);
+        	
+            for (CSVRecord csvRecord : csvParser) {
+            	if(csvRecord.getRecordNumber() !=1) {
+            		int grupo = Integer.parseInt(csvRecord.get(0));
+            		String dia = csvRecord.get(1);
+            		Date fecha=cambiarAFechaDia(dia);
+            		String horaInicio = csvRecord.get(2);
+            		Date horaIn=cambiarAHora(horaInicio);
+            		String horaFin = csvRecord.get(3);
+            		int asigRef = Integer.parseInt(csvRecord.get(4));
+            		Date horaF=cambiarAHora(horaFin);
+            		Grupo g = em.find(Grupo.class, grupo);
+            		Asignatura as = em.find(Asignatura.class, asigRef);
+            		Clase c = new Clase(g, dia, horaIn, horaF, as);
+            		em.merge(c);
+            	}
+            }
+           
+            
+    	} catch (Exception e) {  
+    	        e.printStackTrace();
+    	}
+		
+	}
 
 	
 }

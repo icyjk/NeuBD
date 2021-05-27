@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:head>
+        <title>Lista de Grupos</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Grupos">           
+			<h:dataTable value="#{grupo.listaGrupo()}" var="g">
+	
+            	<h:column>
+                	<f:facet name="header">ID</f:facet>
+                 	<h:outputText value="#{g.id}"/>
+                </h:column>
+                
+            	<h:column>
+                	<f:facet name="header">Curso</f:facet>
+                 	<h:outputText value="#{g.curso}"/>
+                </h:column>        
+                	
+            	<h:column>
+                	<f:facet name="header">Letra</f:facet>
+                 	<h:outputText value="#{g.letra}"/>
+                </h:column>
+             	<h:column>
+                	<f:facet name="header">Turno</f:facet>
+                 	<h:outputText value="#{g.turno_mañana_tarde}"/>
+                </h:column>  
+                
+                <h:column>
+                	<f:facet name="header">Ingles</f:facet>
+                 	<h:outputText value="#{g.ingles}"/>
+                </h:column>               
+                <h:column>
+                	<f:facet name="header">Visible</f:facet>
+                 	<h:outputText value="#{g.visible}"/>
+                </h:column>               
+                <h:column>
+                	<f:facet name="header">Asignar</f:facet>
+                 	<h:outputText value="#{g.asignar}"/>
+                </h:column>               
+                <h:column>
+                	<f:facet name="header">plazas</f:facet>
+                 	<h:outputText value="#{g.plazas}"/>
+                </h:column>               
+                <h:column>
+                	<f:facet name="header">Titulacion</f:facet>
+                 	<h:outputText value="#{g.titulacion.nombre}"/>
+                </h:column>               
+                              
+                
+                
+                
+                
+                
+                
+                
+                             
+                
+                
+                <h:column>
+                	<h:commandButton value="Modificar" action="#{grupo.modificar(g)}"/>
+                	<h:commandButton value="Eliminar" action="#{grupo.eliminar(g)}"/>
+                	<h:commandButton value="Horario" action="#{horario.verHorarioGrupo(g)}"/>
+                	
+                </h:column>
+                        
+			</h:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+			<h:commandButton value="Crear" action="#{grupo.crearGrupo()}"/>
+			
+		</h:form>
+	</h:body>
+	</html>

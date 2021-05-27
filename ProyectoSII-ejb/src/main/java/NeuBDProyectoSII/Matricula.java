@@ -28,7 +28,7 @@ public class Matricula implements Serializable{
 	private Date fecha_matricula;
 	private String nuevo_ingreso;
 	private String listado_asignaturas;
-	@OneToMany(mappedBy = "matricula",cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
+	@OneToMany(mappedBy = "matricula",cascade = {CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Asignatura_matricula> asignatura_matricula;
 	
 	public Matricula () {

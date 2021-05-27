@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head>	  
+		<title>
+			<h:outputText value="#{grupo.accion} grupo"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>GRUPO</h1>
+			<h2>#{grupo.accion} Grupo</h2>
+
+		<h:form id="grupo">
+        	<h:panelGrid columns="3">
+            	<h:outputText value="Id"/>
+                <h:outputText id ="Id" value="#{grupo.grupo.id}"/>
+                <h:message for="Id"/>
+
+                
+
+                <h:outputText value="curso"/>
+                <h:inputText id ="curso" value="#{grupo.grupo.curso}"/>
+                <h:message for="curso"/>
+                
+                 <h:outputText value="letra"/>
+                <h:inputText id ="letra" value="#{grupo.grupo.letra}"/>
+                <h:message for="letra"/>
+                
+                <h:outputText value="turno"/>
+                <h:inputText id ="turno" value="#{grupo.grupo.turno_mañana_tarde}"/>
+                <h:message for="turno"/>
+                
+                 <h:outputText value="ingles"/>
+                <h:inputText id ="ingles" value="#{grupo.grupo.ingles}"/>
+                <h:message for="ingles"/>
+                
+                 <h:outputText value="visible"/>
+                <h:inputText id ="visible" value="#{grupo.grupo.visible}"/>
+                <h:message for="visible"/>
+                
+                 <h:outputText value="asignar"/>
+                <h:inputText id ="asignar" value="#{grupo.grupo.asignar}"/>
+                <h:message for="asignar"/>
+                
+                <h:outputText value="plazas"/>
+                <h:inputText id ="plazas" value="#{grupo.grupo.plazas}"/>
+                <h:message for="plazas"/>
+                
+            
+                
+             	<h:commandButton value="#{grupo.accion}" action="#{grupo.ejecutarAccion()}"/>
+                <h:commandButton value="Volver" action="Grupo.xhtml"/>
+
+                <h:inputHidden value="#{grupo.modo}"/>
+                <h:inputHidden value="#{grupo.grupo.id}"/>
+
+            </h:panelGrid>
+		</h:form>		
+		
+		</f:view>
+
+	</h:body>
+	
+</html>
