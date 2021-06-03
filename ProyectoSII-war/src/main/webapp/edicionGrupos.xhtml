@@ -50,6 +50,9 @@
                 <h:inputText id ="plazas" value="#{grupo.grupo.plazas}"/>
                 <h:message for="plazas"/>
                 
+                <h:outputText value="titulacion"/>
+                <h:inputText id ="titulacion" value="#{grupo.refTit}"/>
+                <h:message for="titulacion"/>
             
                 
              	<h:commandButton value="#{grupo.accion}" action="#{grupo.ejecutarAccion()}"/>

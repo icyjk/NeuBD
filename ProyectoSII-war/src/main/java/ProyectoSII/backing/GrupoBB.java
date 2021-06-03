@@ -8,16 +8,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import NeuBDProyectoSII.Centro;
-import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Grupo;
 import NeuBDProyectoSII.Titulacion;
-import NeuBDProyectoSIIEjb.GestionEncuesta;
 import NeuBDProyectoSIIEjb.GestionGrupo;
-import NeuBDProyectoSIIexceptions.AsignaturaNoEncontradaException;
-import NeuBDProyectoSIIexceptions.EncuestaNoEncontradaException;
+import NeuBDProyectoSIIEjb.GestionTitulacion;
 import NeuBDProyectoSIIexceptions.GrupoNoEncontrado;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
-import ProyectoSII.backing.EncuestaBB.Modo;
 
 @Named(value = "grupo")
 @RequestScoped
@@ -34,6 +30,9 @@ public class GrupoBB {
 	private Modo modo;
 	@Inject
 	private GestionGrupo gestionGrupo;
+	@Inject 
+	private GestionTitulacion gestionTitulacion;
+	private int refTit;
 
 	public GrupoBB() {
 		grupo= new Grupo();
@@ -56,6 +55,15 @@ public class GrupoBB {
 		this.modo = modo;
 	}
 
+	
+	public int getRefTit() {
+		return refTit;
+	}
+
+	public void setRefTit(int refTit) {
+		this.refTit = refTit;
+	}
+
 	public String getAccion() {
 		switch (modo) {
 		case MODIFICAR:
@@ -76,9 +84,11 @@ public class GrupoBB {
 
 	public String ejecutarAccion() {
 		try {
+			Titulacion tit = null;
 			switch (modo) {
 			case MODIFICAR:
-
+				tit = gestionTitulacion.visualizartitulacion(refTit);
+				grupo.setTitulacion(tit);
 				gestionGrupo.modificarGrupo(grupo);
 				break;
 			case ELIMINAR:
@@ -86,6 +96,8 @@ public class GrupoBB {
 				break;
 
 			case CREAR:
+				tit = gestionTitulacion.visualizartitulacion(refTit);
+				grupo.setTitulacion(tit);
 				gestionGrupo.crearGrupo(grupo);
 
 			}
@@ -141,14 +153,6 @@ public class GrupoBB {
 		List<Grupo> lista = new ArrayList<Grupo>();
 		
 		lista=gestionGrupo.listaGrupos();
-		
-		
-		Centro centroETSI = new Centro("ETSI","Calle ruben del pozo","639004675",null);
-		List<Centro> listacentros = new ArrayList<Centro>();
-		listacentros.add(centroETSI);
-		Titulacion titulacionInf = new Titulacion(66,"Informatica", 360,listacentros, null, null, null);
-		Grupo grupoAinf = new Grupo(1,'A',"Mañana",true, true, "", 50 , titulacionInf, null, null,null,null);
-		lista.add(grupoAinf);
 		return lista ;
 	}
 

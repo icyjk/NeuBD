@@ -129,7 +129,7 @@ public class Titulacion {
 	@Override
 	public String toString() {
 		return "Titulacion [codigo=" + codigo + ", nombre=" + nombre + ", creditos=" + creditos + ", centros=" + centros
-				+ ", expedientes=" + expedientes + ", asignaturas=" + asignaturas + ", grupos=" + grupos + "]";
+				 + "]";
 	}
 	
 

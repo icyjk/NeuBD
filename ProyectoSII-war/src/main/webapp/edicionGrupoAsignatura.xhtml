@@ -14,7 +14,7 @@
 			<h1>Grupo por Asignatura</h1>
 			<h2>#{gruposAsig.accion} Grupos por Asignatura</h2>
 
-		<h:form id="centro">
+		<h:form id="gruposAsig">
         	<h:panelGrid columns="3">
             	<h:outputText value="Grupo"/>
                 <h:outputText id ="grupo" value="#{gruposAsig.gpa.grupo}"/>
@@ -37,6 +37,9 @@
 
                 <h:inputHidden value="#{gruposAsig.modo}"/>
 				<h:inputHidden value="#{gruposAsig.gpa.curso_academico}"/>
+				<h:inputHidden value="#{gruposAsig.gr}"/>
+				<h:inputHidden value="#{gruposAsig.a}"/>
+
             </h:panelGrid>
 		</h:form>		
 		

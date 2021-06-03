@@ -42,6 +42,6 @@ public class DefaultSuiteIT {
   public void pruebaSencilla() {
     driver.get("http://localhost:8080/ProyectoSII-war/");
     driver.manage().window().setSize(new Dimension(550, 691));
-    assertThat(driver.findElement(By.id("texto")).getText(), is("Hola Mundo"));
+    assertThat(driver.findElement(By.id("texto")).getText(), is("INICIO"));
   }
 }

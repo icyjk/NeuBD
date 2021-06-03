@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+ 	  xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
@@ -12,49 +13,38 @@
 
 	<h:body>
 		<h:form id="gruposAsig">
-			<h:dataTable value="#{gruposAsig.listaGrupoPorAsignatura()}" var="g" >
-	
-            	<h:column>
-                	<f:facet name="header">Grupo</f:facet>
+			<p:dataTable value="#{gruposAsig.listaGrupoPorAsignatura}" var="g" widgetVar="GrupAsignaturaTable"
+            emptyMessage="Ningun grupo asignatura con esos filtros"
+            filteredValue="#{gruposAsig.grupoAsifFiltro}">
+            
+					<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Grupos por Asignatura</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('GrupAsignaturaTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
+				
+            	<p:column headerText="Grupo" sortBy="#{g.grupo}" filterBy="#{g.grupo}">
                  	<h:outputText value="#{g.grupo}"/>
-                </h:column>
+                </p:column>
                 
-            	<h:column>
-                	<f:facet name="header">Asignatura</f:facet>
+            	<p:column headerText="Asignatura" sortBy="#{g.asignatura.nombre}" filterBy="#{g.asignatura.nombre}">
                  	<h:outputText value="#{g.asignatura.nombre}"/>
-                </h:column>        
+                </p:column>        
                 	
-            	<h:column>
-                	<f:facet name="header">Curso Academico</f:facet>
-                 	<h:outputText value="#{g.Curso_academico}"/>
-                </h:column>
+            	<p:column headerText="Curso Academico" sortBy="#{g.curso_academico}" filterBy="#{g.curso_academico}">
+                 	<h:outputText value="#{g.curso_academico}"/>
+                </p:column>
                 
-                <h:column>
-                	<f:facet name="header">Ofertada</f:facet>
-                 	<h:outputText value="#{g.ofertada}"/>
-                </h:column>
-                
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{gruposAsig.modificar(g)}"/>
-                	<h:commandButton value="Eliminar" action="#{gruposAsig.eliminar(g)}"/>
-                </h:column>	
+                <p:column headerText="Ofertada" sortBy="#{g.oferta}" filterBy="#{g.oferta}">
+                 	<h:outputText value="#{g.oferta}"/>
+                </p:column>
 	
-			</h:dataTable>
-			<h:commandButton action="edicionGrupoAsignatura.xhtml" value="edicionGrupoAsignatura" />
+			</p:dataTable>
+			
+		</h:form>
+		<h:form>
 			<h:commandButton action="index.xhtml" value="Volver" />
 		</h:form>
 	</h:body>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>

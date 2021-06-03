@@ -13,6 +13,7 @@ import javax.enterprise.context.RequestScoped;
 
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Titulacion;
+import NeuBDProyectoSIIEjb.GestionAsigMatri;
 import NeuBDProyectoSIIEjb.GestionCentro;
 import NeuBDProyectoSIIEjb.GestionLeerCSV;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
@@ -34,6 +35,8 @@ public class LeerCSVBB {
 	GestionLeerCSV gestionLeerCSV;
 	@Inject
 	GestionCentro gestionCentro;
+	@Inject
+	GestionAsigMatri gestionAsigMatri;
 	private Modo modo;
 	private Part part;
 	private String strModo;
@@ -100,7 +103,8 @@ public class LeerCSVBB {
 				f = new File(ruta);
 				f.delete();
 				part.write(temp.toString());
-				gestionLeerCSV.insertarAlumnoCSV(temp.toString());			
+				gestionLeerCSV.insertarAlumnoCSV(temp.toString());
+				gestionAsigMatri.crearAsigsMatris();
 				break;
 			case TITULACION:
 				temp = Files.createTempFile(null, ".csv");

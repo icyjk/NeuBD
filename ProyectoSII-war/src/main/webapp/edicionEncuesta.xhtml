@@ -1,20 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+	<h:head>	  
+		<title>
+			<h:outputText value="#{encuesta.accion} encuestas"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>ENCUESTA</h1>
+			<h2>#{encuesta.accion} Encuesta</h2>
+
+		<h:form id="encuesta">
+        	<h:panelGrid columns="3">
+            	<h:outputText for="popup" value="Fecha_de_envio"/>
+            	<p:calendar id="popup" value="#{encuestas.encuesta.Fecha_de_envio}"/>
+            	<p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+            	 	 <p:panelGrid id="display" columns="2" columnClasses="label,value">
+            	 	 	<h:outputText value="Popup:"/>
+						<h:outputText value="#{calendarView.date2}">
+							<f:convertDateTime pattern="MM/dd/yyyy"/>
+						</h:outputText>
+					</p:panelGrid>
+            	</p:dialog>
+                
+                <h:outputText value="expedientes"/>
+                <h:inputText id ="expedientes" value="#{encuestas.encuesta.expedientes.num_expediente}"/>
+                <h:message for="expedientes"/>
+                                
+                <h:commandButton value="#{encuesta.accion}" action="#{encuesta.ejecutarAccion()}"/>
+                <h:commandButton value="Cancelar" action="index.xhtml"/>
+
+                <h:inputHidden value="#{encuesta.modo}"/>
+                <h:inputHidden value="#{Encuesta.encuesta.Fecha_de_envio}"/>
+
+            </h:panelGrid>
+		</h:form>		
+		
+		</f:view>
+	</h:body>
 </html>

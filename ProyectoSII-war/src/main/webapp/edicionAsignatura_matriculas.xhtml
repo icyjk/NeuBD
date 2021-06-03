@@ -1,20 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+	<h:head>	  
+		<title>
+			<h:outputText value="#{asig_matri.accion} asig_matris"/>
+		</title>
+	</h:head>
+	<h:body>
+		<f:view>
+			<h1>ASIGNATURA_Matricula</h1>
+			<h2>#{asig_matri.accion} Asignatura_Matricula</h2>
+
+		<h:form id="Asignatura">
+        	<h:panelGrid columns="3">
+            	<h:outputText value="asignatura"/>
+                <h:outputText id ="asignatura" value="#{asig_matris.asig_matri.asignatura}"/>
+                <h:message for="asignatura"/>
+
+                <h:outputText value="matricula"/>
+                <h:inputText id ="matricula" value="#{asig_matris.asig_matri.matricula}"/>
+                <h:message for="matricula"/>
+
+                <h:outputText value="grupo"/>
+                <h:inputText id ="grupo" value="#{asig_matris.asig_matri.grupo}"/>
+                <h:message for="grupo"/>
+                
+                <h:outputText value="idioma"/>
+                <h:inputText id ="idioma" value="#{asig_matris.asig_matri.idioma}"/>
+                <h:message for="idioma"/>
+                
+                
+                <h:outputText value="asignacionManual"/>
+                <h:inputText id ="asignacionManual" value="#{asig_matris.asig_matri.asignacionManual}"/>
+                <h:message for="asignacionManual"/>
+                
+      
+                <h:commandButton value="#{asignaturas.accion}" action="#{asignaturas.ejecutarAccion()}"/>
+                <h:commandButton value="Volver" action="Asignaturas.xhtml"/>
+
+                <h:inputHidden value="#{asignaturas.modo}"/>
+                <h:inputHidden value="#{asignaturas.asignatura.codigo}"/>
+
+            </h:panelGrid>
+		</h:form>		
+		</f:view>
+	</h:body>
 </html>
+
+

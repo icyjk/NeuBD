@@ -184,9 +184,7 @@ public class Asignatura implements Serializable{
 		return "Asignatura [referencia=" + referencia + ", codigo=" + codigo + ", creditos_practica="
 				+ creditos_practica + ", creditos_teoria=" + creditos_teoria + ", creditos=" + creditos + ", ofertada="
 				+ ofertada + ", nombre=" + nombre + ", curso=" + curso + ", caracter=" + caracter + ", duracion="
-				+ duracion + ", unidad_temporal=" + unidad_temporal + ", idioma_imparticion=" + idioma_imparticion
-				+ ", titulacion=" + titulacion + ", asignaturaMatricula=" + asignaturaMatricula + ", clases=" + clases
-				+ ", gruposPorAsignatura=" + gruposPorAsignatura + "]";
+				+ duracion + ", unidad_temporal=" + unidad_temporal + ", idioma_imparticion=" + idioma_imparticion + "]";
 	}
 	
 

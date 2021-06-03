@@ -1,25 +1,35 @@
 package ProyectoSII.backing;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-import javax.enterprise.context.RequestScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
 
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Grupo;
 import NeuBDProyectoSII.Grupos_por_asignatura;
-import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
 import NeuBDProyectoSIIEjb.GestionGrupo;
 import NeuBDProyectoSIIEjb.GestionGrupoPorAsignatura;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
-import ProyectoSII.backing.AsignaturasBB.Modo;
 
 @Named(value = "gruposAsig")
-@RequestScoped
-public class GruposAsigBB {
+@ViewScoped
+public class GruposAsigBB implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public static enum Modo {
         MODIFICAR, 
         ELIMINAR,
@@ -33,65 +43,124 @@ public class GruposAsigBB {
     @Inject
     GestionAsignatura gestionAsignatura;
     
-    
+    private List<Grupos_por_asignatura> listaGrupoPorAsignatura;
+    private List<Grupos_por_asignatura> grupoAsifFiltro;
+    private List<FilterMeta> filterBy;
     private Modo modo;
     private Grupos_por_asignatura gpa;
-    private List<Grupos_por_asignatura> lista;
-    private List<Grupos_por_asignatura> listaFiltrado;
-	public GruposAsigBB(){
-		gpa= new Grupos_por_asignatura();
-		modo=Modo.NOACCION;
-	}
-    public Modo getModo() {
-		return modo;
-	}
-	public void setModo(Modo modo) {
-		this.modo = modo;
-	}
+    private Grupo gr;
+    private Asignatura a;
 	
+    @PostConstruct
+    public void init() throws NeuBDExceptions {
+        listaGrupoPorAsignatura = gestionGrupoAsig.listaGruposPorAsignatura();
+    }
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+        Boolean filterBoolean = getBoolean(filterText);
+        
+        Grupos_por_asignatura g = (Grupos_por_asignatura) value;
+        
+        return g.getGrupo().toString().toLowerCase().contains(filterText) 
+        		|| g.getAsignatura().getNombre().toLowerCase().contains(filterText)
+        		|| g.getCurso_academico().toLowerCase().contains(filterText)
+        		|| g.getOferta() == filterBoolean;
+    }
+
+    private Boolean getBoolean(String string) {
+        try {
+            return Boolean.getBoolean(string);
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public Modo getModo() {
+  		return modo;
+  	}
+  	public void setModo(Modo modo) {
+  		this.modo = modo;
+  	}
+  	
+    public String getAccion() throws NeuBDExceptions {
+        switch (modo) {
+            case MODIFICAR:
+                return "Modificar";
+            case ELIMINAR:
+                return "Eliminar";
+        }
+        return null;
+	}
+    
+  
 	public Grupos_por_asignatura getGpa() {
 		return gpa;
 	}
 	public void setGpa(Grupos_por_asignatura gpa) {
 		this.gpa = gpa;
 	}
-	public List<Grupos_por_asignatura> getLista() {
-		return lista;
+	
+	
+	public Grupo getGr() {
+		return gr;
 	}
-	public void setLista(List<Grupos_por_asignatura> lista) {
-		this.lista = lista;
+	public void setGr(Grupo gr) {
+		this.gr = gr;
 	}
-	public List<Grupos_por_asignatura> getListaFiltrado() {
-		return listaFiltrado;
+	public Asignatura getA() {
+		return a;
 	}
-	public void setListaFiltrado(List<Grupos_por_asignatura> listaFiltrado) {
-		this.listaFiltrado = listaFiltrado;
+	public void setA(Asignatura a) {
+		this.a = a;
 	}
+	
+	public List<Grupos_por_asignatura> getListaGrupoPorAsignatura() {
+		return listaGrupoPorAsignatura;
+	}
+	public void setListaGrupoPorAsignatura(List<Grupos_por_asignatura> listaGrupoPorAsignatura) {
+		this.listaGrupoPorAsignatura = listaGrupoPorAsignatura;
+	}
+	
+	public List<Grupos_por_asignatura> getGrupoAsifFiltro() {
+		return grupoAsifFiltro;
+	}
+	public void setGrupoAsifFiltro(List<Grupos_por_asignatura> grupoAsifFiltro) {
+		this.grupoAsifFiltro = grupoAsifFiltro;
+	}
+	
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
+	}
+
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
+	}
+
+	public String modificar(Grupos_por_asignatura g) throws NeuBDExceptions {
+	        gpa = g;
+	        a = gestionAsignatura.buscarAsignatura(g.getAsignatura().getReferencia());
+	        gr = gestionGrupo.visualizarGrupo(g.getGrupo().getId());
+	        setModo(Modo.MODIFICAR);
+	        return "edicionGrupoAsignatura.xhtml";
+	    }
 	 public String ejecutarAccion() {
 	        try {
 	            switch (modo) {
 	                case MODIFICAR:
-	                    gestionGrupoAsig.modificarGruposPorAsignatura(gpa);
+	                    gpa.setAsignatura(a);gpa.setGrupo(gr);
+	                	gestionGrupoAsig.modificarGruposPorAsignatura(gpa);
 	                    break;
-	                
-	            }
-	           
+	            }   
 	            return "grupoAsig.xhtml";
 	        } catch (NeuBDExceptions e) {
 	            return "index.xhtml";
 	        }
 	    }
-	public String getAccion() throws NeuBDExceptions {
-        switch (modo) {
-            case MODIFICAR:
-            	gestionGrupoAsig.modificarGruposPorAsignatura(gpa);
-                return "Modificar";
-            case ELIMINAR:
-                return "Eliminar";
-
-        }
-        return null;
-	}
+	
 	public String eliminar(Grupos_por_asignatura g) throws NeuBDExceptions {
         try {
             gestionGrupoAsig.eliminarGruposPorAsignatura(g);
@@ -101,14 +170,9 @@ public class GruposAsigBB {
         }
         return null;
     }
-	 public String modificar(Grupos_por_asignatura g) {
-	        gpa = g;
-	        setModo(Modo.MODIFICAR);
-	        return "edicionTitulacion.xhtml";
-	    }
+	
 	
 	public List<Grupos_por_asignatura> listaGrupoPorAsignatura() throws NeuBDExceptions {
-		lista = gestionGrupoAsig.listaGruposPorAsignatura();
 		return gestionGrupoAsig.listaGruposPorAsignatura();
 	}
     

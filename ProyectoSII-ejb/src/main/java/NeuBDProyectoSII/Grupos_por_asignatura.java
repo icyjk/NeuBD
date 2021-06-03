@@ -15,8 +15,8 @@ import javax.persistence.NamedQuery;
 @IdClass(NewId_GrupoPorAsignatura_grupo_asignatura.class)
 public class Grupos_por_asignatura {
 
-	@Id @ManyToOne private Grupo grupo;
-	@Id @ManyToOne private Asignatura asignatura;
+	@Id @ManyToOne (cascade = {CascadeType.MERGE})private Grupo grupo;
+	@Id @ManyToOne (cascade = {CascadeType.MERGE})private Asignatura asignatura;
 	@Id private String Curso_academico;
 	private boolean oferta;
 	@ManyToMany(mappedBy = "grupos_por_asignatura", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
@@ -107,7 +107,7 @@ public class Grupos_por_asignatura {
 	@Override
 	public String toString() {
 		return "Grupos_por_asignatura [grupo=" + grupo + ", asignatura=" + asignatura + ", Curso_academico="
-				+ Curso_academico + ", oferta=" + oferta + ", encuestas=" + encuestas + "]";
+				+ Curso_academico + ", oferta=" + oferta + "]";
 	}
 	
 	

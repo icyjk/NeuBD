@@ -1,5 +1,7 @@
 package ProyectoSII.backing;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,7 +15,7 @@ import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 
 @Named(value = "asig_matri")
 @RequestScoped
-public class asig_matriBB {
+public class asig_matriBB implements Serializable {
 
 	public static enum Modo {
         MODIFICAR, 
@@ -118,5 +120,4 @@ public class asig_matriBB {
 		public List<Asignatura_matricula> listaAsignatura_matricula() throws NeuBDExceptions {
 			return GestionAsigMatri.listaAsigMatri();
 		}
-	
 }

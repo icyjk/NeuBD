@@ -42,7 +42,7 @@ public class Grupos_por_asignatura_Ejb implements GestionGrupoPorAsignatura{
 		if(g == null) {
 			throw new GruposPorAsignaturaNoEncontradoException();
 		}
-		em.merge(g);
+		em.merge(grupos);
 		
 	}
 	

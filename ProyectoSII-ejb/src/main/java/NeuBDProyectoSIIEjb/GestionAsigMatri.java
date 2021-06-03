@@ -15,4 +15,6 @@ public interface GestionAsigMatri {
 	public Asignatura_matricula visualizarAsigMatri(NewId_Asignatura_matricula id) throws NeuBDExceptions;
 	
 	public void modificarAsigMatri(Asignatura_matricula AsigMatri) throws NeuBDExceptions;
+	
+	public void crearAsigsMatris() throws NeuBDExceptions;
 }
