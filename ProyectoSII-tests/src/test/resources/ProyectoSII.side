@@ -1,48 +1,318 @@
 {
-  "id": "8c43d47e-aa58-44ea-a8c8-4f13000ed3cd",
+  "id": "5c80343c-45f6-4fec-9304-ca15df236794",
   "version": "2.0",
   "name": "ProyectoSII",
   "url": "http://localhost:8080",
   "tests": [{
-    "id": "1af0b1ef-8d2b-45b5-8d0e-61f36f018b51",
-    "name": "PruebaSencilla",
+    "id": "f80d9e0d-f32a-4ad7-b675-2f320642f1e0",
+    "name": "PruebaLeerCSV",
     "commands": [{
-      "id": "8715b0b4-450e-402b-bfd8-6a3b1a19eaea",
+      "id": "292335aa-46c4-41a7-9a12-d519329174de",
       "comment": "",
       "command": "open",
       "target": "/ProyectoSII-war/",
       "targets": [],
       "value": ""
     }, {
-      "id": "f70b2ec9-aff6-448d-83d7-f97ca9a0da7a",
+      "id": "26c8f439-5157-445f-bfe4-103b0be6e6d3",
       "comment": "",
       "command": "setWindowSize",
-      "target": "550x691",
+      "target": "767x690",
       "targets": [],
       "value": ""
     }, {
-      "id": "a48dbcda-a6b4-485e-acc8-0a951add7367",
+      "id": "e30640d7-3f74-44ba-a377-f51f215bf228",
+      "comment": "",
+      "command": "click",
+      "target": "name=j_idt6:j_idt8",
+      "targets": [
+        ["name=j_idt6:j_idt8", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='j_idt6:j_idt8']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e77e285-52b2-4e28-bca5-b8c97d6a0ce6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ui-state-hover > .ui-icon",
+      "targets": [
+        ["css=.ui-state-hover > .ui-icon", "css:finder"],
+        ["xpath=//div[@id='formLeerCSV:j_idt5']/div[3]/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "579233e9-7c6f-4286-86eb-9d5ca83b939c",
+      "comment": "",
+      "command": "click",
+      "target": "id=formLeerCSV:j_idt5_1",
+      "targets": [
+        ["id=formLeerCSV:j_idt5_1", "id"],
+        ["css=#formLeerCSV\\3Aj_idt5_1", "css:finder"],
+        ["xpath=//li[@id='formLeerCSV:j_idt5_1']", "xpath:attributes"],
+        ["xpath=//ul[@id='formLeerCSV:j_idt5_items']/li[2]", "xpath:idRelative"],
+        ["xpath=//li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'Titulacion')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a68e948-c04e-4610-b9b8-0e09124b0b53",
+      "comment": "",
+      "command": "click",
+      "target": "id=formLeerCSV:file",
+      "targets": [
+        ["id=formLeerCSV:file", "id"],
+        ["name=formLeerCSV:file", "name"],
+        ["css=#formLeerCSV\\3A file", "css:finder"],
+        ["xpath=//input[@id='formLeerCSV:file']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3385fb7f-2c1f-4caa-a428-0aaf259eb607",
+      "comment": "",
+      "command": "type",
+      "target": "id=formLeerCSV:file",
+      "targets": [
+        ["id=formLeerCSV:file", "id"],
+        ["name=formLeerCSV:file", "name"],
+        ["css=#formLeerCSV\\3A file", "css:finder"],
+        ["xpath=//input[@id='formLeerCSV:file']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Titulacion.csv"
+    }, {
+      "id": "dbf90b66-d024-4d69-a9cd-db6e49499641",
+      "comment": "",
+      "command": "click",
+      "target": "name=formLeerCSV:j_idt14",
+      "targets": [
+        ["name=formLeerCSV:j_idt14", "name"],
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='formLeerCSV:j_idt14']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f1f38e4-77cb-4520-ae39-63e309b9b7af",
+      "comment": "",
+      "command": "click",
+      "target": "name=j_idt6:j_idt7",
+      "targets": [
+        ["name=j_idt6:j_idt7", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='j_idt6:j_idt7']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31d7a40b-e141-4370-84b7-49700afc77f4",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'1041')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa00dfec-2bdc-4e8b-b459-e26149a80a2e",
       "comment": "",
       "command": "assertText",
-      "target": "id=texto",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
       "targets": [
-        ["id=texto", "id"],
-        ["css=#texto", "css:finder"],
-        ["xpath=//span[@id='texto']", "xpath:attributes"],
-        ["xpath=//h1[@id='cabecera']/span", "xpath:idRelative"],
-        ["xpath=//span", "xpath:position"],
-        ["xpath=//span[contains(.,'Hola Mundo')]", "xpath:innerText"]
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'1041')]", "xpath:innerText"]
       ],
-      "value": "Hola Mundo"
+      "value": "1041"
+    }, {
+      "id": "14aa5a27-f138-423f-bd5e-713a391f84a0",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5be28262-e415-47dd-b511-b66b61975bf8",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a027a5a-675f-4199-95cb-ba5809b54d11",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": "Grado en Ingeniería Informática"
+    }, {
+      "id": "7473c59f-e423-455d-8657-e4c9199639b6",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'240')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2305b056-d8d3-4863-adcf-5e4fc9d6a2aa",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'240')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4667c37c-2088-4a6f-a829-3c00f00a807a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'240')]", "xpath:innerText"]
+      ],
+      "value": "240"
+    }, {
+      "id": "2da0ac6b-0b1a-4656-9f2a-087760ac70cf",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1073')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09ff6946-dc1d-4f97-8fab-b8ab007e2591",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'1073')]", "xpath:innerText"]
+      ],
+      "value": "1073"
+    }, {
+      "id": "d8e948af-b3a5-4c61-b1aa-eefee4b2ed21",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Doble Grado en Ingeniería Informatica y Matemáticas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0bfe861-37d9-4089-84a7-419789e31604",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Doble Grado en Ingeniería Informatica y Matemáticas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a734bc8d-e477-4d6e-a3db-08abc2a05e17",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Doble Grado en Ingeniería Informatica y Matemáticas')]", "xpath:innerText"]
+      ],
+      "value": "Doble Grado en Ingeniería Informatica y Matemáticas"
+    }, {
+      "id": "ca0985b8-bf91-4a6a-a748-7c1b2d3977d3",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'372')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "645ef529-6304-42cb-81e0-b0e9ef793975",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'372')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "68010860-348b-4dfd-a776-1070ee4a4c72",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr[5]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'372')]", "xpath:innerText"]
+      ],
+      "value": "372"
     }]
   }],
   "suites": [{
-    "id": "bad4a78a-53f5-4e8e-937f-34e8dfb4a950",
+    "id": "d5087d0b-4b4a-4ef2-ad90-0bae80f36a70",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["1af0b1ef-8d2b-45b5-8d0e-61f36f018b51"]
+    "tests": ["f80d9e0d-f32a-4ad7-b675-2f320642f1e0"]
   }],
   "urls": ["http://localhost:8080/"],
   "plugins": []

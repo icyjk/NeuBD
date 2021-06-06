@@ -2,26 +2,31 @@ package ProyectoSII.backing;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
-import javax.enterprise.context.RequestScoped;
 
 import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionAsigMatri;
 import NeuBDProyectoSIIEjb.GestionCentro;
 import NeuBDProyectoSIIEjb.GestionLeerCSV;
+import NeuBDProyectoSIIEjb.GestionTitulacion;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 
 
 @Named(value = "Leercsv")
-@RequestScoped
-public class LeerCSVBB {
+@ViewScoped
+public class LeerCSVBB implements Serializable{
 
 	public static enum Modo {
         ALUMNO,
@@ -37,11 +42,27 @@ public class LeerCSVBB {
 	GestionCentro gestionCentro;
 	@Inject
 	GestionAsigMatri gestionAsigMatri;
+	@Inject
+	GestionTitulacion gestionTitulacion;
 	private Modo modo;
 	private Part part;
 	private String strModo;
-	private String strTitu;
-	 public Modo getModo() {
+	private int strTitu;
+	private List<Integer> titulaciones;
+	
+	@PostConstruct
+	public void init() throws NeuBDExceptions {
+		List<Titulacion> aux = gestionTitulacion.listaTitulacion();
+		 int cnt = 0;Integer i;
+		 titulaciones = new ArrayList<Integer>();
+		 while(cnt<aux.size()) {
+			 i = (Integer) aux.get(cnt).getCodigo();
+			 titulaciones.add(i);
+			 cnt++;
+		 }
+	}
+
+	public Modo getModo() {
 	        return modo;
 	    }
 
@@ -68,13 +89,23 @@ public class LeerCSVBB {
 		}
 	
 		
-	public String getStrTitu() {
+	public int getStrTitu() {
 			return strTitu;
 		}
 
-		public void setStrTitu(String strTitu) {
+		public void setStrTitu(int strTitu) {
 			this.strTitu = strTitu;
 		}
+		
+	public List<Integer> getTitulaciones() {
+		return titulaciones;
+		}
+
+		public void setTitulaciones(List<Integer> titulaciones) {
+			this.titulaciones = titulaciones;
+		}
+		
+		
 
 	public void seleccionModo() {
 		if(strModo.equals("al")) {//no deja utilizar switch con string en esta version de java
@@ -130,7 +161,8 @@ public class LeerCSVBB {
 				f = new File(ruta);
 				f.delete();
 				part.write(temp.toString());
-				gestionLeerCSV.insertarOptativaCSV(temp.toString(),new Titulacion(1, "prueba", 0, null, null, null, null) );			
+				Titulacion t = gestionTitulacion.visualizartitulacion(strTitu);
+				gestionLeerCSV.insertarOptativaCSV(temp.toString(),t );			
 				break;
 			case ENCUESTA:
 				temp = Files.createTempFile(null, ".csv");

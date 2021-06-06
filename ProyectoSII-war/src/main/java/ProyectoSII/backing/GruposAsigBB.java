@@ -1,15 +1,19 @@
 package ProyectoSII.backing;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.math3.stat.descriptive.summary.Product;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.util.LangUtils;
 
@@ -175,7 +179,24 @@ public class GruposAsigBB implements Serializable{
 	public List<Grupos_por_asignatura> listaGrupoPorAsignatura() throws NeuBDExceptions {
 		return gestionGrupoAsig.listaGruposPorAsignatura();
 	}
-    
+	public void onRowEdit(RowEditEvent<Grupos_por_asignatura> event) throws NeuBDExceptions {
+		gpa  = event.getObject();
+		gestionGrupoAsig.modificarGruposPorAsignatura(gpa);
+    }
+
+    public void onRowCancel(RowEditEvent<Grupos_por_asignatura> event) {
+        
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
     
     
 }

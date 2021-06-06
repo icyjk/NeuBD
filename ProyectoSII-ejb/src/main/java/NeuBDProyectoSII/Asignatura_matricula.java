@@ -15,8 +15,8 @@ import javax.persistence.NamedQuery;
 public class Asignatura_matricula implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	@Id @ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})private Asignatura asignatura;
-	@Id @ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})private Matricula matricula;
+	@Id @ManyToOne (cascade = {CascadeType.MERGE})private Asignatura asignatura;
+	@Id @ManyToOne (cascade = {CascadeType.MERGE})private Matricula matricula;
 	@ManyToOne(optional = true)
 	private Grupo grupo;
 	private boolean idioma,asignacionManual;

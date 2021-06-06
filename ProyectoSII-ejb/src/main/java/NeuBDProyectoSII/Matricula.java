@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @IdClass(NewId_Matricula_expediente.class)
 public class Matricula implements Serializable{
-	@Id @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})
+	@Id @ManyToOne(cascade = {CascadeType.MERGE})
 	private Expedientes expedientes;
 	@Id private String curso_academico;
 	private String estado;

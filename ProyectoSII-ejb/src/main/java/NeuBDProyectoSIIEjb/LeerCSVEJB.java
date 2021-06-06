@@ -256,16 +256,17 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                op.setDuracion(a.getDuracion());
 	                op.setIdioma_imparticion(a.getIdioma_imparticion());
 	                op.setNombre(a.getNombre());
-	                op.setUnidad_temporal(a.getUnidad_temporal());
-	                lista.add(op);
+	                op.setUnidad_temporal(a.getUnidad_temporal());;
+	                //lista.add(op);
+	                em.remove(a);
 	                em.merge(op);
 	                
-	                lista.add(op);
+	                //lista.add(op);
 	               
             	}
             }
-            tit.setOptativa(lista);
-            em.merge(tit);
+            //tit.setOptativa(lista);
+            //em.merge(tit);
 	 }catch (IOException e) {  
 	        e.printStackTrace();
 	 } 

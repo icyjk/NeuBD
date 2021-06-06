@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	    xmlns:h="http://xmlns.jcp.org/jsf/html"
-		xmlns:f="http://xmlns.jcp.org/jsf/core">
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
 		
     <h:head>
         <title>
@@ -12,22 +13,25 @@
     </h:head>
     <h:body>
     	<h:form id="formLeerCSV" enctype="multipart/form-data">
-    		<h:selectOneMenu value="#{Leercsv.strModo}">
-    			<f:selectItem itemLabel="Alumno" itemValue="al"/>
-    			<f:selectItem itemLabel="Titulacion" itemValue="ti"/>
-    			<f:selectItem itemLabel="Asignatura" itemValue="as"/>
-    			<f:selectItem itemLabel="Optativa" itemValue="op"/>
-    			<f:selectItem itemLabel="Encuesta" itemValue="en"/>
-    			<f:selectItem itemLabel="Clase" itemValue="cl"/>
+    		<h:selectOneMenu id="selectorImportacion" value="#{Leercsv.strModo}">
+    			<f:selectItem id="opcionAlumno" itemLabel="Alumno" itemValue="al"/>
+    			<f:selectItem id="opcionTitulacion" itemLabel="Titulacion" itemValue="ti"/>
+    			<f:selectItem id="opcionAsignatura" itemLabel="Asignatura" itemValue="as"/>
+    			<f:selectItem id="opcionOptativa" itemLabel="Optativa" itemValue="op"/>
+    			<f:selectItem id="opcionEncuesta" itemLabel="Encuesta" itemValue="en"/>
+    			<f:selectItem id="opcionClase" itemLabel="Clase" itemValue="cl"/>
     		</h:selectOneMenu> 
+    		<p:selectOneMenu id="titulacion" value="#{Leercsv.strTitu}">
+                        <f:selectItems id="titulacionSeleccionada" value="#{Leercsv.titulaciones}" />
+            </p:selectOneMenu>
 	    	<hr/>
 	    	<h:inputFile id="file"  value="#{Leercsv.part}" />
-	    	<h:commandButton value="Insertar" action="#{Leercsv.ejecutarAccion()}"/>
+	    	<h:commandButton id="botonInsertar" value="Insertar" action="#{Leercsv.ejecutarAccion()}"/>
 	    	 
 	    	
     	</h:form>
     	<h:form>
-    		<h:commandButton value="Cancelar" action="index.xhtml"/> 
+    		<h:commandButton id="volver" value="Volver" action="index.xhtml"/> 
     	</h:form>
     </h:body>
 </html>

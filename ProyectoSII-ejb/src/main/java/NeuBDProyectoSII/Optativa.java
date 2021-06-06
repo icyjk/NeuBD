@@ -1,6 +1,8 @@
 package NeuBDProyectoSII;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
@@ -10,7 +12,7 @@ public class Optativa extends Asignatura {
 	
 	private int plazas;
 	private String mencion;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Titulacion titulacion;
 	
 	public Optativa() {

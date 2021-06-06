@@ -1,0 +1,246 @@
+{
+  "id": "04ba91a4-3c88-499b-9d22-c85d00b8fa28",
+  "version": "2.0",
+  "name": "Proyecto SII",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "15cc3bf5-12da-42d6-8742-de2258a7842e",
+    "name": "Untitled",
+    "commands": [{
+      "id": "88d1255a-3971-46dc-90c4-81afc91b589b",
+      "comment": "",
+      "command": "open",
+      "target": "/ProyectoSII-war/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "28e1f54d-cf93-431e-8888-688a312940ac",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "767x699",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "48e4f05e-3b32-44d9-92f4-4877f1c809a4",
+      "comment": "",
+      "command": "click",
+      "target": "id=formLeerCSV:selectorImportacion",
+      "targets": [
+        ["id=formLeerCSV:selectorImportacion", "id"],
+        ["name=formLeerCSV:selectorImportacion", "name"],
+        ["css=#formLeerCSV\\3AselectorImportacion", "css:finder"],
+        ["xpath=//select[@id='formLeerCSV:selectorImportacion']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "41fc8e5f-69d1-4cf4-beff-d5cdda7d7ded",
+      "comment": "",
+      "command": "select",
+      "target": "id=formLeerCSV:selectorImportacion",
+      "targets": [],
+      "value": "label=Titulacion"
+    }, {
+      "id": "dff3abf5-9219-419d-9bd9-d6fbff0a61b5",
+      "comment": "",
+      "command": "click",
+      "target": "id=formLeerCSV:file",
+      "targets": [
+        ["id=formLeerCSV:file", "id"],
+        ["name=formLeerCSV:file", "name"],
+        ["css=#formLeerCSV\\3A file", "css:finder"],
+        ["xpath=//input[@id='formLeerCSV:file']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "55add23d-1ce4-42cc-8c23-937469b2e548",
+      "comment": "",
+      "command": "type",
+      "target": "id=formLeerCSV:file",
+      "targets": [
+        ["id=formLeerCSV:file", "id"],
+        ["name=formLeerCSV:file", "name"],
+        ["css=#formLeerCSV\\3A file", "css:finder"],
+        ["xpath=//input[@id='formLeerCSV:file']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Titulacion.csv"
+    }, {
+      "id": "ca994ca1-ac8f-4666-aba0-df4f60386205",
+      "comment": "",
+      "command": "click",
+      "target": "id=formLeerCSV:botonInsertar",
+      "targets": [
+        ["id=formLeerCSV:botonInsertar", "id"],
+        ["name=formLeerCSV:botonInsertar", "name"],
+        ["css=#formLeerCSV\\3A botonInsertar", "css:finder"],
+        ["xpath=//input[@id='formLeerCSV:botonInsertar']", "xpath:attributes"],
+        ["xpath=//form[@id='formLeerCSV']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7aa521dd-28b0-4b56-898d-9bb5ecf8f40d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//select[@id='formLeerCSV:selectorImportacion']/option[2]",
+      "targets": [
+        ["css=#formLeerCSV\\3AselectorImportacion > option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='ti']", "xpath:attributes"],
+        ["xpath=//select[@id='formLeerCSV:selectorImportacion']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Titulacion')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "36b600f8-1074-4062-bf0b-e09a6a6b11dc",
+      "comment": "",
+      "command": "click",
+      "target": "name=j_idt6:j_idt7",
+      "targets": [
+        ["name=j_idt6:j_idt7", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='j_idt6:j_idt7']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0bb454d-0d67-44fb-9861-9b5d0b59f8b0",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'1041')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "93d4a4b5-ced8-42ca-a022-29411e5ad9c1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'1041')]", "xpath:innerText"]
+      ],
+      "value": "1041"
+    }, {
+      "id": "09ea260d-690f-4b5d-a2be-97e2834624d0",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4d843cc-0bea-42e1-8651-5ed5fb7a6eed",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0f8a18c-16f9-4e69-845c-d8024af51db9",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a185498c-e3b2-4fc1-93b4-7027e5c1102c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8525631-7e33-4c61-a59a-b583c32d10c0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Grado en Ingeniería Informática')]", "xpath:innerText"]
+      ],
+      "value": "Grado en Ingeniería Informática"
+    }, {
+      "id": "1e69b576-7fe7-49a8-9487-e24790e157eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'240')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f46b67f-e524-4110-8fb7-406d97f69782",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='Titulaciones']/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'240')]", "xpath:innerText"]
+      ],
+      "value": "240"
+    }, {
+      "id": "ebe63871-10e0-4d79-a826-92c442780bdf",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:botonLeerCSV",
+      "targets": [
+        ["id=j_idt6:botonLeerCSV", "id"],
+        ["name=j_idt6:botonLeerCSV", "name"],
+        ["css=#j_idt6\\3A botonLeerCSV", "css:finder"],
+        ["xpath=//input[@id='j_idt6:botonLeerCSV']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "02430819-3a7b-49ae-b8a6-8413ca65c870",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["15cc3bf5-12da-42d6-8742-de2258a7842e"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
