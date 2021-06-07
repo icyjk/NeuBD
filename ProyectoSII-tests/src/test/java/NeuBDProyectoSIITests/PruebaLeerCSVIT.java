@@ -2,6 +2,7 @@ package NeuBDProyectoSIITests;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 public class PruebaLeerCSVIT {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -25,11 +25,12 @@ public class PruebaLeerCSVIT {
   private static final String CONTEXT_ROOT = "http://localhost:8080/ProyectoSII-war/";
   @Before
   public void setUp() {
-	
     driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
-    BaseDatos.inicializaBaseDatos(UNIDAD_PERSISTENCIA);
+    //BaseDatos.inicializaBaseDatos(UNIDAD_PERSISTENCIA);
+    File directory = new File("./");
+    System.out.println("\n\n"+directory.getAbsolutePath());
   }
   @After
   public void tearDown() {
@@ -49,6 +50,7 @@ public class PruebaLeerCSVIT {
   }
 
   @Test
+  @Ignore
   public void pruebaInsertarTiulaciones(){
 	  driver.get("http://localhost:8080/ProyectoSII-war/");
 	    driver.manage().window().setSize(new Dimension(767, 699));
@@ -64,7 +66,11 @@ public class PruebaLeerCSVIT {
 	    }
 	    driver.findElement(By.xpath("//select[@id=\'formLeerCSV:selectorImportacion\']/option[2]")).click();
 	    //driver.findElement(By.id("formLeerCSV:file")).click();
-	    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Titulacion.csv");
+	    
+	   
+	    File titulacion = new File("Titulacion.csv");
+	    
+	    driver.findElement(By.id("formLeerCSV:file")).sendKeys(titulacion.getAbsolutePath());
 	    driver.findElement(By.id("formLeerCSV:botonInsertar")).click(); 
 	    
 	    //Comprobar si se han introducido las titulaciones
@@ -84,6 +90,7 @@ public class PruebaLeerCSVIT {
 	    driver.findElement(By.id("Titulaciones:BotonInicio")).click();
   }
   @Test
+  @Ignore
   public void importarAsignaturaIT() {
     driver.get("http://localhost:8080/ProyectoSII-war/");
     driver.manage().window().setSize(new Dimension(767, 708));
@@ -98,7 +105,9 @@ public class PruebaLeerCSVIT {
       dropdown.findElement(By.xpath("//option[. = 'Titulacion']")).click();
     }
     driver.findElement(By.xpath("//select[@id=\'formLeerCSV:selectorImportacion\']/option[2]")).click();
-    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Titulacion.csv");
+    
+    File titulacion = new File("Titulacion.csv");
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys(titulacion.getAbsolutePath());
     driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
     driver.findElement(By.id("formIndex:botonLeerCSV")).click();
     driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
@@ -107,7 +116,8 @@ public class PruebaLeerCSVIT {
       dropdown.findElement(By.xpath("//option[. = 'Asignatura']")).click();
     }
     driver.findElement(By.xpath("//option[@value=\'as\']")).click();
-    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Oferta-asignaturas.csv");
+    File asignaturas = new File("Oferta-asignaturas.csv");
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys(asignaturas.getAbsolutePath());
     driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
     
     //Aprovhecharemos que hemos importado todas las asignaturas, para también probar el importar esas asignaturas optativas
@@ -118,7 +128,8 @@ public class PruebaLeerCSVIT {
       dropdown.findElement(By.xpath("//option[. = 'Optativa']")).click();
     }
     driver.findElement(By.xpath("//option[@value=\'op\']")).click();
-    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/OptativaPrueba.csv");
+    File optativas = new File("OptativaPrueba.csv");
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys(optativas.getAbsolutePath());
     driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
     
     //Comprobar que se han insertado

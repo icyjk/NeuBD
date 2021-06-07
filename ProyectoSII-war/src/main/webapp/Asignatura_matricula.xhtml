@@ -28,22 +28,22 @@
 		                </div>
 		            </f:facet>
 		            
-				<p:column headerText="Asignatura" sortBy="#{a_m.asignatura.nombre}" filterBy="#{a_m.asignatura.nombre}">
-                 	<h:outputText value="#{a_m.asignatura.nombre}"/>
+				<p:column id="Asignatura" headerText="Asignatura" sortBy="#{a_m.asignatura.nombre}" filterBy="#{a_m.asignatura.nombre}">
+                 	<h:outputText id="salidaAsignatura" value="#{a_m.asignatura.nombre}"/>
                 </p:column>  
                 
-                <p:column headerText="Matricula" sortBy="#{a_m.matricula}" filterBy="#{a_m.matricula}">
-                 	<h:outputText value="#{a_m.matricula}"/>
+                <p:column id="Matricula" headerText="Matricula" sortBy="#{a_m.matricula}" filterBy="#{a_m.matricula}">
+                 	<h:outputText id="salidaMatricula" value="#{a_m.matricula}"/>
                 </p:column>
                 
-            	<p:column headerText="Grupo" sortBy="#{a_m.grupo}" filterBy="#{a_m.grupo}">
-                 	<h:outputText value="#{a_m.grupo}"/>
+            	<p:column id="Grupo" headerText="Grupo" sortBy="#{a_m.grupo}" filterBy="#{a_m.grupo}">
+                 	<h:outputText id="salidaGrupo" value="#{a_m.grupo}"/>
                 </p:column>
                 
-            	<p:column headerText="Idioma" sortBy="#{a_m.idioma}" filterBy="#{a_m.idioma}">
+            	<p:column id="Idioma" headerText="Idioma" sortBy="#{a_m.idioma}" filterBy="#{a_m.idioma}">
                  	<p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{a_m.idioma}"/>
+                        <h:outputText id="salidaIdioma" value="#{a_m.idioma}"/>
                     </f:facet>
                     <f:facet name="input">
                         <p:inputText id="modelInputIdioma" value="#{a_m.idioma}" style="width:100%"/>
@@ -51,10 +51,10 @@
                 	</p:cellEditor>
                 </p:column>
                 
-                <p:column headerText="Asignacion Manual" sortBy="#{a_m.asignacionManual}" filterBy="#{a_m.asignacionManual}">
+                <p:column id="AsignacionManual" headerText="Asignacion Manual" sortBy="#{a_m.asignacionManual}" filterBy="#{a_m.asignacionManual}">
                  	<p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{a_m.asignacionManual}"/>
+                        <h:outputText id="salidaAsignacionManual" value="#{a_m.asignacionManual}"/>
                     </f:facet>
                     <f:facet name="input">
                         <p:inputText id="InputasignacionManual" value="#{a_m.asignacionManual}" style="width:100%"/>
@@ -68,7 +68,7 @@
 			</p:dataTable>
 		</h:form>
 		<h:form>
-			<h:commandButton action="index.xhtml" value="Volver" />
+			<h:commandButton id="btonVolverAsig" action="index.xhtml" value="Volver" />
 		</h:form>
 	</h:body>
 </html>

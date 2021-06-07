@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -29,7 +30,7 @@ public class Grupo implements Serializable{
 	private List<Grupos_por_asignatura> grupo_por_asignatura;
 	@ManyToOne(optional = true)
 	private Grupo grupos;
-	@OneToMany (mappedBy = "grupo")
+	@OneToMany (mappedBy = "grupo",fetch = FetchType.EAGER)
 	private List<Clase> clases;
 	@OneToMany (mappedBy="grupo")
 	private List<Asignatura_matricula> asigMatriculas;

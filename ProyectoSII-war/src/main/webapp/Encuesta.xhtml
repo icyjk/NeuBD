@@ -13,7 +13,7 @@
 	<h:body>
 		<h:form id="encuesta">           
 			<p:dataTable value="#{encuesta.listaEncuesta}" var="e" widgetVar="EncuestaTable"
-            emptyMessage="Ningun expediente con esos filtros"
+            emptyMessage="Ninguna encuesta con esos filtros"
             filteredValue="#{encuesta.encuestaFiltro}">
             	
             		<f:facet name="header">
@@ -23,25 +23,22 @@
 		                </div>
 		            </f:facet>
 	
-            	<p:column field="date" headerText="Fecha de envio" filterMatchMode="range">
-                <f:facet name="filter">
-                    <p:datePicker selectionMode="range" onchange="PF('EncuestaTable').filter()" />
-                </f:facet>
-            </p:column>
+            	<p:column id="fechaEnvio" headerText="Fecha envio" sortBy="#{e.fecha_de_envio}" filterBy="#{e.fecha_de_envio}">
+                 	<h:outputText id="salidafechaEnvio" value="#{e.fecha_de_envio}"/>
+                </p:column>
                 
-            	<p:column headerText="Expediente" sortBy="#{e.expedientes}" filterBy="#{e.expedientes}">
-                 	<h:outputText value="#{e.expedientes}"/>
+            	<p:column id="ExpedientesEncuesta" headerText="Expediente" sortBy="#{e.expedientes.num_expediente}" filterBy="#{e.expedientes.num_expediente}">
+                 	<h:outputText id="salidaExpedientesEncuesta" value="#{e.expedientes.num_expediente}"/>
                 </p:column>
 	
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{encuesta.modificar(e)}"/>
-                	<h:commandButton value="Eliminar" action="#{encuesta.eliminar(e)}"/>
-                </h:column>
+                <p:column>
+                	<h:commandButton id="BtonModificarEncuesta" value="Modificar" action="#{encuesta.modificar(e)}"/>
+                	<h:commandButton id="BtonEliminarEncuesta" value="Eliminar" action="#{encuesta.eliminar(e)}"/>
+                </p:column>
                         
 			</p:dataTable>
 			
-			<h:commandButton value="Inicio" action="index.xhtml"  />
-			<h:commandButton value="Edicion" action="edicionEncuesta.xhtml" />
+			<h:commandButton id="BtonInicioEncuesta" value="Inicio" action="index.xhtml"  />
 		</h:form>
 	</h:body>
 	</html>

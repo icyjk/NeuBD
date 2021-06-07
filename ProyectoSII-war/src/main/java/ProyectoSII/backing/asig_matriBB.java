@@ -34,7 +34,9 @@ import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 @Named(value = "asig_matri")
 @ViewScoped
 public class asig_matriBB implements Serializable {
-	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	public static enum Modo {
@@ -171,7 +173,7 @@ public class asig_matriBB implements Serializable {
 		gr = gestionGrupo.visualizarGrupo(asig.getGrupo().getId());
 		ma = gestionMatricula.visualizarMatricula(asig.getMatricula());
 	    setModo(Modo.MODIFICAR);
-	    return "edicionAsignatura_matricula.xhtml";
+	    return "edicionAsignatura_matriculas.xhtml";
 	}
 	  
 	  

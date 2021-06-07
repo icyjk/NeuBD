@@ -125,6 +125,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	                }
 	                Matricula m = new Matricula(expe, curso, strActivo, numArchivo, turnoPref, cambiarAFecha(fechaMatricula), "", gruposAsig, null);
 	                em.merge(m);
+	                
 	                /*
 	                lista = a.getExpedientes();
 	                lista.add(expe);

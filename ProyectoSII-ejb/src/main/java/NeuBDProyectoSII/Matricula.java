@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
@@ -28,7 +29,7 @@ public class Matricula implements Serializable{
 	private Date fecha_matricula;
 	private String nuevo_ingreso;
 	private String listado_asignaturas;
-	@OneToMany(mappedBy = "matricula",cascade = {CascadeType.REMOVE,CascadeType.MERGE})
+	@OneToMany(mappedBy = "matricula",cascade = {CascadeType.REMOVE,CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private List<Asignatura_matricula> asignatura_matricula;
 	
 	public Matricula () {

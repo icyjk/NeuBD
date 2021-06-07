@@ -20,7 +20,7 @@ public class Alumno {
 	@Id @GeneratedValue
 	private int id;
 	private String dni,nombre,primer_apellido,segundo_apellido,email_personal,email_institucional,movil,telefono,direccion,localidad,provincia,cp;
-	@OneToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "alumno", cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	private List<Expedientes> expedientes;
 
 	

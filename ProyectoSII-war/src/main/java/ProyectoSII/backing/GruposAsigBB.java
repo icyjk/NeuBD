@@ -168,11 +168,11 @@ public class GruposAsigBB implements Serializable{
 	public String eliminar(Grupos_por_asignatura g) throws NeuBDExceptions {
         try {
             gestionGrupoAsig.eliminarGruposPorAsignatura(g);
+            return "grupoAsig.xhtml";
     
         } catch (NeuBDExceptions e) {
             return "index.xhtml";
         }
-        return null;
     }
 	
 	

@@ -16,29 +16,29 @@
 
 		<h:form id="asig_matri">
         	<h:panelGrid columns="3">
-            	<h:outputText value="Asignatura"/>
+            	<h:outputText id="outputAsignatura" value="Asignatura"/>
                 <h:outputText id ="asignatura" value="#{asig_matri.asignatura_matricula.asignatura}"/>
                 <h:message for="asignatura"/>
 
-                <h:outputText value="Matricula"/>
+                <h:outputText id="outputMatri" value="Matricula"/>
                 <h:outputText id ="matricula" value="#{asig_matri.asignatura_matricula.matricula}"/>
                 <h:message for="matricula"/>
 
-                <h:outputText value="Grupo"/>
+                <h:outputText id="outputGrupo" value="Grupo"/>
                 <h:outputText id ="grupo" value="#{asig_matri.asignatura_matricula.grupo}"/>
                 <h:message for="grupo"/>
                 
-                <h:outputText value="Idioma"/>
+                <h:outputText id="outputIdioma" value="Idioma"/>
                 <h:inputText id ="idioma" value="#{asig_matri.asignatura_matricula.idioma}"/>
                 <h:message for="idioma"/>
 
-                <h:outputText value="AsignacionManual"/>
+                <h:outputText id="outputAsigManual" value="AsignacionManual"/>
                 <h:inputText id ="asignacionManual" value="#{asig_matri.asignatura_matricula.asignacionManual}"/>
                 <h:message for="asignacionManual"/>
                 
       
-                <h:commandButton value="#{asig_matri.accion}" action="#{asig_matri.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="Asignatura_matricula.xhtml"/>
+                <h:commandButton id="BtonAccion" value="#{asig_matri.accion}" action="#{asig_matri.ejecutarAccion()}"/>
+                <h:commandButton id="BtonVolver" value="Volver" action="Asignatura_matricula.xhtml"/>
 
                 <h:inputHidden value="#{asig_matri.modo}"/>
                 <h:inputHidden value="#{asig_matri.asignatura_matricula.idioma}"/>

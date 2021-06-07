@@ -1,220 +1,210 @@
 package ProyectoSII.backing;
 
-import java.sql.Date;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.math3.stat.descriptive.summary.Product;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.util.LangUtils;
 
-import NeuBDProyectoSII.Alumno;
+import NeuBDProyectoSII.Asignatura;
+import NeuBDProyectoSII.Expedientes;
+import NeuBDProyectoSII.Grupo;
+import NeuBDProyectoSII.Grupos_por_asignatura;
 import NeuBDProyectoSII.Matricula;
-import NeuBDProyectoSII.Titulacion;
+import NeuBDProyectoSIIEjb.GestionAsignatura;
+import NeuBDProyectoSIIEjb.GestionExpediente;
+import NeuBDProyectoSIIEjb.GestionGrupo;
+import NeuBDProyectoSIIEjb.GestionGrupoPorAsignatura;
 import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
-import ProyectoSII.backing.TitulacionBB.Modo;
-
 
 @Named(value = "matricula")
-@RequestScoped
-public class MatriculaBB {
+@ViewScoped
+public class MatriculaBB implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	public static enum Modo{
-		MODIFICAR,
-		ELIMINAR,
-		NOACCION
-	}
 
-	private Matricula matricula;
-	private Modo modo;
-	private List<Matricula> listamatricula;
+	public static enum Modo {
+        MODIFICAR, 
+        ELIMINAR,
+        NOACCION
+    };
+    
+    @Inject
+    GestionMatricula gestionMatricula;
+    @Inject
+    GestionExpediente gestionExpediente;
+ 
+    
+    private List<Matricula> listaMatricula;
     private List<Matricula> matriculaFiltro;
     private List<FilterMeta> filterBy;
+    private Modo modo;
+    private Matricula matri;
+    private Expedientes exp;
 	
-
-	@Inject
-	private GestionMatricula gestionMatricula;
-	private List<Matricula> listaMatriculas;
-
-	public MatriculaBB() {
-		matricula = new Matricula();
-		modo = Modo.NOACCION;
-	}
-	
-	@PostConstruct
-	public void init() throws NeuBDExceptions {
-		listaMatriculas = gestionMatricula.listaMatricula();
+    @PostConstruct
+    public void init() throws NeuBDExceptions {
+        listaMatricula = gestionMatricula.listaMatricula();
     }
-	
+
     public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
-        if (LangUtils.isValueBlank(filterText)) {
-            return true;
+    	String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+    	if (LangUtils.isValueBlank(filterText)) {
+    		return true;
+    	}
+
+    	Integer filterInt = getint(filterText);
+
+    	Matricula m = (Matricula) value;
+
+    	return 
+    			m.getCurso_academico() == filterText
+    			|| m.getEstado() == filterText
+    			||  m.getNum_archivo() == filterInt
+    			||m.getTurno_preferente() == filterText 
+    			|| m.getNuevo_ingreso() == filterText
+    			|| m.getListado_asignaturas() == filterText;
+
+    }
+
+
+        private Integer getint (String string) {
+            try {
+                return Integer.parseInt(string);
+            } catch (Exception e) {
+                return 0;
+            }
         }
-        
-        Integer filterInt = getint(filterText);
-        
-        Matricula m = (Matricula) value;
-        
-        return //m.getmatricula()
-        		 m.getCurso_academico() == filterText
-        		|| m.getEstado() == filterText
-        		|| m.getNum_archivo() == filterInt
-        		|| m.getTurno_preferente() == filterText
-        		//|| m.getFecha_matricula() == filterDate 
-        		|| m.getNuevo_ingreso() == filterText
-        		|| m.getListado_asignaturas() == filterText;
-        	
-    }
+
+  
     
-	
-    private Integer getint (String string) {
-    	try {
-			return Integer.parseInt(string);
-		} catch (Exception e) {
-			return 0;
-		}
-    }
+    public Modo getModo() {
+  		return modo;
+  	}
+  	public void setModo(Modo modo) {
+  		this.modo = modo;
+  	}
+  	
+    public String getAccion() throws NeuBDExceptions {
+        switch (modo) {
+            case MODIFICAR:
+                return "Modificar";
+            case ELIMINAR:
+                return "Eliminar";
+        }
+        return null;
+	}
     
   
 	
 
-	public List<Matricula> getListamatricula() {
-		return listamatricula;
-	}
-
-	public void setListamatricula(List<Matricula> listamatricula) {
-		this.listamatricula = listamatricula;
-	}
-
-	public List<Matricula> getmatriculaFiltro() {
-		return matriculaFiltro;
-	}
-
-	public void setmatriculaFiltro(List<Matricula> matriculaFiltro) {
-		this.matriculaFiltro = matriculaFiltro;
-	}
-
-	public List<FilterMeta> getFilterBy() {
-		return filterBy;
-	}
-
-	public void setFilterBy(List<FilterMeta> filterBy) {
-		this.filterBy = filterBy;
-	}
-
-	public List<Matricula> getListaMatriculas() {
-		return listaMatriculas;
-	}
-
-	public void setListaMatriculas(List<Matricula> listaMatriculas) {
-		this.listaMatriculas = listaMatriculas;
-	}
-
-	public Matricula getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Matricula matricula) {
-		this.matricula = matricula;
-	}
-
 	public GestionMatricula getGestionMatricula() {
 		return gestionMatricula;
 	}
-
 	public void setGestionMatricula(GestionMatricula gestionMatricula) {
 		this.gestionMatricula = gestionMatricula;
 	}
-
-	public Modo getModo() {
-		return modo;
+	public List<Matricula> getListaMatricula() {
+		return listaMatricula;
 	}
-
-	public void setModo(Modo modo) {
-		this.modo = modo;
+	public void setListaMatricula(List<Matricula> listaMatricula) {
+		this.listaMatricula = listaMatricula;
 	}
-
-	public String getAccion() {
-		switch (modo) {
-		case MODIFICAR:
-			return "Modificar";
-		case ELIMINAR:
-			return "Eliminar";
-
-		}
-		return null;
+	public List<Matricula> getMatriculaFiltro() {
+		return matriculaFiltro;
 	}
-
-	public String modificar(Matricula m) {
-		matricula = m;
-		setModo(Modo.MODIFICAR);
-		return "edicionMatricula.xhtml";
+	public void setMatriculaFiltro(List<Matricula> matriculaFiltro) {
+		this.matriculaFiltro = matriculaFiltro;
 	}
-
-
-	public String ejecutarAccion() {
-		try {
-			switch (modo) {
-			case MODIFICAR:
-				gestionMatricula.modificarMatricula(matricula);
-				break;
-			case ELIMINAR:
-				gestionMatricula.eliminarMatricula(matricula);
-				break;
-			}
-
-			return "edicionMatricula.xhtml";
-		} catch (NeuBDExceptions e) {
-			return "index.xhtml";
-		}
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
 	}
-
-	public String eliminarMatricula(Matricula m) throws NeuBDExceptions{
-		try {
-			gestionMatricula.eliminarMatricula(m);
-
-		} catch (NeuBDExceptions e) {
-			return "index.xhtml";
-		}
-		return null;
-
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
 	}
-
-	public Matricula visualizarMatricula(Matricula mat) throws NeuBDExceptions{
-		Matricula m=null;
-
-		try {
-
-			m = gestionMatricula.visualizarMatricula(mat);
-
-		} catch (NeuBDExceptions e) {
-			System.out.println("Matricula no encontrada");
-		}
-		return m;
-
+	public Matricula getmatri() {
+		return matri;
 	}
-
-
+	public void setmatri(Matricula matri) {
+		this.matri = matri;
+	}
+	public Expedientes getExp() {
+		return exp;
+	}
+	public void setExp(Expedientes exp) {
+		this.exp = exp;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public String modificar(Matricula m) throws NeuBDExceptions {
+	        matri = m;
+	        exp = gestionExpediente.visualizarExpediente(m.getExpedientes()); 
+	        setModo(Modo.MODIFICAR);
+	        return "edicionMatricula.xhtml";
+	    }
+	 public String ejecutarAccion() {
+	        try {
+	            switch (modo) {
+	                case MODIFICAR:
+	                    matri.setExpedientes(exp);
+	               	 	gestionMatricula.modificarMatricula(matri);
+	                    break;
+	            }   
+	            return "Matricula.xhtml";
+	        } catch (NeuBDExceptions e) {
+	            return "index.xhtml";
+	        }
+	    }
+	
+	public String eliminar(Matricula m) throws NeuBDExceptions {
+        try {
+            gestionMatricula.eliminarMatricula(m);
+    
+        } catch (NeuBDExceptions e) {
+            return "index.xhtml";
+        }
+        return null;
+    }
+	
+	
 	public List<Matricula> listaMatricula() throws NeuBDExceptions {
+		
 		return gestionMatricula.listaMatricula();
 	}
+	public void onRowEdit(RowEditEvent<Matricula> event) throws NeuBDExceptions {
+		matri  = event.getObject();
+		gestionMatricula.modificarMatricula(matri);
+    }
 
-	public void anyadirMatricula(Matricula m) throws NeuBDExceptions {
+    public void onRowCancel(RowEditEvent<Matricula> event) {
+        
+    }
 
-		try {
-			gestionMatricula.anyadirMatricula(m);
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
 
-		} catch (NeuBDExceptions e) {
-			System.out.println("Matricula no encontrada");
-		}
-	}
-
-
-
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    
+    
 }

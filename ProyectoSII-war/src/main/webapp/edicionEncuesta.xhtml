@@ -13,11 +13,11 @@
 	<h:body>
 		<f:view>
 			<h1>ENCUESTA</h1>
-			<h2>#{encuesta.accion} encuesta</h2>
+			<h2>#{encuesta.accion} Encuesta</h2>
 
 		<h:form id="encuesta">
         	<h:panelGrid columns="3">
-            	<p:outputLabel for="popup" value="Fecha_de_envio"/>
+            	<p:outputLabel id="calendario" for="popup" value="Fecha_de_envio"/>
             	<p:calendar id="popup" value="#{encuesta.encuesta.fecha_de_envio}"/>
             	<p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
             	 	 <p:panelGrid id="display" columns="2" columnClasses="label,value">
@@ -28,12 +28,12 @@
 					</p:panelGrid>
             	</p:dialog>
             	
-            	<h:outputText value="Expediente"/>
-                <h:inputText id ="expediente" value="#{encuesta.encuesta.expedientes}"/>
+            	<h:outputText id="outputExpedientesEn" value="Expediente"/>
+                <h:outputText id ="expediente" value="#{encuesta.encuesta.expedientes}"/>
                 <h:message for="expediente"/>
                                 
-                <h:commandButton value="#{encuesta.accion}" action="#{encuesta.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="index.xhtml"/>
+                <h:commandButton id="BtonAccionEnc" value="#{encuesta.accion}" action="#{encuesta.ejecutarAccion()}"/>
+                <h:commandButton id="BtonVolverEnc" value="Volver" action="index.xhtml"/>
 
                 <h:inputHidden value="#{encuesta.modo}"/>
 				<h:inputHidden value="#{encuesta.encuesta.fecha_de_envio}"/>

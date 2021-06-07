@@ -2,71 +2,64 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j">
+      xmlns:h="http://java.sun.com/jsf/html">
 
 	<h:head>	  
 		<title>
-			<h:outputText value="#{matricula.accion} matricula"/>
+			<h:outputText value="#{matricula.accion} Matricula"/>
 		</title>
 	</h:head>
 	<h:body>
 		<f:view>
-			<h1>MATRICULA</h1>
+			<h1>Matricula</h1>
 			<h2>#{matricula.accion} Matricula</h2>
 
-		<h:form id="Matricula">
+		<h:form id="matricula">
         	<h:panelGrid columns="3">
-            	
-            	
-            	
             	<h:outputText value="expedientes"/>
-                <h:outputText id ="expedientes" value="#{matricula.matricula.expedientes}"/>
+                <h:outputText id ="expedientes" value="#{matricula.matri.expedientes}"/>
                 <h:message for="expedientes"/>
-            	
-            	<h:outputText value="curso_academico"/>
-                <h:outputText id ="curso_academico" value="#{matricula.matricula.curso_academico}"/>
-                <h:message for="curso_academico"/>
-            	
-            	
-            	<h:outputText value="estado"/>
-                <h:inputText id ="estado" value="#{matricula.matricula.estado}"/>
+
+                <h:outputText value="Curso academico"/>
+                <h:outputText id ="curso_academico" value="#{matricula.matri.curso_academico}"/>
+                <h:message for="asignatura"/>
+				
+                <h:outputText value="Estado"/>
+                <h:outputText id ="estado" value="#{matricula.matri.estado}"/>
                 <h:message for="estado"/>
-
+                
                 <h:outputText value="num_archivo"/>
-                <h:inputText id ="num_archivo" value="#{matricula.matricula.num_archivo}"/>
+                <h:inputText id ="num_archivo" value="#{matricula.matri.num_archivo}"/>
                 <h:message for="num_archivo"/>
-
-                <h:outputText value="turno_preferente"/>
-                <h:inputText id ="turno_preferente" value="#{matricula.matricula.turno_preferente}"/>
+                
+                <h:outputText value="Turno Preferente"/>
+                <h:inputText id ="turno_preferente" value="#{matricula.matri.turno_preferente}"/>
                 <h:message for="turno_preferente"/>
                 
-                <h:outputText value="fecha_matricula"/>
-                <h:inputText id ="fecha_matricula" value="#{matricula.matricula.fecha_matricula}"/>
+                <h:outputText value="Fecha Matricula"/>
+                <h:inputText id ="fecha_matricula" value="#{matricula.matri.fecha_matricula}"/>
                 <h:message for="fecha_matricula"/>
                 
-                
-                <h:outputText value="nuevo_ingreso"/>
-                <h:inputText id ="nuevo_ingreso" value="#{matricula.matricula.nuevo_ingreso}"/>
+                <h:outputText value="Nuevo ingreso"/>
+                <h:inputText id ="nuevo_ingreso" value="#{matricula.matri.nuevo_ingreso}"/>
                 <h:message for="nuevo_ingreso"/>
                 
-                <h:outputText value="listado_asignaturas"/>
-                <h:inputText id ="listado_asignaturas" value="#{matricula.matricula.listado_asignaturas}"/>
-                <h:message for="listado_asignaturas"/>
+                <h:outputText value="Listado Asignaturas"/>
+                <h:inputText id ="listado_asignatura" value="#{matricula.matri.listado_asignatura}"/>
+                <h:message for="listado_asignatura"/>
                 
-                
-                <h:outputText value="asignatura_matricula"/>
-                <h:inputText id ="asignatura_matricula" value="#{matricula.matricula.asignatura_matricula}"/>
+                <h:outputText value="Asignatura Matricula"/>
+                <h:inputText id ="asignatura_matricula" value="#{matricula.matri.asignatura_matricula}"/>
                 <h:message for="asignatura_matricula"/>
-            
                 
                 
-                
-                <h:commandButton value="#{matricula.accion}" action="#{matricula.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="Matricula.xhtml"/>
+                <h:commandButton id= "BtonAccion" value="#{matricula.accion}" action="#{matricula.ejecutarAccion()}"/>
+                <h:commandButton id="BtonVolver" value="Volver" action="grupoAsig.xhtml"/>
 
                 <h:inputHidden value="#{matricula.modo}"/>
-                <h:inputHidden value="#{matricula.matricula.curso_academico}"/>
+				<h:inputHidden value="#{matricula.matri.curso_academico}"/>
+				<h:inputHidden value="#{matricula.exp}"/>
+				
 
             </h:panelGrid>
 		</h:form>		
@@ -74,7 +67,5 @@
 		</f:view>
 
 	</h:body>
-	
-	
 	
 </html>

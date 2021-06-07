@@ -1,73 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+ 	  xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
-        <title>Lista de matriculas</title>
+        <title>Lista de Matriculas</title>
     </h:head>
 
 	<h:body>
-		<h:form id="matricula">           
-			<p:dataTable value="#{matricula.listamatricula}" var="m" widgetVar="MatriculaTable"
+		<h:form id="matricula">
+			<p:growl id="msgs" showDetail="true"/>
+			<p:dataTable id="dataTableMatricula" value="#{matricula.listaMatricula()}" var="m" widgetVar="MatriculaTable"
             emptyMessage="Ninguna matricula con esos filtros"
-            filteredValue="#{matricula.matriculaFiltro}">
-            	
-            		<f:facet name="header">
+            filteredValue="#{matricula.matriculaFiltro}"
+            editable="true"
+            style="margin-bottom:20px">
+            
+            <p:ajax event="rowEdit" listener="#{matricula.onRowEdit}" update=":matricula:msgs"/>
+            <p:ajax event="rowEditCancel" listener="#{matricula.onRowCancel}" update=":matricula:msgs"/>
+            
+					<f:facet name="header">
 		                <div class="p-d-flex p-ai-center p-jc-between">
 		                    <span>Lista de Matriculas</span>
-		                    <p:inputText id="globalFilter" onkeyup="PF('MatriculasTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                    <p:inputText id="globalFilter" onkeyup="PF('MatriculaTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
 		                </div>
 		            </f:facet>
-	
+				
             	<p:column headerText="Expedientes" sortBy="#{m.expedientes}" filterBy="#{m.expedientes}">
-                 	<h:outputText value="#{m.expedientes}"/>
+                 	<h:outputText id="expedientes" value="#{m.expedientes}"/>
                 </p:column>
                 
-            	<p:column headerText="Curso academico" sortBy="#{m.curso_academico}" filterBy="#{m.curso_academico}">
-                 	<h:outputText value="#{m.curso_academico}"/>
+            	<p:column headerText="Curso Academico" sortBy="#{m.curso_academico}" filterBy="#{m.curso_academico}">
+                 	<h:outputText id="cursoacademico" value="#{m.curso_academico}"/>
+                </p:column>        
+                	
+            	<p:column headerText="Estado" sortBy="#{m.estado}" filterBy="#{m.estado}">
+                 	<h:outputText id="estado" value="#{m.estado}"/>
                 </p:column>
                 
-                <p:column headerText="Estado" sortBy="#{m.estado}" filterBy="#{m.curso_academico}">
-                 	<h:outputText value="#{m.curso_academico}"/>
-                </p:column>     
-                
-                 <p:column headerText="Numero de archivo" sortBy="#{m.num_archivo}" filterBy="#{m.num_archivo}">
-                 	<h:outputText value="#{m.num_archivo}"/>
-                </p:column>   
-                           
-                <p:column headerText="Turno preferente" sortBy="#{m.turno_preferente}" filterBy="#{m.turno_preferente}">
-                 	<h:outputText value="#{m.turno_preferente}"/>
+                <p:column headerText="Numero de archivo" sortBy="#{m.num_archivo}" filterBy="#{m.num_archivo}">
+                 	<h:outputText id="numeroarchivo" value="#{m.num_archivo}"/>
                 </p:column>
                 
-                <p:column headerText="Fecha de matricula" sortBy="#{m.fecha_matricula}" filterBy="#{m.fecha_matricula}">
-                 	<h:outputText value="#{m.fecha_matricula}"/>
+                <p:column headerText="Turno Preferente" sortBy="#{m.turno_preferente}" filterBy="#{m.turno_preferente}">
+                 	<h:outputText id="turnopreferete" value="#{m.turno_preferente}"/>
+                </p:column>
+                
+                <p:column headerText="Fecha Matricula" sortBy="#{m.fecha_matricula}" filterBy="#{m.fecha_matricula}">
+                 	<h:outputText id="fechamatricula" value="#{m.fecha_matricula}"/>
                 </p:column>
                 
                 <p:column headerText="Nuevo Ingreso" sortBy="#{m.nuevo_ingreso}" filterBy="#{m.nuevo_ingreso}">
-                 	<h:outputText value="#{m.nuevo_ingreso}"/>
+                 	<h:outputText id="nuevoingreso" value="#{m.nuevo_ingreso}"/>
                 </p:column>
                 
-                <p:column headerText="Listado de asignaturas" sortBy="#{m.listado_asignaturas}" filterBy="#{m.listado_asignaturas}">
-                 	<h:outputText value="#{m.listado_asignaturas}"/>
+                <p:column headerText="Listado Asignatura" sortBy="#{m.listado_asignaturas}" filterBy="#{m.listado_asignaturas}">
+                 	<h:outputText id="listadoasignatura" value="#{m.listado_asignaturas}"/>
                 </p:column>
                 
                 <p:column headerText="Asignatura Matricula" sortBy="#{m.asignatura_matricula}" filterBy="#{m.asignatura_matricula}">
-                 	<h:outputText value="#{m.asignatura_matricula}"/>
-                </p:column> 
-                
-                <p:column>
-                	<h:commandButton value="Modificar" action="#{matricula.modificar(m)}"/>
-                	
+                 	<h:outputText id="asignaturamatricula" value="#{m.asignatura_matricula}"/>
                 </p:column>
-                        
+                
+				<p:column style="width:6rem">
+                	<p:rowEditor id="seleccionEditar" editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+           		</p:column>
+				
 			</p:dataTable>
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton value="Edicion" action="edicionMatricula.xhtml"/>
+		</h:form>
+		<h:form>
+			<h:commandButton action="index.xhtml" value="Volver" />
 		</h:form>
 	</h:body>
 </html>

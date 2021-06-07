@@ -30,86 +30,54 @@ public class PruebaGrupoAsigIT{
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
     driver.get("http://localhost:8080/ProyectoSII-war/");
-    insertarDatosNecesarios();
   }
   @After
   public void tearDown() {
     driver.quit();
   }
   
-  private void crearCentro() {
-	    driver.findElement(By.id("formIndex:botonCentros")).click();
-	    driver.findElement(By.id("Centros:BotonCrear")).click();
-	    driver.findElement(By.id("centro:nombre")).click();
-	    driver.findElement(By.id("centro:nombre")).sendKeys("ETSi");
-	    driver.findElement(By.id("centro:direccion")).click();
-	    driver.findElement(By.id("centro:direccion")).sendKeys("Teatin");
-	    driver.findElement(By.id("centro:telefono")).click();
-	    driver.findElement(By.id("centro:telefono")).sendKeys("6");
-	    driver.findElement(By.id("centro:BotonAccion")).click();
-  }
-  private void crearGrupo() {
-	  
-  }
-  private void insertarDatosNecesarios() {
-	  crearCentro();
-	  //TITULACIONES 
-	  driver.findElement(By.id("formIndex:botonLeerCSV")).click();
-	    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
-	    {
-	      WebElement dropdown = driver.findElement(By.id("formLeerCSV:selectorImportacion"));
-	      dropdown.findElement(By.xpath("//option[. = 'Titulacion']")).click();
-	    }
-	    driver.findElement(By.xpath("//select[@id=\'formLeerCSV:selectorImportacion\']/option[2]")).click();
-	    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Titulacion.csv");
-	    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
-	   //ASIGNATURAS
-	    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
-	    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
-	    {
-	      WebElement dropdown = driver.findElement(By.id("formLeerCSV:selectorImportacion"));
-	      dropdown.findElement(By.xpath("//option[. = 'Asignatura']")).click();
-	    }
-	    driver.findElement(By.xpath("//option[@value=\'as\']")).click();
-	    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Oferta-asignaturas.csv");
-	    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
-	   crearGrupo();
-  }
-  
   @Test
-  @Ignore
-  public void grupoAsigITLista() {
+  public void buscarGrupoPorAsignatura() {
+    driver.get("http://localhost:8080/ProyectoSII-war/");
+    driver.manage().window().setSize(new Dimension(846, 715));
     driver.findElement(By.id("formIndex:botonGrupoAsig")).click();
-    driver.findElement(By.xpath("//tbody[@id=\'gruposAsig:dataTableGrupAsig_data\']/tr/td")).click();
-    assertThat(driver.findElement(By.cssSelector(".ui-widget-content:nth-child(1) > td:nth-child(1)")).getText(), is("1ºA"));
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:nombreAsig")).click();
+    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:CNombreAsig:filter")).sendKeys("Calc");
     assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:nombreAsig")).getText(), is("Calculo"));
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:cursoAcademic")).click();
     assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:cursoAcademic")).getText(), is("20/21"));
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:oferta")).click();
     assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:oferta")).getText(), is("true"));
+    assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:grupo")).getText(), is("1ºA"));
   }
   @Test
   @Ignore
-  public void editarGrupoAsigIT() {
-    driver.findElement(By.id("formIndex:botonGrupoAsig")).click();
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:oferta")).click();
-    assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:oferta")).getText(), is("true"));
-    driver.findElement(By.xpath("//div[@id=\'gruposAsig:dataTableGrupAsig:0:seleccionEditar\']/a/span")).click();
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:modelInput")).click();
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:modelInput")).sendKeys("false");
-    driver.findElement(By.xpath("//div[@id=\'gruposAsig:dataTableGrupAsig:0:seleccionEditar\']/a[2]")).click();
-    driver.findElement(By.xpath("//div[@id=\'gruposAsig:dataTableGrupAsig:0:j_idt11\']/div")).click();
-    assertThat(driver.findElement(By.xpath("//div[@id=\'gruposAsig:dataTableGrupAsig:0:j_idt11\']/div")).getText(), is("false"));
-  }
+  public void pruebaBuscarInventado() {
+	  driver.get("http://localhost:8080/ProyectoSII-war/");
+	    driver.manage().window().setSize(new Dimension(1015, 723));
+	    driver.findElement(By.id("formIndex:botonGrupoAsig")).click();
+	    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:CNombreAsig:filter")).click();
+	    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:CNombreAsig:filter")).sendKeys("inventado");
+	    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:CNombreAsig:filter")).click();
+	    assertThat(driver.findElement(By.cssSelector("td")).getText(), is("Ningun grupo asignatura con esos filtros"));
+}
   
   @Test
-  @Ignore
-  public void buscadorPorAsignatura() {
+  public void editarGruporAsig() {
+    driver.get("http://localhost:8080/ProyectoSII-war/");
+    driver.manage().window().setSize(new Dimension(1015, 719));
     driver.findElement(By.id("formIndex:botonGrupoAsig")).click();
-    driver.findElement(By.xpath("//tbody[@id=\'gruposAsig:dataTableGrupAsig_data\']/tr/td[2]")).click();
-    assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:nombreAsig")).getText(), is("Cálculo para la Computación"));
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:j_idt8:filter")).click();
-    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:j_idt8:filter")).sendKeys("Cálculo");
+    driver.findElement(By.cssSelector(".ui-icon-pencil")).click();
+    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:ofertaInput")).click();
+    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:ofertaInput")).sendKeys("false");
+    driver.findElement(By.xpath("//div[@id=\'gruposAsig:dataTableGrupAsig:0:seleccionEditar\']/a[2]/span")).click();
+    driver.findElement(By.xpath("//tbody[@id=\'gruposAsig:dataTableGrupAsig_data\']/tr/td[4]")).click();
+    assertThat(driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:oferta")).getText(), is("false"));
   }
+  @Test
+  public void eliminarGrupoAsig() {
+    driver.get("http://localhost:8080/ProyectoSII-war/");
+    driver.manage().window().setSize(new Dimension(1015, 720));
+    driver.findElement(By.id("formIndex:botonGrupoAsig")).click();
+    driver.findElement(By.id("gruposAsig:dataTableGrupAsig:0:BotonEliminar")).click();
+    assertThat(driver.findElement(By.xpath("//tbody[@id=\'gruposAsig:dataTableGrupAsig_data\']/tr/td")).getText(), is("Ningun grupo asignatura con esos filtros"));
+  }
+
 }
