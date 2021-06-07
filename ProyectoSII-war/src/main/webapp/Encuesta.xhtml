@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
@@ -10,26 +11,37 @@
     </h:head>
 
 	<h:body>
-		<h:form id="Encuesta">           
-			<h:dataTable value="#{Encuesta.listaEncuesta()}" var="e">
+		<h:form id="encuesta">           
+			<p:dataTable value="#{encuesta.listaEncuesta}" var="e" widgetVar="EncuestaTable"
+            emptyMessage="Ningun expediente con esos filtros"
+            filteredValue="#{encuesta.encuestaFiltro}">
+            	
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Encuesta</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('EncuestaTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
 	
-            	<h:column>
-                	<f:facet name="header">Fecha de envio</f:facet>
-                 	<h:outputText value="#{e.Fecha_de_envio}"/>
-                </h:column>
+            	<p:column field="date" headerText="Fecha de envio" filterMatchMode="range">
+                <f:facet name="filter">
+                    <p:datePicker selectionMode="range" onchange="PF('EncuestaTable').filter()" />
+                </f:facet>
+            </p:column>
+                
+            	<p:column headerText="Expediente" sortBy="#{e.expedientes}" filterBy="#{e.expedientes}">
+                 	<h:outputText value="#{e.expedientes}"/>
+                </p:column>
+	
                 <h:column>
-                	<f:facet name="header">Num_Expediente</f:facet>
-                 	<h:outputText value="#{e.expedientes.num_expediente}"/>
-                </h:column>
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{Encuesta.modificar(e)}"/>
-                	<h:commandButton value="Eliminar" action="#{Encuesta.eliminar(e)}"/>
+                	<h:commandButton value="Modificar" action="#{encuesta.modificar(e)}"/>
+                	<h:commandButton value="Eliminar" action="#{encuesta.eliminar(e)}"/>
                 </h:column>
                         
-			</h:dataTable>
+			</p:dataTable>
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton action="edicionEncuesta.xhtml" value="Edicion"/>
+			<h:commandButton value="Inicio" action="index.xhtml"  />
+			<h:commandButton value="Edicion" action="edicionEncuesta.xhtml" />
 		</h:form>
 	</h:body>
 	</html>

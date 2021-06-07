@@ -1,12 +1,18 @@
 package ProyectoSII.backing;
 
 import java.util.List;
+import java.util.Locale;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
+
 import NeuBDProyectoSII.Expedientes;
+import NeuBDProyectoSII.Grupos_por_asignatura;
 import NeuBDProyectoSIIEjb.ExpedienteEJB;
 import NeuBDProyectoSIIEjb.GestionExpediente;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
@@ -22,7 +28,9 @@ public class ExpedienteBB {
         NOACCION
     };
     
-   
+    private List<Expedientes> listaexpedientes;
+    private List<Expedientes> expedientesFiltro;
+    private List<FilterMeta> filterBy;
     private Expedientes expediente;
     private Modo modo;
     @Inject
@@ -33,6 +41,86 @@ public class ExpedienteBB {
 		expediente= new Expedientes();
 		modo=Modo.NOACCION;
 	}
+
+	@PostConstruct
+    public void init() throws NeuBDExceptions {
+		listaexpedientes = gestionExpediente.listaExpedientes();
+    }
+	
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+        Boolean filterBoolean = getBoolean(filterText);
+        Long filterlong = getlong(filterText);
+        Double filterdouble = getdouble(filterText);
+        
+        Expedientes e = (Expedientes) value;
+        
+        return e.getNum_expediente() == filterlong
+        		|| e.isActivo() == filterBoolean
+        		|| e.getNota_media_provisional() == filterdouble
+        		|| e.getCreditos_superado() == filterdouble
+        		|| e.getCredito_fb() == filterdouble
+        		|| e.getCredito_ob() == filterdouble
+        		|| e.getCredito_op() == filterdouble
+        		|| e.getCredito_cf() == filterdouble
+        		|| e.getCredito_pe() == filterdouble
+        		|| e.getCredito_tf() == filterdouble; 
+
+    }
+    
+    private Boolean getBoolean(String string) {
+        try {
+            return Boolean.getBoolean(string);
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+    
+    private long getlong(String string) {
+        try {
+            return Long.parseLong(string);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    private Double getdouble (String string) {
+        try {
+            return Double.parseDouble(string);
+        }
+        catch (Exception e) {
+            return 0.0;
+        }
+    }
+    
+	public List<Expedientes> getlistaexpedientes() {
+		return listaexpedientes;
+	}
+	public void setlistaexpedientes(List<Expedientes> listaexpedientes) {
+		this.listaexpedientes = listaexpedientes;
+	}
+	
+	public List<Expedientes> getexpedientesFiltro() {
+		return expedientesFiltro;
+	}
+	public void setexpedientesFiltro(List<Expedientes> expedientesFiltro) {
+		this.expedientesFiltro = expedientesFiltro;
+	}
+	
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
+	}
+
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
+	}
+    
+    
 	
 	 public Modo getModo() {
 	        return modo;
@@ -62,8 +150,6 @@ public class ExpedienteBB {
 	    }
 	  
 	  
-	  
-
 	  
 	  public String modificar(Expedientes ex) {
 	        expediente = ex;
@@ -131,6 +217,7 @@ public class ExpedienteBB {
 		}
 	
 }
+
 
 
 

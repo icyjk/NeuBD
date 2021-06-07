@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
@@ -11,75 +12,72 @@
 
 	<h:body>
 		<h:form id="Asignaturas">           
-			<h:dataTable value="#{asignaturas.listaAsignatura()}" var="a">
+			<p:dataTable value="#{asignaturas.listaAsignatura()}" var="a" widgetVar="AsignaturaTable"
+            emptyMessage="Ninguna asignatura con esos filtros"
+            filteredValue="#{asignaturas.asignaturafiltro()}">
 	
             	
-            	<h:column>
-                	<f:facet name="header">Referencia</f:facet>
+            	
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Asignaturas</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('AsignaturaTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
+            	
+            	<p:column headerText="Referencia" sortBy="#{a.referencia}" filterBy="#{a.referencia}">
                  	<h:outputText value="#{a.referencia}"/>
-                </h:column>
+                </p:column>
             	
             	
-            	<h:column>
-                	<f:facet name="header">Codigo</f:facet>
+            	<p:column headerText="Codigo" sortBy="#{a.codigo}" filterBy="#{a.codigo}">
                  	<h:outputText value="#{a.codigo}"/>
-                </h:column>
+                </p:column>
                 
-            	<h:column>
-                	<f:facet name="header">Nombre</f:facet>
+            	<p:column headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
                  	<h:outputText value="#{a.nombre}"/>
-                </h:column>        
+                </p:column>        
                 	
-            	<h:column>
-                	<f:facet name="header">Creditos</f:facet>
+            	<p:column headerText="Creditos" sortBy="#{a.creditos}" filterBy="#{a.creditos}">
                  	<h:outputText value="#{a.creditos}"/>
-                </h:column>
-             	<h:column>
-                	<f:facet name="header">Creditos Prácticos</f:facet>
+                </p:column>
+             	<p:column headerText="Credtios Practica" sortBy="#{a.creditos_practica}" filterBy="#{a.creditos_practica}">
                  	<h:outputText value="#{a.creditos_practica}"/>
-                </h:column>    
+                </p:column>    
                 
-                <h:column>
-                	<f:facet name="header">Creditos Teóricos</f:facet>
+                <p:column headerText="Creditos Teoria" sortBy="#{a.creditos_toeria}" filterBy="#{a.creditos_teoria}">
                  	<h:outputText value="#{a.creditos_teoria}"/>
-                </h:column>  
+                </p:column>  
                 
-                  <h:column>
-                	<f:facet name="header">Curso</f:facet>
-                 	<h:outputText value="#{a.creditos_teoria}"/>
-                </h:column> 
                 
-                  <h:column>
-                	<f:facet name="header">Carácter</f:facet>
+                  <p:column headerText="Caracter" sortBy="#{a.caracter}" filterBy="#{a.caracter}">
                  	<h:outputText value="#{a.caracter}"/>
-                </h:column> 
+                </p:column> 
                 
-                 <h:column>
-                	<f:facet name="header">Duración</f:facet>
+                 <p:column headerText="Duracion" sortBy="#{a.duracion}" filterBy="#{a.duracion}">
                  	<h:outputText value="#{a.duracion}"/>
-                </h:column> 
+                </p:column> 
                 
-                 <h:column>
-                	<f:facet name="header">Unidad Temporal</f:facet>
+                 <p:column headerText="Unidad Temporal" sortBy="#{a.unidad_temporal}" filterBy="#{a.unidad_temporal}" >
                  	<h:outputText value="#{a.unidad_temporal}"/>
-                </h:column> 
+                </p:column> 
                 
-                 <h:column>
-                	<f:facet name="header">Inglés</f:facet>
+                 <p:column headerText="Idioma de Imparticion" sortBy="#{a.idioma_imparticion}" filterBy="#{a.idioma_imparticion}">
                  	<h:outputText value="#{a.idioma_imparticion}"/>
-                </h:column> 
+                </p:column> 
                     
                 
                 
-                <h:column>
+                <p:column>
                 	<h:commandButton value="Modificar" action="#{asignaturas.modificar(a)}"/>
                 	<h:commandButton value="Eliminar" action="#{asignaturas.eliminar(a)}"/>
                 	<h:commandButton value="Horario" action="#{horario.verHorarioAsignatura(a)}"/>
-                </h:column>
+                </p:column>
                         
-			</h:dataTable>
+			</p:dataTable>
 			
 			<h:commandButton action="index.xhtml" value="Inicio" />
+			<h:commandButton action="Optativas.xhtml" value="Optativas" />
 		</h:form>
 	</h:body>
 	

@@ -6,7 +6,6 @@
 	<persistence-unit name="ProyectoPU" transaction-type="RESOURCE_LOCAL">
     <class>NeuBDProyectoSII.Prueba</class>
 		<class>NeuBDProyectoSII.Alumno</class>
-		<class>NeuBDProyectoSII.Usuario</class>
 		<class>NeuBDProyectoSII.Asignatura</class>
 		<class>NeuBDProyectoSII.Asignatura_matricula</class>
 		<class>NeuBDProyectoSII.Centro</class>
@@ -17,14 +16,8 @@
 		<class>NeuBDProyectoSII.Grupo</class>
 		<class>NeuBDProyectoSII.Grupos_por_asignatura</class>
 		<class>NeuBDProyectoSII.Matricula</class>
-		<class>NeuBDProyectoSII.NewId_Asignatura_matricula</class>
-		<class>NeuBDProyectoSII.NewId_Clase_grupo</class>
-		<class>NeuBDProyectoSII.NewId_GrupoPorAsignatura_grupo_asignatura</class>
-		<class>NeuBDProyectoSII.NewId_Matricula_expediente</class>
 		<class>NeuBDProyectoSII.Oferta_asignaturas</class>
 		<class>NeuBDProyectoSII.Optativa</class>
-		<class>NeuBDProyectoSII.Profesor</class>
-		<class>NeuBDProyectoSII.Secretario</class>
 		<class>NeuBDProyectoSII.Titulacion</class>
     	<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
@@ -37,9 +30,7 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.password" value="siipassword" />
-			<property
-				name="javax.persistence.sql-load-script-source"
-				value="db-inicial.sql" />
+
 		</properties>
 
 	</persistence-unit>

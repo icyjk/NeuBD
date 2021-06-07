@@ -16,20 +16,20 @@
 
 		<h:form id="titulacion">
         	<h:panelGrid columns="3">
-            	<h:outputText value="codigo"/>
+            	<h:outputText id="outputcodigo" value="codigo"/>
                 <h:outputText id ="codigo" value="#{Titulacion.titulacion.codigo}"/>
                 <h:message for="codigo"/>
 
-                <h:outputText value="nombre"/>
+                <h:outputText id ="outputnombre" value="nombre"/>
                 <h:inputText id ="nombre" value="#{Titulacion.titulacion.nombre}"/>
                 <h:message for="nombre"/>
 
-                <h:outputText value="creditos"/>
+                <h:outputText id ="outputcreditos" value="creditos"/>
                 <h:inputText id ="creditos" value="#{Titulacion.titulacion.creditos}"/>
                 <h:message for="creditos"/>
                 
-                <h:commandButton value="#{Titulacion.accion}" action="#{Titulacion.ejecutarAccion()}"/>
-                <h:commandButton value="Cancelar" action="index.xhtml"/>
+                <h:commandButton id ="BotonAccion" value="#{Titulacion.accion}" action="#{Titulacion.ejecutarAccion()}"/>
+                <h:commandButton id ="BotonCancelar" value="Cancelar" action="Titulaciones.xhtml"/>
 
                 <h:inputHidden value="#{Titulacion.modo}"/>
                 <h:inputHidden value="#{Titulacion.titulacion.codigo}"/>

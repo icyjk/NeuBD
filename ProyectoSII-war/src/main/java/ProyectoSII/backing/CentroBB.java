@@ -1,13 +1,19 @@
 package ProyectoSII.backing;
 
 import java.util.List;
+import java.util.Locale;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
+
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Centro;
+import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
 import NeuBDProyectoSIIEjb.GestionCentro;
 import NeuBDProyectoSIIexceptions.AsignaturaNoEncontradaException;
@@ -23,7 +29,9 @@ public class CentroBB {
         NOACCION
     };
 	
-    
+    private List<Centro> listacentros;
+    private List<Centro> centrosFiltro;
+    private List<FilterMeta> filterBy;
     private Centro centro;
     private Modo modo;
     @Inject
@@ -35,7 +43,64 @@ public class CentroBB {
 		modo=Modo.NOACCION;
 	}
 	
-	 public Modo getModo() {
+	@PostConstruct
+    public void init() throws NeuBDExceptions {
+		listacentros = gestionCentro.buscarTodosCentros();
+    }
+	
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+
+        Integer filterInteger = getInteger(filterText);
+        
+        Centro c = (Centro) value;
+        
+        return c.getId() == filterInteger
+        	   || c.getNombre().toString().toLowerCase().contains(filterText)
+        	   || c.getDireccion().toString().toLowerCase().contains(filterText)
+        	   || c.getTlf_conserjeria().toString().toLowerCase().contains(filterText);
+
+    }	
+    
+    private Integer getInteger(String string) {
+        try {
+            return Integer.getInteger(string);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    
+	
+	 public List<Centro> getListacentros() {
+		return listacentros;
+	}
+
+	public void setListacentros(List<Centro> listacentros) {
+		this.listacentros = listacentros;
+	}
+
+	public List<Centro> getCentrosFiltro() {
+		return centrosFiltro;
+	}
+
+	public void setCentrosFiltro(List<Centro> centrosFiltro) {
+		this.centrosFiltro = centrosFiltro;
+	}
+
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
+	}
+
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
+	}
+
+	public Modo getModo() {
 	        return modo;
 	 }
 	 
@@ -84,7 +149,7 @@ public class CentroBB {
 	                
 	            }
 	           
-	            return "Centros.xhtml";
+	            return "index.xhtml";
 	        } catch (NeuBDExceptions e) {
 	            return "index.xhtml";
 	        }
@@ -114,7 +179,7 @@ public class CentroBB {
 	    }
 	  
 	  public void eliminarCentro(Centro c) throws NeuBDExceptions {
-		  //gestionCentro.eliminarCentro(c);
+		  gestionCentro.eliminarCentro(c);
 	        
 	    }
 	  

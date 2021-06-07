@@ -1,11 +1,17 @@
 package ProyectoSII.backing;
 
 import java.util.List;
+import java.util.Locale;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
+
+import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionTitulacion;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
@@ -21,7 +27,9 @@ public class TitulacionBB {
         NOACCION
     };
 	
-    
+    private List<Titulacion> listatitulaciones;
+    private List<Titulacion> titulacionFiltro;
+    private List<Titulacion> filterBy;
     private  Titulacion titulacion;
     private Modo modo;
     @Inject
@@ -33,7 +41,64 @@ public class TitulacionBB {
 		modo=Modo.NOACCION;
 	}
 	
-	 public Modo getModo() {
+	@PostConstruct
+    public void init() throws NeuBDExceptions {
+		listatitulaciones = gestionTitulacion.listaTitulacion();
+    }
+	
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+       
+        Integer filterInteger= getInteger(filterText);
+        
+        Titulacion t = (Titulacion) value;
+        
+        return t.getCodigo() == filterInteger
+        		|| t.getNombre().toString().toLowerCase().contains(filterText)
+        		|| t.getCreditos() == filterInteger;
+
+    }
+    
+    private Integer getInteger(String string) {
+        try {
+            return Integer.getInteger(string);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+	
+    
+    
+    
+	 public List<Titulacion> getListatitulaciones() {
+		return listatitulaciones;
+	}
+
+	public void setListatitulaciones(List<Titulacion> listatitulaciones) {
+		this.listatitulaciones = listatitulaciones;
+	}
+
+	public List<Titulacion> getTitulacionFiltro() {
+		return titulacionFiltro;
+	}
+
+	public void setTitulacionFiltro(List<Titulacion> titulacionFiltro) {
+		this.titulacionFiltro = titulacionFiltro;
+	}
+
+	public List<Titulacion> getFilterBy() {
+		return filterBy;
+	}
+
+	public void setFilterBy(List<Titulacion> filterBy) {
+		this.filterBy = filterBy;
+	}
+
+	public Modo getModo() {
 	        return modo;
 	 }
 	 

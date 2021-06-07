@@ -16,24 +16,24 @@
 
 		<h:form id="centro">
         	<h:panelGrid columns="3">
-            	<h:outputText value="Id"/>
+            	<h:outputText id="outputid" value="Id"/>
                 <h:outputText id ="Id" value="#{centro.centro.id}"/>
                 <h:message for="Id"/>
 
-                <h:outputText value="nombre"/>
+                <h:outputText id="outputnombre" value="nombre"/>
                 <h:inputText id ="nombre" value="#{centro.centro.nombre}"/>
                 <h:message for="nombre"/>
 
-                <h:outputText value="direccion"/>
+                <h:outputText id="outputdireccion" value="direccion"/>
                 <h:inputText id ="direccion" value="#{centro.centro.direccion}"/>
                 <h:message for="direccion"/>
                 
-                <h:outputText value="telefono"/>
+                <h:outputText id="outputtelefono" value="telefono"/>
                 <h:inputText id ="telefono" value="#{centro.centro.tlf_conserjeria}"/>
                 <h:message for="telefono"/>
                 
-                <h:commandButton value="#{centro.accion}" action="#{centro.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="Centros.xhtml"/>
+                <h:commandButton id="BotonAccion" value="#{centro.accion}" action="#{centro.ejecutarAccion()}"/>
+                <h:commandButton id="BotonCancelar" value="Cancelar" action="Centros.xhtml"/>
 
                 <h:inputHidden value="#{centro.modo}"/>
                 <h:inputHidden value="#{centro.centro.id}"/>

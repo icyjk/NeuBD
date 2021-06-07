@@ -21,75 +21,98 @@ public class PruebaLeerCSVIT {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
+  private static final String UNIDAD_PERSISTENCIA = "ProyectoPU";
+  private static final String CONTEXT_ROOT = "http://localhost:8080/ProyectoSII-war/";
   @Before
   public void setUp() {
+	
     driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
+    BaseDatos.inicializaBaseDatos(UNIDAD_PERSISTENCIA);
   }
   @After
   public void tearDown() {
     driver.quit();
   }
-  @Test
-  @Ignore
-  public void pruebaLeerCSV() {
-	    driver.get("http://localhost:8080/ProyectoSII-war/");
-	    driver.manage().window().setSize(new Dimension(767, 692));
-	    driver.findElement(By.id("j_idt6:botonLeerCSV")).click();
-	    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
-	    driver.findElement(By.cssSelector(".ui-state-hover:nth-child(4)")).click();
-	    driver.findElement(By.id("formLeerCSV:selectorImportacion_1")).click();
-	    driver.findElement(By.id("formLeerCSV:file")).click();
-    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Titulacion.csv");
-    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
-    driver.findElement(By.name("j_idt6:j_idt7")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(1)")).click();
-    assertThat(driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(1)")).getText(), is("1041"));
-    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).click();
-    assertThat(driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).getText(), is("Grado en Ingeniería Informática"));
-    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(3)")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(3)")).click();
-    assertThat(driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(3)")).getText(), is("240"));
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(1)")).click();
-    assertThat(driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(1)")).getText(), is("1073"));
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(2)")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(2)")).click();
-    assertThat(driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(2)")).getText(), is("Doble Grado en Ingeniería Informatica y Matemáticas"));
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(3)")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(3)")).click();
-    assertThat(driver.findElement(By.cssSelector("tr:nth-child(5) > td:nth-child(3)")).getText(), is("372"));
-  }
-  
+
   @Test
   public void pruebaInsertarTiulaciones(){
+	  BaseDatos.inicializaBaseDatos(UNIDAD_PERSISTENCIA);
 	  driver.get("http://localhost:8080/ProyectoSII-war/");
 	    driver.manage().window().setSize(new Dimension(767, 699));
-	    driver.findElement(By.id("j_idt6:botonLeerCSV")).click();
+	    //Creo un centro para poder insertar las titulaciones
+	    driver.findElement(By.id("formIndex:botonCentros")).click();
+	    driver.findElement(By.id("Centros:BotonCrear")).click();
+	    driver.findElement(By.id("centro:nombre")).click();
+	    driver.findElement(By.id("centro:nombre")).sendKeys("ETSi");
+	    driver.findElement(By.id("centro:direccion")).click();
+	    driver.findElement(By.id("centro:direccion")).sendKeys("Teatin");
+	    driver.findElement(By.id("centro:telefono")).click();
+	    driver.findElement(By.id("centro:telefono")).sendKeys("6");
+	    driver.findElement(By.id("centro:BotonAccion")).click();
+	    
+	    //Me meto en insertar Titulaciones
+	    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
 	    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
 	    {
 	      WebElement dropdown = driver.findElement(By.id("formLeerCSV:selectorImportacion"));
 	      dropdown.findElement(By.xpath("//option[. = 'Titulacion']")).click();
 	    }
 	    driver.findElement(By.xpath("//select[@id=\'formLeerCSV:selectorImportacion\']/option[2]")).click();
-	    driver.findElement(By.id("formLeerCSV:file")).click();
+	    //driver.findElement(By.id("formLeerCSV:file")).click();
 	    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Titulacion.csv");
 	    driver.findElement(By.id("formLeerCSV:botonInsertar")).click(); 
-	    driver.findElement(By.name("j_idt6:j_idt7")).click();
-	    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(1)")).click();
-	    assertThat(driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(1)")).getText(), is("1041"));
-	    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).click();
-	    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).click();
-	    {
-	      WebElement element = driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)"));
-	      Actions builder = new Actions(driver);
-	      builder.doubleClick(element).perform();
-	    }
-	    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).click();
-	    assertThat(driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(2)")).getText(), is("Grado en Ingeniería Informática"));
-	    driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(3)")).click();
-	    assertThat(driver.findElement(By.cssSelector("tr:nth-child(1) > td:nth-child(3)")).getText(), is("240"));
-	    driver.findElement(By.id("j_idt6:botonLeerCSV")).click();
+	    
+	    //Comprobar si se han introducido las titulaciones
+	    driver.findElement(By.id("formIndex:botonTitulaciones")).click();
+	    //driver.findElement(By.id("Titulaciones:TablaTitulacion:0:SalidaCodigo")).click();
+	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr/td")).getText(), is("1041"));
+	    //driver.findElement(By.id("Titulaciones:TablaTitulacion:0:SalidaNombre")).click();
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:0:SalidaNombre")).getText(), is("Grado en Ingeniería Informática"));
+	    //driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr/td[3]")).click();
+	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr/td[3]")).getText(), is("240"));
+	    //driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td")).click();
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:4:SalidaNombre")).getText(), is("Doble Grado en Ingeniería Informatica y Matemáticas"));
+	    //driver.findElement(By.id("Titulaciones:TablaTitulacion:4:SalidaNombre")).click();
+	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td")).getText(), is("1073"));
+	    //driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td[3]")).click();
+	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td[3]")).getText(), is("372"));
+	    driver.findElement(By.id("Titulaciones:BotonInicio")).click();
+  }
+  @Test
+  public void importarAsignaturaIT() {
+    driver.get("http://localhost:8080/ProyectoSII-war/");
+    driver.manage().window().setSize(new Dimension(767, 708));
+    
+    //PRUEBA 
+    //Creo un centro para poder insertar las titulaciones
+    driver.findElement(By.id("formIndex:botonCentros")).click();
+    driver.findElement(By.id("Centros:BotonCrear")).click();
+    driver.findElement(By.id("centro:nombre")).sendKeys("ETSi");
+    driver.findElement(By.id("centro:direccion")).sendKeys("Teatin");
+    driver.findElement(By.id("centro:telefono")).sendKeys("6");
+    driver.findElement(By.id("centro:BotonAccion")).click();
+    
+    //
+    
+    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
+    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("formLeerCSV:selectorImportacion"));
+      dropdown.findElement(By.xpath("//option[. = 'Titulacion']")).click();
+    }
+    driver.findElement(By.xpath("//select[@id=\'formLeerCSV:selectorImportacion\']/option[2]")).click();
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Titulacion.csv");
+    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
+    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
+    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("formLeerCSV:selectorImportacion"));
+      dropdown.findElement(By.xpath("//option[. = 'Asignatura']")).click();
+    }
+    driver.findElement(By.xpath("//option[@value=\'as\']")).click();
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys("/home/alumno/Escritorio/Oferta-asignaturas.csv");
+    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
   }
 }

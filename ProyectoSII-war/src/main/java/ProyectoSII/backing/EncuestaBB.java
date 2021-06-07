@@ -1,15 +1,24 @@
 package ProyectoSII.backing;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
+
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Encuesta;
+import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
 import NeuBDProyectoSIIEjb.GestionEncuesta;
+import NeuBDProyectoSIIEjb.GestionExpediente;
+import NeuBDProyectoSIIEjb.GestionTitulacion;
 import NeuBDProyectoSIIexceptions.AsignaturaNoEncontradaException;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 
@@ -20,15 +29,17 @@ public class EncuestaBB {
 	public static enum Modo {
         MODIFICAR, 
         ELIMINAR,
-        CREAR,
         NOACCION
     };
 	
-    
+    private List<Encuesta> listaEncuesta;
+    private List<Encuesta> encuestaFiltro;
+    private List<FilterMeta> filterBy;
     private Encuesta encuesta;
     private Modo modo;
     @Inject
     private GestionEncuesta gestionEncuesta;
+
     
     
 	public EncuestaBB() {
@@ -36,7 +47,62 @@ public class EncuestaBB {
 		modo=Modo.NOACCION;
 	}
 	
-	 public Modo getModo() {
+	@PostConstruct
+    public void init() throws NeuBDExceptions {
+		listaEncuesta = gestionEncuesta.listaEncuestas();
+    }
+	
+	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+       
+        Long filterlong = getlong(filterText);
+        Encuesta e = (Encuesta) value;
+        
+        return e.getFecha_de_envio().toString().toLowerCase().contains(filterText)
+        		|| e.getExpedientes().getNum_expediente()== filterlong;
+        		
+
+    }
+    
+	private long getlong(String string) {
+        try {
+            return Long.parseLong(string);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+	
+	
+	
+	 public List<Encuesta> getListaEncuesta() {
+		return listaEncuesta;
+	}
+
+	public void setListaEncuesta(List<Encuesta> listaEncuesta) {
+		this.listaEncuesta = listaEncuesta;
+	}
+
+	public List<Encuesta> getEncuestaFiltro() {
+		return encuestaFiltro;
+	}
+
+	public void setEncuestaFiltro(List<Encuesta> encuestaFiltro) {
+		this.encuestaFiltro = encuestaFiltro;
+	}
+
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
+	}
+
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
+	}
+
+	public Modo getModo() {
 	        return modo;
 	 }
 	 
@@ -50,8 +116,7 @@ public class EncuestaBB {
 	                return "Modificar";
 	            case ELIMINAR:
 	                return "Eliminar";
-	            case CREAR:
-	            	return "Crear";
+
 	        }
 	        return null;
 	 }
@@ -64,10 +129,6 @@ public class EncuestaBB {
 	        this.encuesta = encuesta;
 	    }
 	  
-	  
-	  
-
-	  
 	  public String modificar(Encuesta enc) {
 	        encuesta = enc;
 	        setModo(Modo.MODIFICAR);
@@ -79,15 +140,12 @@ public class EncuestaBB {
 	        try {
 	            switch (modo) {
 	                case MODIFICAR:
-	                    
 	                    gestionEncuesta.modificarEncuesta(encuesta);
 	                    break;
 	                case ELIMINAR:
 	                    gestionEncuesta.eliminarEncuesta(encuesta);
 	                    break;
-	                    
-	                case CREAR:
-	                	gestionEncuesta.ImportarEncuesta(encuesta);
+
 	                
 	            }
 	           
@@ -97,8 +155,8 @@ public class EncuestaBB {
 	        }
 	    }
 	  
-	  
-	  public String eliminar(Encuesta enc) throws NeuBDExceptions {
+
+	public String eliminar(Encuesta enc) throws NeuBDExceptions {
 	        try {
 	            gestionEncuesta.eliminarEncuesta(enc);
 	    
@@ -121,18 +179,11 @@ public class EncuestaBB {
 	        return enc;
 	    }
 
-	  
-	  
-	  public String crearEncuesta() {
-	        setModo(Modo.CREAR);
-	        return "edicionEncuestas.xhtml";
-	    }
-		
-	  
 		
 		public List<Encuesta> listaEncuesta() throws NeuBDExceptions {
 			return gestionEncuesta.listaEncuestas();
 		}
+		
 	
 }
 

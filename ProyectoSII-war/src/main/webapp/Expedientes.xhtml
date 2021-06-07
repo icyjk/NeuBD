@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
@@ -10,68 +11,67 @@
     </h:head>
 
 	<h:body>
-		<h:form id="Expedientes">           
-			<h:dataTable value="#{expediente.listaExpediente()}" var="c">
+		<h:form id="Expedientes">   
+			<h:commandButton id="BotonInicio" action="index.xhtml" value="Inicio" />     
+			<p:dataTable id="TablaExpedientes" value="#{expediente.listaexpedientes}" var="c" widgetVar="ExpedientesTable"
+            emptyMessage="Ningun expediente con esos filtros"
+            filteredValue="#{expediente.expedientesFiltro}">
+            	
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Expedientes</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('ExpedientesTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
 	
-            	<h:column>
-                	<f:facet name="header">Numero Expediente</f:facet>
-                 	<h:outputText value="#{c.num_expediente}"/>
-                </h:column>
+            	<p:column id="Numexpediente" headerText="Expediente" sortBy="#{c.num_expediente}" filterBy="#{c.num_expediente}">
+                 	<h:outputText id="SalidaNumexpediente" value="#{c.num_expediente}"/>
+                </p:column>
                 
-            	<h:column>
-                	<f:facet name="header">Activo</f:facet>
-                 	<h:outputText value="#{c.activo}"/>
-                </h:column>        
-                	
-            	<h:column>
-                	<f:facet name="header">Nota Media Provisional</f:facet>
-                 	<h:outputText value="#{c.nota_media_provisional}"/>
-                </h:column>
+            	<p:column id="activo" headerText="Activo" sortBy="#{c.activo}" filterBy="#{c.activo}">
+                 	<h:outputText id="SalidaActivo" value="#{c.activo}"/>
+                </p:column>
                 
-             	<h:column>
-                	<f:facet name="header">Creditos superados</f:facet>
-                 	<h:outputText value="#{c.creditos_superado}"/>
-                </h:column>
+                <p:column id="NotaMedia" headerText="Nota Media Provisional" sortBy="#{c.nota_media_provisional}" filterBy="#{c.nota_media_provisional}">
+                 	<h:outputText id="SalidaNotaMedia" value="#{c.nota_media_provisional}"/>
+                </p:column>     
                 
-                <h:column>
-                	<f:facet name="header">Creditos fb</f:facet>
-                 	<h:outputText value="#{c.credito_fb}"/>
-                </h:column>
+                 <p:column id="CreditosS" headerText="Creditos superados" sortBy="#{c.creditos_superado}" filterBy="#{c.creditos_superado}">
+                 	<h:outputText id="SalidaCreditosS" value="#{c.creditos_superado}"/>
+                </p:column>   
                 
-                <h:column>
-                	<f:facet name="header">Creditos ob</f:facet>
-                 	<h:outputText value="#{c.credito_ob}"/>
-                </h:column>
+                <p:column id="Creditosfb" headerText="Creditos fb" sortBy="#{c.credito_fb}" filterBy="#{c.credito_fb}">
+                 	<h:outputText id="SalidaCreditosfb" value="#{c.credito_fb}"/>
+                </p:column>  
                 
-                <h:column>
-                	<f:facet name="header">Creditos op</f:facet>
-                 	<h:outputText value="#{c.credito_op}"/>
-                </h:column>               
+                <p:column id="Creditosob" headerText="Creditos ob" sortBy="#{c.credito_ob}" filterBy="#{c.credito_ob}">
+                 	<h:outputText id="SalidaCreditosob" value="#{c.credito_ob}"/>
+                </p:column>
                 
-                <h:column>
-                	<f:facet name="header">Creditos cf</f:facet>
-                 	<h:outputText value="#{c.credito_cf}"/>
-                </h:column>
+                <p:column id="Creditosop" headerText="Creditos op" sortBy="#{c.credito_op}" filterBy="#{c.credito_op}">
+                 	<h:outputText id="SalidaCreditosop" value="#{c.credito_op}"/>
+                </p:column>
                 
-                <h:column>
-                	<f:facet name="header">Creditos pe</f:facet>
-                 	<h:outputText value="#{c.credito_pe}"/>
-                </h:column>
+                <p:column id="Creditoscf" headerText="Creditos cf" sortBy="#{c.credito_cf}" filterBy="#{c.credito_cf}">
+                 	<h:outputText id="SalidaCreditoscf" value="#{c.credito_cf}"/>
+                </p:column>
                 
-                <h:column>
-                	<f:facet name="header">Creditos tf</f:facet>
-                 	<h:outputText value="#{c.credito_tf}"/>
-                </h:column> 
+                <p:column id="Creditospe" headerText="Creditos pe" sortBy="#{c.credito_pe}" filterBy="#{c.credito_pe}">
+                 	<h:outputText id="SalidaCreditospe" value="#{c.credito_pe}"/>
+                </p:column>
                 
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{expediente.modificar(c)}"/>
-                	<h:commandButton value="Eliminar" action="#{expediente.eliminar(c)}"/>
-                </h:column>
+                <p:column id="Creditostf" headerText="Creditos tf" sortBy="#{c.credito_tf}" filterBy="#{c.credito_tf}">
+                 	<h:outputText id="SalidaCreditostf" value="#{c.credito_tf}"/>
+                </p:column> 
+                
+                <p:column>
+                	<h:commandButton id="BotonModificar" value="Modificar" action="#{expediente.modificar(c)}"/>
+                	<h:commandButton id="BotonEliminar" value="Eliminar" action="#{expediente.eliminar(c)}"/>
+                </p:column>
                         
-			</h:dataTable>
+			</p:dataTable>
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton value="Edicion" action="edicionExpediente.xhtml"/>
+			
 		</h:form>
 	</h:body>
-	</html>
+</html>

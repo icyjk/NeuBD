@@ -7,36 +7,36 @@
 
 	<h:head>	  
 		<title>
-			<h:outputText value="#{encuesta.accion} encuestas"/>
+			<h:outputText value="#{encuesta.accion} encuesta"/>
 		</title>
 	</h:head>
 	<h:body>
 		<f:view>
 			<h1>ENCUESTA</h1>
-			<h2>#{encuesta.accion} Encuesta</h2>
+			<h2>#{encuesta.accion} encuesta</h2>
 
 		<h:form id="encuesta">
         	<h:panelGrid columns="3">
-            	<h:outputText for="popup" value="Fecha_de_envio"/>
-            	<p:calendar id="popup" value="#{encuestas.encuesta.Fecha_de_envio}"/>
+            	<p:outputLabel for="popup" value="Fecha_de_envio"/>
+            	<p:calendar id="popup" value="#{encuesta.encuesta.fecha_de_envio}"/>
             	<p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
             	 	 <p:panelGrid id="display" columns="2" columnClasses="label,value">
             	 	 	<h:outputText value="Popup:"/>
-						<h:outputText value="#{calendarView.date2}">
+						<h:outputText value="#{encuesta.encuesta.fecha_de_envio}">
 							<f:convertDateTime pattern="MM/dd/yyyy"/>
 						</h:outputText>
 					</p:panelGrid>
             	</p:dialog>
-                
-                <h:outputText value="expedientes"/>
-                <h:inputText id ="expedientes" value="#{encuestas.encuesta.expedientes.num_expediente}"/>
-                <h:message for="expedientes"/>
+            	
+            	<h:outputText value="Expediente"/>
+                <h:inputText id ="expediente" value="#{encuesta.encuesta.expedientes}"/>
+                <h:message for="expediente"/>
                                 
                 <h:commandButton value="#{encuesta.accion}" action="#{encuesta.ejecutarAccion()}"/>
-                <h:commandButton value="Cancelar" action="index.xhtml"/>
+                <h:commandButton value="Volver" action="index.xhtml"/>
 
                 <h:inputHidden value="#{encuesta.modo}"/>
-                <h:inputHidden value="#{Encuesta.encuesta.Fecha_de_envio}"/>
+				<h:inputHidden value="#{encuesta.encuesta.fecha_de_envio}"/>
 
             </h:panelGrid>
 		</h:form>		

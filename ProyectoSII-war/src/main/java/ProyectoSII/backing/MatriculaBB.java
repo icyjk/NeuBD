@@ -1,11 +1,18 @@
 package ProyectoSII.backing;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
+
+import NeuBDProyectoSII.Alumno;
 import NeuBDProyectoSII.Matricula;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionMatricula;
@@ -25,13 +32,88 @@ public class MatriculaBB {
 
 	private Matricula matricula;
 	private Modo modo;
+	private List<Matricula> listamatricula;
+    private List<Matricula> matriculaFiltro;
+    private List<FilterMeta> filterBy;
+	
 
 	@Inject
 	private GestionMatricula gestionMatricula;
+	private List<Matricula> listaMatriculas;
 
 	public MatriculaBB() {
 		matricula = new Matricula();
 		modo = Modo.NOACCION;
+	}
+	
+	@PostConstruct
+	public void init() throws NeuBDExceptions {
+		listaMatriculas = gestionMatricula.listaMatricula();
+    }
+	
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+        
+        Integer filterInt = getint(filterText);
+        
+        Matricula m = (Matricula) value;
+        
+        return //m.getmatricula()
+        		 m.getCurso_academico() == filterText
+        		|| m.getEstado() == filterText
+        		|| m.getNum_archivo() == filterInt
+        		|| m.getTurno_preferente() == filterText
+        		//|| m.getFecha_matricula() == filterDate 
+        		|| m.getNuevo_ingreso() == filterText
+        		|| m.getListado_asignaturas() == filterText;
+        	
+    }
+    
+	
+    private Integer getint (String string) {
+    	try {
+			return Integer.parseInt(string);
+		} catch (Exception e) {
+			return 0;
+		}
+    }
+    
+  
+	
+
+	public List<Matricula> getListamatricula() {
+		return listamatricula;
+	}
+
+	public void setListamatricula(List<Matricula> listamatricula) {
+		this.listamatricula = listamatricula;
+	}
+
+	public List<Matricula> getmatriculaFiltro() {
+		return matriculaFiltro;
+	}
+
+	public void setmatriculaFiltro(List<Matricula> matriculaFiltro) {
+		this.matriculaFiltro = matriculaFiltro;
+	}
+
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
+	}
+
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
+	}
+
+	public List<Matricula> getListaMatriculas() {
+		return listaMatriculas;
+	}
+
+	public void setListaMatriculas(List<Matricula> listaMatriculas) {
+		this.listaMatriculas = listaMatriculas;
 	}
 
 	public Matricula getMatricula() {
@@ -119,7 +201,7 @@ public class MatriculaBB {
 	}
 
 
-	public List<Matricula> listaAlumnos() throws NeuBDExceptions {
+	public List<Matricula> listaMatricula() throws NeuBDExceptions {
 		return gestionMatricula.listaMatricula();
 	}
 

@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>Lista de titulaciones</title>
@@ -11,35 +11,39 @@
 
 	<h:body>
 		<h:form id="Titulaciones">
-			<h:dataTable value="#{Titulacion.listaTitulacion()}" var="t">
-	
-            	<h:column>
-                	<f:facet name="header">Codigo</f:facet>
-                 	<h:outputText value="#{t.codigo}"/>
-                </h:column>
+		
+			<h:commandButton id="BotonInicio" action="index.xhtml" value="Inicio" />
+		
+			<p:dataTable id= "TablaTitulacion" value="#{Titulacion.listatitulaciones}" var="t" widgetVar="TitulacionesTable"
+			emptyMessage="Ninguna titulacion con esos filtros"
+            filteredValue="#{Titulacion.titulacionFiltro}">
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Titulaciones</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('TitulacionesTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
+		        
+		        <p:column id="CodigoTitulacion" headerText="Codigo" sortBy="#{t.codigo}" filterBy="#{t.codigo}">
+                 	<h:outputText id="SalidaCodigo" value="#{t.codigo}"/>
+                </p:column>
                 
-            	<h:column>
-                	<f:facet name="header">Nombre</f:facet>
-                 	<h:outputText value="#{t.nombre}"/>
-                </h:column>        
-                	
-            	<h:column>
-                	<f:facet name="header">Creditos</f:facet>
-                 	<h:outputText value="#{t.creditos}"/>
-                </h:column>
+                <p:column id="NombreTitulacion" headerText="Nombre" sortBy="#{t.nombre}" filterBy="#{t.nombre}">
+                 	<h:outputText id="SalidaNombre" value="#{t.nombre}"/>
+                </p:column>
                 
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{Titulacion.modificar(t)}"/>
-                </h:column>
-                        
-                <h:column>
-                	<h:commandButton value="Eliminar" action="#{Titulacion.eliminar(t)}"/>
-                </h:column>	
+                <p:column id="CreditosTitulacion" headerText="creditos" sortBy="#{t.creditos}" filterBy="#{t.creditos}">
+                 	<h:outputText id="SalidaCreditos" value="#{t.creditos}"/>
+                </p:column>
+                
+                <p:column>
+                	<h:commandButton id="BotonModificar" value="Modificar" action="#{Titulacion.modificar(t)}"/>
+                	<h:commandButton id="BotonEliminar" value="Eliminar" action="#{Titulacion.eliminar(t)}"/>
+                </p:column>	
 	
-			</h:dataTable>
+			</p:dataTable>
 			
-			<h:commandButton action="edicionTitulacion.xhtml" value="edicionTitulacion" />
-			<h:commandButton action="index.xhtml" value="Inicio" />
+			
 		</h:form>
 	</h:body>
 

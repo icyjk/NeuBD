@@ -1,10 +1,15 @@
 package ProyectoSII.backing;
 
 import java.util.List;
+import java.util.Locale;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.model.FilterMeta;
+import org.primefaces.util.LangUtils;
 
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
@@ -22,11 +27,126 @@ public class AsignaturasBB {
     };
 	
     
+    private List<Asignatura> listaasignaturas;
+    private List<Asignatura> asignaturafiltro;
+    private List<FilterMeta> filterBy;
     private Asignatura asignatura;
     private Modo modo;
     @Inject
     private GestionAsignatura gestionAsignatura;
     
+    
+    @PostConstruct
+    public void init() throws NeuBDExceptions {
+		listaasignaturas = gestionAsignatura.listaAsignatura();
+    }
+    
+    
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (LangUtils.isValueBlank(filterText)) {
+            return true;
+        }
+        Boolean filterBoolean = getBoolean(filterText);
+        Long filterlong = getlong(filterText);
+        Double filterdouble = getdouble(filterText);
+        Integer filterInt = getint(filterText);
+        
+        Asignatura e = (Asignatura) value;
+        
+        return e.getReferencia() == filterInt
+        		|| e.getCodigo() == filterInt
+        		|| e.getNombre() == filterText
+        		|| e.getCreditos()== filterInt
+        		|| e.getCreditos_practica() == filterInt
+        		|| e.getCreditos_teoria() == filterInt
+        		|| e.getCurso() == filterInt
+        		|| e.getCaracter() == filterText
+        		|| e.getDuracion() == filterInt
+        		|| e.getUnidad_temporal() == filterText
+        		|| e.getIdioma_imparticion()==filterText;
+
+    }
+    
+ 
+
+
+	public List<Asignatura> getListaasignaturas() {
+		return listaasignaturas;
+	}
+
+
+	public void setListaasignaturas(List<Asignatura> listaasignaturas) {
+		this.listaasignaturas = listaasignaturas;
+	}
+
+
+	public List<Asignatura> getAsignaturafiltro() {
+		return asignaturafiltro;
+	}
+
+
+	public void setAsignaturafiltro(List<Asignatura> asignaturafiltro) {
+		this.asignaturafiltro = asignaturafiltro;
+	}
+
+
+	public List<FilterMeta> getFilterBy() {
+		return filterBy;
+	}
+
+
+	public void setFilterBy(List<FilterMeta> filterBy) {
+		this.filterBy = filterBy;
+	}
+
+
+	public GestionAsignatura getGestionAsignatura() {
+		return gestionAsignatura;
+	}
+
+
+	public void setGestionAsignatura(GestionAsignatura gestionAsignatura) {
+		this.gestionAsignatura = gestionAsignatura;
+	}
+
+
+	private Boolean getBoolean(String string) {
+        try {
+            return Boolean.getBoolean(string);
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+    
+    private long getlong(String string) {
+        try {
+            return Long.parseLong(string);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    private int getint(String string) {
+        try {
+            return Integer.parseInt(string);
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    
+    private Double getdouble (String string) {
+        try {
+            return Double.parseDouble(string);
+        }
+        catch (Exception e) {
+            return 0.0;
+        }
+    }
     
 	public AsignaturasBB() {
 		asignatura= new Asignatura();

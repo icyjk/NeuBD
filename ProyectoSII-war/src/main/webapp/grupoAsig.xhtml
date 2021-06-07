@@ -14,7 +14,7 @@
 	<h:body>
 		<h:form id="gruposAsig">
 			<p:growl id="msgs" showDetail="true"/>
-			<p:dataTable value="#{gruposAsig.listaGrupoPorAsignatura}" var="g" widgetVar="GrupAsignaturaTable"
+			<p:dataTable id="dataTableGrupAsig" value="#{gruposAsig.listaGrupoPorAsignatura}" var="g" widgetVar="GrupAsignaturaTable"
             emptyMessage="Ningun grupo asignatura con esos filtros"
             filteredValue="#{gruposAsig.grupoAsifFiltro}"
             editable="true"
@@ -31,21 +31,21 @@
 		            </f:facet>
 				
             	<p:column headerText="Grupo" sortBy="#{g.grupo}" filterBy="#{g.grupo}">
-                 	<h:outputText value="#{g.grupo}"/>
+                 	<h:outputText id="grupo" value="#{g.grupo}"/>
                 </p:column>
                 
             	<p:column headerText="Asignatura" sortBy="#{g.asignatura.nombre}" filterBy="#{g.asignatura.nombre}">
-                 	<h:outputText value="#{g.asignatura.nombre}"/>
+                 	<h:outputText id="nombreAsig" value="#{g.asignatura.nombre}"/>
                 </p:column>        
                 	
             	<p:column headerText="Curso Academico" sortBy="#{g.curso_academico}" filterBy="#{g.curso_academico}">
-                 	<h:outputText value="#{g.curso_academico}"/>
+                 	<h:outputText id="cursoAcademic" value="#{g.curso_academico}"/>
                 </p:column>
                 
                 <p:column headerText="Ofertada" sortBy="#{g.oferta}" filterBy="#{g.oferta}">
                  	<p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{g.oferta}"/>
+                        <h:outputText id = "oferta" value="#{g.oferta}"/>
                     </f:facet>
                     <f:facet name="input">
                         <p:inputText id="modelInput" value="#{g.oferta}" style="width:100%"/>
@@ -53,7 +53,7 @@
                 	</p:cellEditor>
                 </p:column>
 				<p:column style="width:6rem">
-                	<p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+                	<p:rowEditor id="seleccionEditar" editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
            		</p:column>
 				
 			</p:dataTable>

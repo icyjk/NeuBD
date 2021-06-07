@@ -26,6 +26,8 @@ public class BaseDatos {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombreUnidadPersistencia);
 		EntityManager em = emf.createEntityManager();
 		
+		//System.out.println("ESTOY INICIALIZANDO LA BASE DE DATOS");
+		
 		em.getTransaction().begin();
 		
 		//centro
@@ -56,13 +58,7 @@ public class BaseDatos {
 		Grupo grupoAinf = new Grupo(1,'A',"Mañana",true, true, "", 50 , titulacionInf, null, null,null,null);
 		
 		em.persist(grupoAinf);
-		/*
-		/////////////////////////////////////////////////////////////////////////////IMPORTANTE
-		//////Si teneis un objeto referenciado en otro, si qereis meterlo dentro de la bd como en Calculo A
-		////// hay qe hacer introducir en los OneToMany y ManyToOne y derivados esto ", cascade = {CascadeType.PERSIST,CascadeType.REMOVE}"
-	
-		//Grupo Por Asignatura
-		 */
+
 		Grupos_por_asignatura calculoA = new Grupos_por_asignatura(grupoAinf, calculo, "20/21", true, null);
 		em.persist(calculoA);
 		
@@ -111,6 +107,10 @@ public class BaseDatos {
 		//em.persist(alumno2);
 		//em.persist(alumno2);
 		em.getTransaction().commit();
+		
+		//System.out.println("LA BASE DE DATOS HA SIDO INICIALIZADA");
+		//Titulacion aux = em.find(Titulacion.class,66 );
+		//System.out.println(aux);
 		
 		em.close();
 		emf.close();

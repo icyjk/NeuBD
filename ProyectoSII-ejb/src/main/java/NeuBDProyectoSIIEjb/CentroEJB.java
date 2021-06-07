@@ -46,4 +46,13 @@ public class CentroEJB implements GestionCentro {
 		return em.createNamedQuery("Centro.todos", Centro.class).getResultList();
 	}
 
+	@Override
+	public void eliminarCentro(Centro centro) throws NeuBDExceptions {
+		
+		Centro aux = em.find(Centro.class, centro.getId());
+		if(aux == null)
+			throw new CentroYaExistenteException();
+		em.remove(centro);
+	}
+
 }

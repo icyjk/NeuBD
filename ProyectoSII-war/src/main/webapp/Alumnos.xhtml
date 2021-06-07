@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>Lista de alumnos</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="alumno">           
+			<p:dataTable value="#{alumno.listaAlumnos}" var="a" widgetVar="AlumnoTable"
+            emptyMessage="Ningun alumno con esos filtros"
+            filteredValue="#{alumno.alumnoFiltro}">
+            	
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Alumnos</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('AlumnosTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
+	
+            	
+                
+            	<p:column headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
+                 	<h:outputText value="#{a.nombre}"/>
+                </p:column>
+                
+                <p:column headerText="Primer apellido" sortBy="#{a.primer_apellido}" filterBy="#{a.primer_apellido}">
+                 	<h:outputText value="#{a.primer_apellido}"/>
+                </p:column>     
+                
+                 <p:column headerText="Segundo apellido" sortBy="#{a.segundo_apellido}" filterBy="#{a.segundo_apellido}">
+                 	<h:outputText value="#{a.segundo_apellido}"/>
+                </p:column>   
+                
+                <p:column headerText="Email personal" sortBy="#{a.email_personal}" filterBy="#{a.email_personal}">
+                 	<h:outputText value="#{a.email_personal}"/>
+                </p:column>  
+                
+                <p:column headerText="Email institucional" sortBy="#{a.email_institucional}" filterBy="#{a.email_institucional}">
+                 	<h:outputText value="#{a.email_institucional}"/>
+                </p:column>
+                
+                <p:column headerText="Movil" sortBy="#{a.movil}" filterBy="#{a.movil}">
+                 	<h:outputText value="#{a.movil}"/>
+                </p:column>
+                
+                <p:column headerText="Telefono" sortBy="#{a.telefono}" filterBy="#{a.telefono}">
+                 	<h:outputText value="#{a.telefono}"/>
+                </p:column>
+                
+                <p:column headerText="Direccion" sortBy="#{a.direccion}" filterBy="#{a.direccion}">
+                 	<h:outputText value="#{a.direccion}"/>
+                </p:column>
+                
+                <p:column headerText="Localidad" sortBy="#{a.localidad}" filterBy="#{a.localidad}">
+                 	<h:outputText value="#{a.localidad}"/>
+                </p:column> 
+                
+                <p:column headerText="Provincia" sortBy="#{a.provincia}" filterBy="#{a.provincia}">
+                 	<h:outputText value="#{a.provincia}"/>
+                </p:column> 
+                
+                <p:column headerText="Codigo postal" sortBy="#{a.cp}" filterBy="#{a.cp}">
+                 	<h:outputText value="#{a.cp}"/>
+                </p:column> 
+                
+                <p:column headerText="Expedientes" sortBy="#{a.expedientes}" filterBy="#{a.expedientes}">
+                 	<h:outputText value="#{a.expedientes}"/>
+                </p:column> 
+                
+                <p:column>
+                	<h:commandButton value="Modificar" action="#{alumno.modificar(m)}"/>
+                	<h:commandButton value="Eliminar" action="#{alumno.eliminar(m)}"/>
+                </p:column>
+                        
+			</p:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+			<h:commandButton value="Edicion" action="edicionalumno.xhtml"/>
+		</h:form>
+	</h:body>
+</html>

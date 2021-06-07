@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">>
+
+
+    <h:head>
+        <title>Lista de Optativas</title>
+    </h:head>
+
+	<h:body>
+		<h:form id="Optativas">           
+			<p:dataTable value="#{optativas.listaOptativa()}" var="a" widgetVar="OptativaTable"
+            emptyMessage="Ninguna optativa con esos filtros"
+            filteredValue="#{optativas.AsignaturaFiltro}">
+	
+            	
+            	
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Optativas</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('OptativaTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
+            	
+            	<p:column headerText="Referencia" sortBy="#{a.referencia}" filterBy="#{a.referencia}">
+                 	<h:outputText value="#{a.referencia}"/>
+                </p:column>
+            	
+            	
+            	<p:column headerText="Codigo" sortBy="#{a.codigo}" filterBy="#{a.codigo}">
+                 	<h:outputText value="#{a.codigo}"/>
+                </p:column>
+                
+            	<p:column headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
+                 	<h:outputText value="#{a.nombre}"/>
+                </p:column>        
+                	
+            	<p:column headerText="Creditos" sortBy="#{a.creditos}" filterBy="#{a.creditos}">
+                 	<h:outputText value="#{a.creditos}"/>
+                </p:column>
+             	<p:column headerText="Credtios Practica" sortBy="#{a.creditos_practica}" filterBy="#{a.creditos_practica}">
+                 	<h:outputText value="#{a.creditos_practica}"/>
+                </p:column>    
+                
+                <p:column headerText="Creditos Teoria" sortBy="#{a.creditos_toeria}" filterBy="#{a.creditos_teoria}">
+                 	<h:outputText value="#{a.creditos_teoria}"/>
+                </p:column>  
+                
+                
+                  <p:column headerText="Caracter" sortBy="#{a.caracter}" filterBy="#{a.caracter}">
+                 	<h:outputText value="#{a.caracter}"/>
+                </p:column> 
+                
+                 <p:column headerText="Duracion" sortBy="#{a.duracion}" filterBy="#{a.duracion}">
+                 	<h:outputText value="#{a.duracion}"/>
+                </p:column> 
+                
+                 <p:column headerText="Unidad Temporal" sortBy="#{a.unidad_temporal}" filterBy="#{a.unidad_temporal}" >
+                 	<h:outputText value="#{a.unidad_temporal}"/>
+                </p:column> 
+                
+                 <p:column headerText="Idioma de Imparticion" sortBy="#{a.idioma_imparticion}" filterBy="#{a.idioma_imparticion}">
+                 	<h:outputText value="#{a.idioma_imparticion}"/>
+                </p:column> 
+                
+                   <p:column headerText="Plazas" sortBy="#{a.plazas}" filterBy="#{a.plazas}">
+                 	<h:outputText value="#{a.plazas}"/>
+                </p:column> 
+                    
+                  <p:column headerText="Mencion" sortBy="#{a.mencion}" filterBy="#{a.mencion}">
+                 	<h:outputText value="#{a.mencion}"/>
+                </p:column> 
+                    
+                    
+                
+                
+                <p:column>
+                	<h:commandButton value="Modificar" action="#{asignaturas.modificar(a)}"/>
+                	<h:commandButton value="Eliminar" action="#{asignaturas.eliminar(a)}"/>
+                	<h:commandButton value="Horario" action="#{horario.verHorarioAsignatura(a)}"/>
+                </p:column>
+                        
+			</p:dataTable>
+			
+			<h:commandButton action="index.xhtml" value="Inicio" />
+		</h:form>
+	</h:body>
+	
+	
+</html>

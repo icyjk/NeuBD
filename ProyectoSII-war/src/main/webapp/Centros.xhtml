@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
@@ -10,38 +11,46 @@
     </h:head>
 
 	<h:body>
-		<h:form id="Centros">           
-			<h:dataTable value="#{centro.listaCentro()}" var="c">
-	
-            	<h:column>
-                	<f:facet name="header">ID</f:facet>
-                 	<h:outputText value="#{c.id}"/>
-                </h:column>
-                
-            	<h:column>
-                	<f:facet name="header">Nombre</f:facet>
-                 	<h:outputText value="#{c.nombre}"/>
-                </h:column>        
-                	
-            	<h:column>
-                	<f:facet name="header">Direccion</f:facet>
-                 	<h:outputText value="#{c.direccion}"/>
-                </h:column>
-             	<h:column>
-                	<f:facet name="header">Telefono</f:facet>
-                 	<h:outputText value="#{c.tlf_conserjeria}"/>
-                </h:column>               
-                
-                
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{centro.modificar(c)}"/>
-                	<h:commandButton value="Eliminar" action="#{centro.eliminarCentro(c)}"/>
-                </h:column>
-                        
-			</h:dataTable>
+		<h:form id="Centros">   
+			<h:commandButton id="BotonInicio" action="index.xhtml" value="Inicio" />
+			<h:commandButton id="BotonCrear" value="Crear" action="#{centro.crearCentro()}"/>        
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton value="Crear" action="#{centro.crearCentro()}"/>
+			<p:dataTable id="TablaCentros" value="#{centro.listacentros}" var="c" widgetVar="CentrosTable"
+            emptyMessage="Ningun Centro con esos filtros"
+            filteredValue="#{centro.centrosFiltro}">
+            	
+            	<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de centros</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('CentrosTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		        </f:facet>
+		        
+		        <p:column id="IDCentro" headerText="ID" sortBy="#{c.id}" filterBy="#{c.id}">
+                 	<h:outputText id="SalidaID" value="#{c.id}"/>
+                </p:column>
+                
+                <p:column id="NombreCentro" headerText="Nombre" sortBy="#{c.nombre}" filterBy="#{c.nombre}">
+                 	<h:outputText id="SalidaNombre" value="#{c.nombre}"/>
+                </p:column>
+                
+                <p:column id="DireccionCentro" headerText="Direccion" sortBy="#{c.direccion}" filterBy="#{c.direccion}">
+                 	<h:outputText id="SalidaDireccion" value="#{c.direccion}"/>
+                </p:column> 
+                
+                <p:column id="Direcciontelefono" headerText="Telefono" sortBy="#{c.tlf_conserjeria}" filterBy="#{c.tlf_conserjeria}">
+                 	<h:outputText id="SalidaTelefono" value="#{c.tlf_conserjeria}"/>
+                </p:column>     
+                
+                                     
+                <p:column>
+                	<h:commandButton id="BotonModificar" value="Modificar" action="#{centro.modificar(c)}"/>
+                	<h:commandButton id="BotonEliminar" value="Eliminar" action="#{centro.eliminarCentro(c)}"/>
+                </p:column>
+                        
+			</p:dataTable>
+			
+			
 		</h:form>
 	</h:body>
-	</html>
+</html>

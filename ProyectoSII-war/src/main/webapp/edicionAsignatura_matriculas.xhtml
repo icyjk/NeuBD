@@ -2,48 +2,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j">
+      xmlns:h="http://java.sun.com/jsf/html">
 
 	<h:head>	  
 		<title>
-			<h:outputText value="#{asig_matri.accion} asig_matris"/>
+			<h:outputText value="#{asig_matri.accion} Asignatura Matricula"/>
 		</title>
 	</h:head>
 	<h:body>
 		<f:view>
-			<h1>ASIGNATURA_Matricula</h1>
-			<h2>#{asig_matri.accion} Asignatura_Matricula</h2>
+			<h1>ASIGNATURA Matricula</h1>
+			<h2>#{asig_matri.accion} Asignatura Matricula</h2>
 
-		<h:form id="Asignatura">
+		<h:form id="asig_matri">
         	<h:panelGrid columns="3">
-            	<h:outputText value="asignatura"/>
-                <h:outputText id ="asignatura" value="#{asig_matris.asig_matri.asignatura}"/>
+            	<h:outputText value="Asignatura"/>
+                <h:outputText id ="asignatura" value="#{asig_matri.asignatura_matricula.asignatura}"/>
                 <h:message for="asignatura"/>
 
-                <h:outputText value="matricula"/>
-                <h:inputText id ="matricula" value="#{asig_matris.asig_matri.matricula}"/>
+                <h:outputText value="Matricula"/>
+                <h:outputText id ="matricula" value="#{asig_matri.asignatura_matricula.matricula}"/>
                 <h:message for="matricula"/>
 
-                <h:outputText value="grupo"/>
-                <h:inputText id ="grupo" value="#{asig_matris.asig_matri.grupo}"/>
+                <h:outputText value="Grupo"/>
+                <h:outputText id ="grupo" value="#{asig_matri.asignatura_matricula.grupo}"/>
                 <h:message for="grupo"/>
                 
-                <h:outputText value="idioma"/>
-                <h:inputText id ="idioma" value="#{asig_matris.asig_matri.idioma}"/>
+                <h:outputText value="Idioma"/>
+                <h:inputText id ="idioma" value="#{asig_matri.asignatura_matricula.idioma}"/>
                 <h:message for="idioma"/>
-                
-                
-                <h:outputText value="asignacionManual"/>
-                <h:inputText id ="asignacionManual" value="#{asig_matris.asig_matri.asignacionManual}"/>
+
+                <h:outputText value="AsignacionManual"/>
+                <h:inputText id ="asignacionManual" value="#{asig_matri.asignatura_matricula.asignacionManual}"/>
                 <h:message for="asignacionManual"/>
                 
       
-                <h:commandButton value="#{asignaturas.accion}" action="#{asignaturas.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="Asignaturas.xhtml"/>
+                <h:commandButton value="#{asig_matri.accion}" action="#{asig_matri.ejecutarAccion()}"/>
+                <h:commandButton value="Volver" action="Asignatura_matricula.xhtml"/>
 
-                <h:inputHidden value="#{asignaturas.modo}"/>
-                <h:inputHidden value="#{asignaturas.asignatura.codigo}"/>
+                <h:inputHidden value="#{asig_matri.modo}"/>
+                <h:inputHidden value="#{asig_matri.asignatura_matricula.idioma}"/>
+                <h:inputHidden value="#{asig_matri.ma}"/>
+				<h:inputHidden value="#{asig_matri.a}"/>
+				<h:inputHidden value="#{asig_matri.gr}"/>
 
             </h:panelGrid>
 		</h:form>		

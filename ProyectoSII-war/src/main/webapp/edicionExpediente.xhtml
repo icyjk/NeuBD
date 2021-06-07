@@ -16,48 +16,48 @@
 
 		<h:form id="expediente">
         	<h:panelGrid columns="3">
-            	<h:outputText value="num_expediente"/>
+            	<h:outputText id ="outputexpediente" value="num_expediente"/>
                 <h:outputText id ="num_expediente" value="#{expediente.expediente.num_expediente}"/>
                 <h:message for="num_expediente"/>
 
-                <h:outputText value="activo"/>
+                <h:outputText id ="outputactivo" value="activo"/>
                 <h:inputText id ="activo" value="#{expediente.expediente.activo}"/>
                 <h:message for="activo"/>
 
-                <h:outputText value="nota_media_provisional"/>
+                <h:outputText id ="outputnotamedia" value="nota_media_provisional"/>
                 <h:inputText id ="nota_media_provisional" value="#{expediente.expediente.nota_media_provisional}"/>
                 <h:message for="nota_media_provisional"/>
                 
-                <h:outputText value="creditos_superado"/>
+                <h:outputText id ="outputcredito_s" value="creditos_superado"/>
                 <h:inputText id ="creditos_superado" value="#{expediente.expediente.creditos_superado}"/>
                 <h:message for="creditos_superado"/>
                 
-                <h:outputText value="credito_fb"/>
+                <h:outputText id ="outputcredito_fb" value="credito_fb"/>
                 <h:inputText id ="credito_fb" value="#{expediente.expediente.credito_fb}"/>
                 <h:message for="credito_fb"/>
                 
-                <h:outputText value="credito_ob"/>
+                <h:outputText id ="outputcredito_ob" value="credito_ob"/>
                 <h:inputText id ="credito_ob" value="#{expediente.expediente.credito_ob}"/>
                 <h:message for="credito_ob"/>
                 
-                <h:outputText value="credito_op"/>
+                <h:outputText id ="outputcredito_op" value="credito_op"/>
                 <h:inputText id ="credito_op" value="#{expediente.expediente.credito_op}"/>
                 <h:message for="credito_op"/>
                 
-                <h:outputText value="credito_cf"/>
+                <h:outputText id ="outputcredito_cf" value="credito_cf"/>
                 <h:inputText id ="credito_cf" value="#{expediente.expediente.credito_cf}"/>
                 <h:message for="credito_cf"/>
                 
-                <h:outputText value="credito_pe"/>
+                <h:outputText id ="outputcredito_pe" value="credito_pe"/>
                 <h:inputText id ="credito_pe" value="#{expediente.expediente.credito_pe}"/>
                 <h:message for="credito_pe"/>
                 
-                <h:outputText value="credito_tf"/>
+                <h:outputText id ="outputcredito_tf" value="credito_tf"/>
                 <h:inputText id ="credito_tf" value="#{expediente.expediente.credito_tf}"/>
                 <h:message for="credito_tf"/>
                                            
-                <h:commandButton value="#{expediente.accion}" action="#{expediente.ejecutarAccion()}"/>
-                <h:commandButton value="Cancelar" action="Expedientes.xhtml"/>
+                <h:commandButton id="BotonAccion" value="#{expediente.accion}" action="#{expediente.ejecutarAccion()}"/>
+                <h:commandButton id="BotonCancelar" value="Cancelar" action="Expedientes.xhtml"/>
 
                 <h:inputHidden value="#{expediente.modo}"/>
                 <h:inputHidden value="#{expediente.expediente.num_expediente}"/>

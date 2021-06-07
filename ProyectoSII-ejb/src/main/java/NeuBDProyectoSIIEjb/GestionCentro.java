@@ -13,4 +13,5 @@ public interface GestionCentro {
 	public void modificarCentro(Centro centro) throws NeuBDExceptions;
 	public Centro buscarCentro(int id) throws NeuBDExceptions;
 	public List<Centro> buscarTodosCentros() throws NeuBDExceptions;
+	public void eliminarCentro(Centro centro) throws NeuBDExceptions;
 }

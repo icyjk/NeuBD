@@ -2,48 +2,73 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
-        <title>Asignatura Matricula</title>
+        <title>Lista Asignatura Matricula</title>
     </h:head>
 
 	<h:body>
-		<h:form id="Asignatura_matricula">           
-			<h:dataTable value="#{asignatura_matricula.listaAsignatura()}" var="a_m">
-	
-            	<h:column>
-                	<f:facet name="header">Asignatura</f:facet>
+		<h:form id="asig_matri"> 
+			<p:growl id="msgs" showDetail="true"/>
+			<p:dataTable value="#{asig_matri.listaAsignatura_matricula()}" var="a_m" widgetVar="AsigMatriTable"
+            emptyMessage="Ningun asignatura matricula con esos filtros"
+            filteredValue="#{asig_matri.asigMatriFiltro}"
+            editable="true"
+            style="margin-bottom:20px">
+            
+            <p:ajax event="rowEdit" listener="#{asig_matri.onRowEdit}" update=":asig_matri:msgs"/>
+            
+					<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Asignatura Matricula</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('AsigMatriTable').filter()" style="width:10rem" placeholder="Introduzca keyword"/>
+		                </div>
+		            </f:facet>
+		            
+				<p:column headerText="Asignatura" sortBy="#{a_m.asignatura.nombre}" filterBy="#{a_m.asignatura.nombre}">
                  	<h:outputText value="#{a_m.asignatura.nombre}"/>
-                </h:column>
+                </p:column>  
                 
-            	<h:column>
-                	<f:facet name="header">Matricula</f:facet>
-                 	<h:outputText value="#{a_m.matricula.expedientes.num_expediente}"/>
-                </h:column>        
-                	
-            	<h:column>
-                	<f:facet name="header">Grupo</f:facet>
-                 	<h:outputText value="#{a_m.grupo.id}"/>
-                </h:column>
-             	<h:column>
-                	<f:facet name="header">Idioma</f:facet>
-                 	<h:outputText value="#{a_m.idioma}"/>
-                </h:column>    
+                <p:column headerText="Matricula" sortBy="#{a_m.matricula}" filterBy="#{a_m.matricula}">
+                 	<h:outputText value="#{a_m.matricula}"/>
+                </p:column>
                 
-                <h:column>
-                	<f:facet name="header">Asignacion Manual</f:facet>
-                 	<h:outputText value="#{a_m.asignacionManual}"/>
-                </h:column>  
-
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{asignaturas.modificar(a)}"/>
-                </h:column>
-                        
-			</h:dataTable>
-			
-			<h:commandButton action="index.xhtml" value="Inicio" />
+            	<p:column headerText="Grupo" sortBy="#{a_m.grupo}" filterBy="#{a_m.grupo}">
+                 	<h:outputText value="#{a_m.grupo}"/>
+                </p:column>
+                
+            	<p:column headerText="Idioma" sortBy="#{a_m.idioma}" filterBy="#{a_m.idioma}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{a_m.idioma}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="modelInputIdioma" value="#{a_m.idioma}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Asignacion Manual" sortBy="#{a_m.asignacionManual}" filterBy="#{a_m.asignacionManual}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{a_m.asignacionManual}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="InputasignacionManual" value="#{a_m.asignacionManual}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>
+				<p:column style="width:6rem">
+                	<p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+           		</p:column>
+				
+			</p:dataTable>
+		</h:form>
+		<h:form>
+			<h:commandButton action="index.xhtml" value="Volver" />
 		</h:form>
 	</h:body>
 </html>
