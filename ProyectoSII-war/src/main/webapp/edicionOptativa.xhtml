@@ -12,74 +12,74 @@
 	</h:head>
 	<h:body>
 		<f:view>
-			<h1>OPTATIVAS</h1>
-			<h2>#{optativas.accion} Optativas</h2>
+			<h1 id="Edicion_Optativa_title">OPTATIVAS</h1>
+			<h2 id="Edicion_Asignatura_accion">#{optativas.accion} Optativas</h2>
 
 		<h:form id="Optativas">
         	<h:panelGrid columns="3">
             	
             	
             	
-            	<h:outputText value="referencia"/>
+            	<h:outputText  id ="referencia_output"  value="referencia"/>
                 <h:outputText id ="referencia" value="#{optativas.optativa.referencia}"/>
                 <h:message for="referencia"/>
             	
-            	<h:outputText value="codigo"/>
+            	<h:outputText id ="codigo_output" value="codigo"/>
                 <h:inputText id ="codigo" value="#{optativas.optativa.codigo}"/>
                 <h:message for="codigo"/>
 
-                <h:outputText value="nombre"/>
+                <h:outputText id ="nombre_output" value="nombre"/>
                 <h:inputText id ="nombre" value="#{optativas.optativa.nombre}"/>
                 <h:message for="nombre"/>
 
-                <h:outputText value="creditos"/>
+                <h:outputText id ="creditos_output" value="creditos"/>
                 <h:inputText id ="creditos" value="#{optativas.optativa.creditos}"/>
                 <h:message for="creditos"/>
                 
-                <h:outputText value="creditos_teoria"/>
+                <h:outputText id ="creditos_teoria_output" value="creditos_teoria"/>
                 <h:inputText id ="creditos_teoria" value="#{optativas.optativa.creditos_teoria}"/>
                 <h:message for="creditos_teoria"/>
                 
                 
-                <h:outputText value="creditos_practica"/>
+                <h:outputText id ="creditos_practica_output" value="creditos_practica"/>
                 <h:inputText id ="creditos_practica" value="#{optativas.optativa.creditos_practica}"/>
                 <h:message for="creditos_practica"/>
                 
-                <h:outputText value="curso"/>
+                <h:outputText id ="curso_output" value="curso"/>
                 <h:inputText id ="curso" value="#{optativas.optativa.curso}"/>
                 <h:message for="curso"/>
                 
                 
-                <h:outputText value="caracter"/>
+                <h:outputText  id ="caracter_output" value="caracter"/>
                 <h:inputText id ="caracter" value="#{optativas.optativa.caracter}"/>
                 <h:message for="caracter"/>
                 
                 
-                <h:outputText value="duracion"/>
+                <h:outputText  id ="duracion_output" value="duracion"/>
                 <h:inputText id ="duracion" value="#{optativas.optativa.duracion}"/>
                 <h:message for="duracion"/>
                 
-                <h:outputText value="unidad_temporal"/>
+                <h:outputText id ="unidad_temporal_output" value="unidad_temporal"/>
                 <h:inputText id ="unidad_temporal" value="#{optativas.optativa.unidad_temporal}"/>
                 <h:message for="unidad_temporal"/>
                 
-                <h:outputText value="idioma_imparticion"/>
+                <h:outputText id ="idioma_imparticion_output" value="idioma_imparticion"/>
                 <h:inputText id ="idioma_imparticion" value="#{optativas.optativa.idioma_imparticion}"/>
                 <h:message for="idioma_imparticion"/>
                 
-                <h:outputText value="mencion"/>
+                <h:outputText id ="mencion_output" value="mencion"/>
                 <h:inputText id ="mencion" value="#{optativas.optativa.mencion}"/>
                 <h:message for="mencion"/>
                 
                 
-                <h:outputText value="plazas"/>
+                <h:outputText id ="plazas_output" value="plazas"/>
                 <h:inputText id ="plazas" value="#{optativas.optativa.plazas}"/>
                 <h:message for="plazas"/>
                 
                 
                 
-                <h:commandButton value="#{optativas.accion}" action="#{optativas.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="optativas.xhtml"/>
+                <h:commandButton id ="boton_optativa_accion" value="#{optativas.accion}" action="#{optativas.ejecutarAccion()}"/>
+                <h:commandButton value="boton_volver_edicionO" action="Optativas.xhtml"/>
 
                 <h:inputHidden value="#{optativas.modo}"/>
                 <h:inputHidden value="#{optativas.optativa.referencia}"/>

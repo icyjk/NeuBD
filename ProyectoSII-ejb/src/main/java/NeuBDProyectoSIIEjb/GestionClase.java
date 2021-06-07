@@ -9,7 +9,7 @@ import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 
 public interface GestionClase {
 	
-	public List<Clase> verHorarioporGrupo(String id) throws NeuBDExceptions;
+	public List<Clase> verHorarioporGrupo(int id) throws NeuBDExceptions;
 	
 	public List<Clase> verHorarioporAsignatura(int referencia) throws NeuBDExceptions;
 	

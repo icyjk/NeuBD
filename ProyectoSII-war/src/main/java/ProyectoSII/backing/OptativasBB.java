@@ -217,7 +217,7 @@ public class OptativasBB {
 	        } catch (AsignaturaNoEncontradaException e) {
 	            return "index.xhtml";
 	        }
-	        return null;
+	        return "index.xhtml";
 	    }
 	 
 	  public Optativa buscarOptativa(int referencia) throws NeuBDExceptions {

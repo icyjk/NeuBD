@@ -23,7 +23,9 @@
 		                </div>
 		            </f:facet>
 	
-            	
+            	<p:column headerText="Id" sortBy="#{a.id}" filterBy="#{a.id}">
+                 	<h:outputText value="#{a.id}"/>
+                </p:column>
                 
             	<p:column headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
                  	<h:outputText value="#{a.nombre}"/>

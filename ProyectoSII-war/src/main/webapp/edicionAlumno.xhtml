@@ -21,7 +21,7 @@
             	
             	
             	<h:outputText value="ID"/>
-                <h:outputText id ="ID" value="#{alumno.alumno.ID}"/>
+                <h:outputText id ="ID" value="#{alumno.alumno.id}"/>
                 <h:message for="ID"/>
             	
             	<h:outputText value="nombre"/>
@@ -82,7 +82,7 @@
                 <h:commandButton value="Volver" action="Alumnos.xhtml"/>
 
                 <h:inputHidden value="#{alumno.modo}"/>
-                <h:inputHidden value="#{alumno.alumno.ID}"/>
+                <h:inputHidden value="#{alumno.alumno.id}"/>
 
             </h:panelGrid>
 		</h:form>		

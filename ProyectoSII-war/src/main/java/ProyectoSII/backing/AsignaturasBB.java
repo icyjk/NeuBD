@@ -215,7 +215,7 @@ public class AsignaturasBB {
 	        } catch (AsignaturaNoEncontradaException e) {
 	            return "index.xhtml";
 	        }
-	        return null;
+	        return "index.xhtml";
 	    }
 	 
 	  public Asignatura buscarAsignatura(int referencia) throws NeuBDExceptions {

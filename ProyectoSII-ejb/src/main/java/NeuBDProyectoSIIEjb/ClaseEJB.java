@@ -23,7 +23,7 @@ public class ClaseEJB implements GestionClase{
 
 	
 	@Override
-	public List<Clase> verHorarioporGrupo(String id) throws NeuBDExceptions {
+	public List<Clase> verHorarioporGrupo(int id) throws NeuBDExceptions {
 		// TODO Auto-generated method stub
 		Grupo grupo = em.find(Grupo.class, id);
 		

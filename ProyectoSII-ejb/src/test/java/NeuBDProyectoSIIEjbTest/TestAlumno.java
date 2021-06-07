@@ -66,7 +66,7 @@ public class TestAlumno {
 			
 			Alumno Alumnoaeliminar = listaAlumnos.get(0);
 			
-			gestionAlumno.eliminarAlumno(Alumnoaeliminar.getID());
+			gestionAlumno.eliminarAlumno(Alumnoaeliminar.getId());
 			
 			listaAlumnos = gestionAlumno.listaAlumno();
 			
@@ -109,7 +109,7 @@ public class TestAlumno {
 	try {
 			
 			Alumno alumno = gestionAlumno.listaAlumno().get(0);
-			int ID = alumno.getID();
+			int ID = alumno.getId();
 			
 		
 			assertTrue(alumno.equals(gestionAlumno.visualizarAlumno(ID)));	
@@ -127,7 +127,7 @@ public class TestAlumno {
 		try {
 			
 			Alumno alumno = gestionAlumno.listaAlumno().get(0);
-			int ID = alumno.getID();
+			int ID = alumno.getId();
 			
 			gestionAlumno.visualizarAlumno(0);
 		
@@ -148,13 +148,12 @@ public class TestAlumno {
 		try {
 			
 			Alumno a = gestionAlumno.listaAlumno().get(0);
-			int ID=a.getID();
 			a.setNombre("Ramon");
 			
 			gestionAlumno.modificarAlumno(a);
 			
 			
-			assertEquals("Ramon",gestionAlumno.visualizarAlumno(ID).getNombre() );
+			assertEquals("Ramon",gestionAlumno.visualizarAlumno(a.getId()).getNombre() );
 		}catch(NeuBDExceptions e) {
 			
 			e.printStackTrace();

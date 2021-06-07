@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -32,7 +33,7 @@ public class Asignatura implements Serializable{
 	private Titulacion titulacion;
 	@OneToMany (mappedBy = "asignatura")
 	private List<Asignatura_matricula> asignaturaMatricula;
-	@OneToMany(mappedBy = "asignaturas")
+	@OneToMany(mappedBy = "asignaturas",fetch = FetchType.EAGER)
 	private List<Clase> clases;
 	@OneToMany(mappedBy = "asignatura")
 	private List<Grupos_por_asignatura> gruposPorAsignatura;

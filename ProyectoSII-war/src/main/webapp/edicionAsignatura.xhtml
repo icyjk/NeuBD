@@ -7,63 +7,63 @@
 
 	<h:head>	  
 		<title>
-			<h:outputText value="#{asignaturas.accion} asignatura"/>
+			<h:outputText id="Asignatura_accion_title" value="#{asignaturas.accion} asignatura"/>
 		</title>
 	</h:head>
 	<h:body>
 		<f:view>
-			<h1>ASIGNATURA</h1>
-			<h2>#{asignaturas.accion} Asignatura</h2>
+			<h1 id="Edicion_Asignatura_title">  ASIGNATURA</h1>
+			<h2 id="Edicion_Asignatura_accion">  #{asignaturas.accion} Asignatura</h2>
 
 		<h:form id="Asignatura">
         	<h:panelGrid columns="3">
             	
             	
             	
-            	<h:outputText value="referencia"/>
+            	<h:outputText id ="referencia_output" value="referencia"/>
                 <h:outputText id ="referencia" value="#{asignaturas.asignatura.referencia}"/>
                 <h:message for="referencia"/>
             	
-            	<h:outputText value="codigo"/>
+            	<h:outputText id ="codigo_output" value="codigo"/>
                 <h:inputText id ="codigo" value="#{asignaturas.asignatura.codigo}"/>
                 <h:message for="codigo"/>
 
-                <h:outputText value="nombre"/>
+                <h:outputText id ="nombre_output" value="nombre"/>
                 <h:inputText id ="nombre" value="#{asignaturas.asignatura.nombre}"/>
                 <h:message for="nombre"/>
 
-                <h:outputText value="creditos"/>
+                <h:outputText id ="creditos_output" value="creditos"/>
                 <h:inputText id ="creditos" value="#{asignaturas.asignatura.creditos}"/>
                 <h:message for="creditos"/>
                 
-                <h:outputText value="creditos_teoria"/>
+                <h:outputText id ="creditos_teoria_output" value="creditos_teoria"/>
                 <h:inputText id ="creditos_teoria" value="#{asignaturas.asignatura.creditos_teoria}"/>
                 <h:message for="creditos_teoria"/>
                 
                 
-                <h:outputText value="creditos_practica"/>
+                <h:outputText id ="creditos_practica_output" value="creditos_practica"/>
                 <h:inputText id ="creditos_practica" value="#{asignaturas.asignatura.creditos_practica}"/>
                 <h:message for="creditos_practica"/>
                 
-                <h:outputText value="curso"/>
+                <h:outputText id ="curso_output" value="curso"/>
                 <h:inputText id ="curso" value="#{asignaturas.asignatura.curso}"/>
                 <h:message for="curso"/>
                 
                 
-                <h:outputText value="caracter"/>
+                <h:outputText id ="caracter_output" value="caracter"/>
                 <h:inputText id ="caracter" value="#{asignaturas.asignatura.caracter}"/>
                 <h:message for="caracter"/>
                 
                 
-                <h:outputText value="duracion"/>
+                <h:outputText id ="duracion_output" value="duracion"/>
                 <h:inputText id ="duracion" value="#{asignaturas.asignatura.duracion}"/>
                 <h:message for="duracion"/>
                 
-                <h:outputText value="unidad_temporal"/>
+                <h:outputText id ="unidad_temporal_output" value="unidad_temporal"/>
                 <h:inputText id ="unidad_temporal" value="#{asignaturas.asignatura.unidad_temporal}"/>
                 <h:message for="unidad_temporal"/>
                 
-                <h:outputText value="idioma_imparticion"/>
+                <h:outputText id ="idioma_imparticion_output" value="idioma_imparticion"/>
                 <h:inputText id ="idioma_imparticion" value="#{asignaturas.asignatura.idioma_imparticion}"/>
                 <h:message for="idioma_imparticion"/>
                 
@@ -72,8 +72,8 @@
                 
                 
                 
-                <h:commandButton value="#{asignaturas.accion}" action="#{asignaturas.ejecutarAccion()}"/>
-                <h:commandButton value="Volver" action="Asignaturas.xhtml"/>
+                <h:commandButton id ="boton_asignatura_accion" value="#{asignaturas.accion}" action="#{asignaturas.ejecutarAccion()}"/>
+                <h:commandButton id ="boton_volver_edicionA" value="Volver" action="Asignaturas.xhtml"/>
 
                 <h:inputHidden value="#{asignaturas.modo}"/>
                 <h:inputHidden value="#{asignaturas.asignatura.referencia}"/>

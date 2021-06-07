@@ -177,7 +177,7 @@ public class Expedientes {
 	}
 	@Override
 	public String toString() {
-		return "Expedientes [num_expediente=" + num_expediente +"]";
+		return "[num_expediente=" + num_expediente +"]";
 	}
 
 	

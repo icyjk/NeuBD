@@ -56,7 +56,7 @@ public class AlumnoBB {
         
         Alumno a = (Alumno) value;
         
-        return a.getID() == filterInt
+        return a.getId() == filterInt
         		||a.getDni() == filterText
         		|| a.getNombre()==filterText
         		|| a.getPrimer_apellido() == filterText
@@ -148,7 +148,7 @@ public class AlumnoBB {
 				gestionAlumno.modificarAlumno(alumno);
 				break;
 			case ELIMINAR:
-				gestionAlumno.eliminarAlumno(alumno.getID());
+				gestionAlumno.eliminarAlumno(alumno.getId());
 				break;
 			}
 
@@ -164,7 +164,7 @@ public class AlumnoBB {
 
 		try {
 
-			a = gestionAlumno.visualizarAlumno(al.getID());
+			a = gestionAlumno.visualizarAlumno(al.getId());
 
 		} catch (NeuBDExceptions e) {
 			System.out.println("Alumno no encontrado");

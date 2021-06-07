@@ -316,6 +316,25 @@ public class LeerCSVEJB implements GestionLeerCSV{
         fechaR = formatter.parse(dateInString);
         return fechaR;
     }
+	
+	private int buscarGrupo(String refGrupo) {
+		List<Grupo> lista = em.createNamedQuery("Grupo.todos", Grupo.class).getResultList();
+		int curso = Integer.parseInt(refGrupo.substring(0, 1));
+		String letra = refGrupo.substring(2, 3);
+		int titulacion = Integer.parseInt(refGrupo.substring(3, 7));
+		
+	    int cnt = 0; boolean encontrado = false;Grupo g = null;
+	    while(!encontrado || cnt<lista.size()) {
+	    	g=lista.get(cnt);
+	    	if(g.getCurso()==curso && g.getLetra() == letra.charAt(0) && g.getTitulacion().getCodigo() == titulacion) {
+	    		encontrado = true;
+	    		
+	    	}
+	    	cnt++;
+	    }
+	    return g.getId();
+	}
+	
 	@Override
 	public void insertarClasesCSV(String route) throws NeuBDExceptions {
 		try { 
@@ -326,7 +345,7 @@ public class LeerCSVEJB implements GestionLeerCSV{
         	
             for (CSVRecord csvRecord : csvParser) {
             	if(csvRecord.getRecordNumber() !=1) {
-            		int grupo = Integer.parseInt(csvRecord.get(0));
+            		String refGrupo = csvRecord.get(0);
             		String dia = csvRecord.get(1);
             		Date fecha=cambiarAFechaDia(dia);
             		String horaInicio = csvRecord.get(2);
@@ -334,7 +353,8 @@ public class LeerCSVEJB implements GestionLeerCSV{
             		String horaFin = csvRecord.get(3);
             		int asigRef = Integer.parseInt(csvRecord.get(4));
             		Date horaF=cambiarAHora(horaFin);
-            		Grupo g = em.find(Grupo.class, grupo);
+            	    int idGrupo=buscarGrupo(refGrupo);
+            		Grupo g = em.find(Grupo.class, idGrupo);
             		Asignatura as = em.find(Asignatura.class, asigRef);
             		Clase c = new Clase(g, dia, horaIn, horaF, as);
             		em.merge(c);

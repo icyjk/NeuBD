@@ -18,7 +18,7 @@ public class Alumno {
 	
 
 	@Id @GeneratedValue
-	private int ID;
+	private int id;
 	private String dni,nombre,primer_apellido,segundo_apellido,email_personal,email_institucional,movil,telefono,direccion,localidad,provincia,cp;
 	@OneToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	private List<Expedientes> expedientes;
@@ -51,8 +51,8 @@ public class Alumno {
 		this.expedientes = expedientes;
 	}
 
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
 
 	public String getEmail_institucional() {
@@ -63,8 +63,8 @@ public class Alumno {
 		this.email_institucional = email_institucional;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int id) {
+		id = id;
 	}
 
 
@@ -171,7 +171,8 @@ public class Alumno {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ID;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
@@ -184,14 +185,19 @@ public class Alumno {
 		if (getClass() != obj.getClass())
 			return false;
 		Alumno other = (Alumno) obj;
-		if (ID != other.ID)
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Alumno [ID=" + ID + ", dni=" + dni + ", nombre=" + nombre + ", primer_apellido=" + primer_apellido
+		return "Alumno [ID=" + id + ", dni=" + dni + ", nombre=" + nombre + ", primer_apellido=" + primer_apellido
 				+ ", segundo_apellido=" + segundo_apellido + ", email_personal=" + email_personal
 				+ ", email_institucional=" + email_institucional + ", movil=" + movil + ", telefono=" + telefono
 				+ ", direccion=" + direccion + ", localidad=" + localidad + ", provincia=" + provincia + ", cp=" + cp

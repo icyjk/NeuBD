@@ -12,9 +12,13 @@
 
 	<h:body>
 		<h:form id="Asignaturas">           
-			<p:dataTable value="#{asignaturas.listaAsignatura()}" var="a" widgetVar="AsignaturaTable"
+			
+			<h:commandButton id="botonIndiceA" action="index.xhtml" value="Inicio" />
+			<h:commandButton id="botonOptativasA" action="Optativas.xhtml" value="Optativas" />
+			
+			<p:dataTable id="TablaAsignaturas" value="#{asignaturas.listaasignaturas}" var="a" widgetVar="AsignaturaTable"
             emptyMessage="Ninguna asignatura con esos filtros"
-            filteredValue="#{asignaturas.asignaturafiltro()}">
+            filteredValue="#{asignaturas.asignaturafiltro}">
 	
             	
             	
@@ -25,59 +29,58 @@
 		                </div>
 		            </f:facet>
             	
-            	<p:column headerText="Referencia" sortBy="#{a.referencia}" filterBy="#{a.referencia}">
-                 	<h:outputText value="#{a.referencia}"/>
+            	<p:column id="CAReferencia" headerText="Referencia" sortBy="#{a.referencia}" filterBy="#{a.referencia}">
+                 	<h:outputText id="AReferencia" value="#{a.referencia}"/>
                 </p:column>
             	
             	
-            	<p:column headerText="Codigo" sortBy="#{a.codigo}" filterBy="#{a.codigo}">
-                 	<h:outputText value="#{a.codigo}"/>
+            	<p:column id="CACodigo" headerText="Codigo" sortBy="#{a.codigo}" filterBy="#{a.codigo}">
+                 	<h:outputText id="ACodigo" value="#{a.codigo}"/>
                 </p:column>
                 
-            	<p:column headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
-                 	<h:outputText value="#{a.nombre}"/>
+            	<p:column id="CAnombre" headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
+                 	<h:outputText id="Anombre" value="#{a.nombre}"/>
                 </p:column>        
                 	
-            	<p:column headerText="Creditos" sortBy="#{a.creditos}" filterBy="#{a.creditos}">
-                 	<h:outputText value="#{a.creditos}"/>
+            	<p:column id="CACreditos" headerText="Creditos" sortBy="#{a.creditos}" filterBy="#{a.creditos}">
+                 	<h:outputText id="ACreditos" value="#{a.creditos}"/>
                 </p:column>
-             	<p:column headerText="Credtios Practica" sortBy="#{a.creditos_practica}" filterBy="#{a.creditos_practica}">
-                 	<h:outputText value="#{a.creditos_practica}"/>
+             	<p:column  id="CACPractica" headerText="Credtios Practica" sortBy="#{a.creditos_practica}" filterBy="#{a.creditos_practica}">
+                 	<h:outputText id="ACPractica" value="#{a.creditos_practica}"/>
                 </p:column>    
                 
-                <p:column headerText="Creditos Teoria" sortBy="#{a.creditos_toeria}" filterBy="#{a.creditos_teoria}">
-                 	<h:outputText value="#{a.creditos_teoria}"/>
+                <p:column id="CACTeoria" headerText="Creditos Teoria" sortBy="#{a.creditos_toeria}" filterBy="#{a.creditos_teoria}">
+                 	<h:outputText id="ACTeoria" value="#{a.creditos_teoria}"/>
                 </p:column>  
                 
                 
-                  <p:column headerText="Caracter" sortBy="#{a.caracter}" filterBy="#{a.caracter}">
-                 	<h:outputText value="#{a.caracter}"/>
+                  <p:column id="CAcaracter" headerText="Caracter" sortBy="#{a.caracter}" filterBy="#{a.caracter}">
+                 	<h:outputText id="Acaracter" value="#{a.caracter}"/>
                 </p:column> 
                 
-                 <p:column headerText="Duracion" sortBy="#{a.duracion}" filterBy="#{a.duracion}">
-                 	<h:outputText value="#{a.duracion}"/>
+                 <p:column  id="CADuracion" headerText="Duracion" sortBy="#{a.duracion}" filterBy="#{a.duracion}">
+                 	<h:outputText id="ADuracion" value="#{a.duracion}"/>
                 </p:column> 
                 
-                 <p:column headerText="Unidad Temporal" sortBy="#{a.unidad_temporal}" filterBy="#{a.unidad_temporal}" >
-                 	<h:outputText value="#{a.unidad_temporal}"/>
+                 <p:column  id="CAunidad_temporal" headerText="Unidad Temporal" sortBy="#{a.unidad_temporal}" filterBy="#{a.unidad_temporal}" >
+                 	<h:outputText id="Aunidad_temporal" value="#{a.unidad_temporal}"/>
                 </p:column> 
                 
-                 <p:column headerText="Idioma de Imparticion" sortBy="#{a.idioma_imparticion}" filterBy="#{a.idioma_imparticion}">
-                 	<h:outputText value="#{a.idioma_imparticion}"/>
+                 <p:column  id="CAidioma_imparticion" headerText="Idioma de Imparticion" sortBy="#{a.idioma_imparticion}" filterBy="#{a.idioma_imparticion}">
+                 	<h:outputText id="Aidioma_imparticion" value="#{a.idioma_imparticion}"/>
                 </p:column> 
                     
                 
                 
                 <p:column>
-                	<h:commandButton value="Modificar" action="#{asignaturas.modificar(a)}"/>
-                	<h:commandButton value="Eliminar" action="#{asignaturas.eliminar(a)}"/>
-                	<h:commandButton value="Horario" action="#{horario.verHorarioAsignatura(a)}"/>
+                	<h:commandButton id="BotonModificarA" value="Modificar" action="#{asignaturas.modificar(a)}"/>
+                	<h:commandButton id="BotonEliminarA" value="Eliminar" action="#{asignaturas.eliminar(a)}"/>
+                	<h:commandButton id="BotonHorarioA" value="Horario" action="#{horario.verHorarioAsignatura(a)}"/>
                 </p:column>
                         
 			</p:dataTable>
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton action="Optativas.xhtml" value="Optativas" />
+			
 		</h:form>
 	</h:body>
 	
