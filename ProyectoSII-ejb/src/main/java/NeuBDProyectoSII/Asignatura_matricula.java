@@ -40,6 +40,7 @@ public class Asignatura_matricula implements Serializable {
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
+	
 	public boolean isIdioma() {
 		return idioma;
 	}
@@ -70,6 +71,7 @@ public class Asignatura_matricula implements Serializable {
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
+	
 	/*
 	@Override
 	public int hashCode() {

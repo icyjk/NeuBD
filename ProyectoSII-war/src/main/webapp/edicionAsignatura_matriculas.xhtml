@@ -21,7 +21,7 @@
                 <h:message for="asignatura"/>
 
                 <h:outputText id="outputMatri" value="Matricula"/>
-                <h:outputText id ="matricula" value="#{asig_matri.asignatura_matricula.matricula}"/>
+                <h:outputText id ="matricula" value="#{asig_matri.asignatura_matricula.matricula.curso_academico}"/>
                 <h:message for="matricula"/>
 
                 <h:outputText id="outputGrupo" value="Grupo"/>
@@ -41,7 +41,7 @@
                 <h:commandButton id="BtonVolver" value="Volver" action="Asignatura_matricula.xhtml"/>
 
                 <h:inputHidden value="#{asig_matri.modo}"/>
-                <h:inputHidden value="#{asig_matri.asignatura_matricula.idioma}"/>
+                <h:inputHidden value="#{asig_matri.asignatura_matricula}"/>
                 <h:inputHidden value="#{asig_matri.ma}"/>
 				<h:inputHidden value="#{asig_matri.a}"/>
 				<h:inputHidden value="#{asig_matri.gr}"/>

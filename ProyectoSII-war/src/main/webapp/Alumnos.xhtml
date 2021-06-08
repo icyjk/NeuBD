@@ -1,89 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+ 	  xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
-        <title>Lista de alumnos</title>
+        <title>Lista Alumnos</title>
     </h:head>
 
 	<h:body>
-		<h:form id="alumno">           
-			<p:dataTable value="#{alumno.listaAlumnos}" var="a" widgetVar="AlumnoTable"
+		<h:form id="alumno">
+			<p:growl id="msgs" showDetail="true"/>
+			<p:dataTable id="dataTableGrupAsig" value="#{alumno.listaAlumnos}" var="a" widgetVar="AlumnosTable"
             emptyMessage="Ningun alumno con esos filtros"
-            filteredValue="#{alumno.alumnoFiltro}">
-            	
-            		<f:facet name="header">
+            filteredValue="#{alumno.alumnoFiltro}"
+            editable="true"
+            style="margin-bottom:20px">
+            
+            <p:ajax event="rowEdit" listener="#{alumno.onRowEdit}" update=":alumno:msgs"/>
+            <p:ajax event="rowEditCancel" listener="#{alumno.onRowCancel}" update=":alumno:msgs"/>
+            
+					<f:facet name="header">
 		                <div class="p-d-flex p-ai-center p-jc-between">
 		                    <span>Lista de Alumnos</span>
 		                    <p:inputText id="globalFilter" onkeyup="PF('AlumnosTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
 		                </div>
 		            </f:facet>
-	
-            	<p:column headerText="Id" sortBy="#{a.id}" filterBy="#{a.id}">
-                 	<h:outputText value="#{a.id}"/>
+				
+            	<p:column id="CID" headerText="id" sortBy="#{a.id}" filterBy="#{a.id}">
+                 	<h:outputText id="id" value="#{a.id}"/>
                 </p:column>
                 
-            	<p:column headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
-                 	<h:outputText value="#{a.nombre}"/>
+                <p:column id="CNombre" headerText="Nombre" sortBy="#{a.nombre}" filterBy="#{a.nombre}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "nombre" value="#{a.nombre}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="nombreinput" value="#{a.nombre}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
                 </p:column>
                 
-                <p:column headerText="Primer apellido" sortBy="#{a.primer_apellido}" filterBy="#{a.primer_apellido}">
-                 	<h:outputText value="#{a.primer_apellido}"/>
-                </p:column>     
                 
-                 <p:column headerText="Segundo apellido" sortBy="#{a.segundo_apellido}" filterBy="#{a.segundo_apellido}">
-                 	<h:outputText value="#{a.segundo_apellido}"/>
-                </p:column>   
                 
-                <p:column headerText="Email personal" sortBy="#{a.email_personal}" filterBy="#{a.email_personal}">
-                 	<h:outputText value="#{a.email_personal}"/>
+            	<p:column id="CPrimerApellido" headerText="Primer Apellido" sortBy="#{a.primer_apellido}" filterBy="#{a.primer_apellido}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "primerapellido" value="#{a.primer_apellido}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="primerapellidoinput" value="#{a.primer_apellido}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>
+                
+                
+            	
+            	<p:column id="CEmailPersonal" headerText="Email Personal" sortBy="#{a.email_personal}" filterBy="#{a.email_personal}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "emailpersonal" value="#{a.email_personal}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="emailpersonalinput" value="#{a.email_personal}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>      
+                	
+            	
+            	<p:column id="CEmailInstitucional" headerText="Email Institucional" sortBy="#{a.email_institucional}" filterBy="#{a.email_institucional}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "emailinstitucional" value="#{a.email_institucional}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="emailinstitucionalinput" value="#{a.email_institucional}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
                 </p:column>  
                 
-                <p:column headerText="Email institucional" sortBy="#{a.email_institucional}" filterBy="#{a.email_institucional}">
-                 	<h:outputText value="#{a.email_institucional}"/>
-                </p:column>
                 
-                <p:column headerText="Movil" sortBy="#{a.movil}" filterBy="#{a.movil}">
-                 	<h:outputText value="#{a.movil}"/>
-                </p:column>
                 
-                <p:column headerText="Telefono" sortBy="#{a.telefono}" filterBy="#{a.telefono}">
-                 	<h:outputText value="#{a.telefono}"/>
-                </p:column>
-                
-                <p:column headerText="Direccion" sortBy="#{a.direccion}" filterBy="#{a.direccion}">
-                 	<h:outputText value="#{a.direccion}"/>
-                </p:column>
-                
-                <p:column headerText="Localidad" sortBy="#{a.localidad}" filterBy="#{a.localidad}">
-                 	<h:outputText value="#{a.localidad}"/>
+                <p:column id="CMovil" headerText="Movil" sortBy="#{a.movil}" filterBy="#{a.movil}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "movil" value="#{a.email_institucional}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="movilinput" value="#{a.movil}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
                 </p:column> 
                 
-                <p:column headerText="Provincia" sortBy="#{a.provincia}" filterBy="#{a.provincia}">
-                 	<h:outputText value="#{a.provincia}"/>
-                </p:column> 
                 
-                <p:column headerText="Codigo postal" sortBy="#{a.cp}" filterBy="#{a.cp}">
-                 	<h:outputText value="#{a.cp}"/>
-                </p:column> 
+                <p:column id="CTelefono" headerText="Telefono" sortBy="#{a.telefono}" filterBy="#{a.telefono}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "telefono" value="#{a.telefono}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="telefonoinput" value="#{a.telefono}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>  
                 
-                <p:column headerText="Expedientes" sortBy="#{a.expedientes}" filterBy="#{a.expedientes}">
-                 	<h:outputText value="#{a.expedientes}"/>
-                </p:column> 
                 
-                <p:column>
-                	<h:commandButton value="Modificar" action="#{alumno.modificar(m)}"/>
-                	<h:commandButton value="Eliminar" action="#{alumno.eliminar(m)}"/>
+                <p:column id="CDireccion" headerText="Direccion" sortBy="#{a.direccion}" filterBy="#{a.direccion}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "direccion" value="#{a.direccion}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="direccioninput" value="#{a.direccion}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>  
+                
+                
+                <p:column id="CLocalidad" headerText="Localidad" sortBy="#{a.localidad}" filterBy="#{a.localidad}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "localidad" value="#{a.localidad}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="localidadinput" value="#{a.localidad}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
                 </p:column>
-                        
+                
+                <p:column id="CProvincia" headerText="Provincia" sortBy="#{a.provincia}" filterBy="#{a.provincia}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "provincia" value="#{a.provincia}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="provinciainput" value="#{a.provincia}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>
+                
+                
+                 <p:column id="Ccp" headerText="CP" sortBy="#{a.cp}" filterBy="#{a.cp}">
+                 	<p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText id = "cp" value="#{a.cp}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText id="cpinput" value="#{a.cp}" style="width:100%"/>
+                    </f:facet>
+                	</p:cellEditor>
+                </p:column>
+                
+                
+                
+                
+                
+                
+				<p:column id="CEditar" style="width:6rem">
+                	<p:rowEditor id="seleccionEditar" editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+           		</p:column>
+           		
+           		<p:column>
+                	<h:commandButton id="BotonEliminar" value="Eliminar" action="#{alumno.eliminar(a.getId())}"/>
+                </p:column>
+				
+				
+				
+				
+				
+				
 			</p:dataTable>
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton value="Edicion" action="edicionalumno.xhtml"/>
+		</h:form>
+		<h:form id="form2">
+			<h:commandButton id="volver" action="index.xhtml" value="Volver" />
 		</h:form>
 	</h:body>
 </html>

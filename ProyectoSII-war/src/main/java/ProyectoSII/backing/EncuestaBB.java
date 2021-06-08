@@ -6,15 +6,20 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.util.LangUtils;
 
 import NeuBDProyectoSII.Asignatura;
 import NeuBDProyectoSII.Encuesta;
 import NeuBDProyectoSII.Expedientes;
+import NeuBDProyectoSII.Grupos_por_asignatura;
 import NeuBDProyectoSIIEjb.GestionAsignatura;
 import NeuBDProyectoSIIEjb.GestionEncuesta;
 import NeuBDProyectoSIIEjb.GestionExpediente;
@@ -26,8 +31,7 @@ import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 @RequestScoped
 public class EncuestaBB {
 
-	public static enum Modo {
-        MODIFICAR, 
+	public static enum Modo { 
         ELIMINAR,
         NOACCION
     };
@@ -112,8 +116,6 @@ public class EncuestaBB {
 	  
 	 public String getAccion() {
 	        switch (modo) {
-	            case MODIFICAR:
-	                return "Modificar";
 	            case ELIMINAR:
 	                return "Eliminar";
 
@@ -129,27 +131,18 @@ public class EncuestaBB {
 	        this.encuesta = encuesta;
 	    }
 	  
-	  public String modificar(Encuesta enc) {
-	        encuesta = enc;
-	        setModo(Modo.MODIFICAR);
-	        return "edicionEncuesta.xhtml";
-	    }
 	  
 	  
 	  public String ejecutarAccion() {
 	        try {
 	            switch (modo) {
-	                case MODIFICAR:
-	                    gestionEncuesta.modificarEncuesta(encuesta);
-	                    break;
 	                case ELIMINAR:
 	                    gestionEncuesta.eliminarEncuesta(encuesta);
 	                    break;
-
-	                
+	             
 	            }
 	           
-	            return "edicionEncuestas.xhtml";
+	            return "Encuesta.xhtml";
 	        } catch (NeuBDExceptions e) {
 	            return "index.xhtml";
 	        }
@@ -159,30 +152,18 @@ public class EncuestaBB {
 	public String eliminar(Encuesta enc) throws NeuBDExceptions {
 	        try {
 	            gestionEncuesta.eliminarEncuesta(enc);
-	    
+	            
 	        } catch (AsignaturaNoEncontradaException e) {
 	            return "index.xhtml";
 	        }
-	        return null;
-	    }
-	 
-	  public Encuesta visualizarEncuesta(Encuesta encuestaa) throws NeuBDExceptions {
-		  Encuesta enc=null;
-		  
-		  try {
-	           
-			   enc = gestionEncuesta.visualizarEncuesta(encuestaa);
-	    
-	        } catch (AsignaturaNoEncontradaException e) {
-	            System.out.println("Asignatura no encontrada");
-	        }
-	        return enc;
+	        return "Encuesta.xhtml";
 	    }
 
 		
 		public List<Encuesta> listaEncuesta() throws NeuBDExceptions {
 			return gestionEncuesta.listaEncuestas();
 		}
+		
 		
 	
 }

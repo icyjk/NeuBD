@@ -2,87 +2,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j">
+      xmlns:h="http://java.sun.com/jsf/html">
 
 	<h:head>	  
 		<title>
-			<h:outputText value="#{matricula.accion} matricula"/>
+			<h:outputText value="#{alumno.accion} Alumnos"/>
 		</title>
 	</h:head>
 	<h:body>
 		<f:view>
-			<h1>ALUMNO</h1>
-			<h2>#{alumno.accion} Alumno</h2>
+			<h1>Alumnos</h1>
+			<h2>#{alumno.accion} Alumnos</h2>
 
-		<h:form id="Alumno">
+		<h:form id="alumno">
         	<h:panelGrid columns="3">
-            	
-            	
-            	
-            	<h:outputText value="ID"/>
-                <h:outputText id ="ID" value="#{alumno.alumno.id}"/>
-                <h:message for="ID"/>
-            	
-            	<h:outputText value="nombre"/>
-                <h:inputText id ="nombre" value="#{alumno.alumno.nombre}"/>
-                <h:message for="nombre"/>
-            	
-            	
-            	<h:outputText value="primer_apellido"/>
-                <h:inputText id ="primer_apellido" value="#{alumno.alumno.primer_apellido}"/>
-                <h:message for="primer_apellido"/>
+            	<h:outputText value="id"/>
+                <h:outputText id ="id" value="#{alumno.alumno.id}"/>
+                <h:message for="id"/>
 
-                <h:outputText value="segundo_apellido"/>
+                <h:outputText value="Nombre"/>
+                <h:outputText id ="nombre" value="#{alumno.alumno.nombre}"/>
+                <h:message for="nombre"/>
+				
+                <h:outputText value="Primer Apellido"/>
+                <h:outputText id ="primer_apellido" value="#{alumno.alumno.primer_apellido}"/>
+                <h:message for="primer_apellido"/>
+                
+                <h:outputText value="Segundo Apellido"/>
                 <h:inputText id ="segundo_apellido" value="#{alumno.alumno.segundo_apellido}"/>
                 <h:message for="segundo_apellido"/>
-
-                <h:outputText value="email_personal"/>
+                
+                <h:outputText value="Email_Personal"/>
                 <h:inputText id ="email_personal" value="#{alumno.alumno.email_personal}"/>
                 <h:message for="email_personal"/>
                 
-                <h:outputText value="email_institucional"/>
-                <h:inputText id ="email_institucional" value="#{alumno.alumno.email_institucional}"/>
-                <h:message for="email_institucional"/>
+                <h:outputText value="Email Institucional"/>
+                <h:inputText id ="email_personal" value="#{alumno.alumno.email_personal}"/>
+                <h:message for="email_personal"/>
                 
-                
-                <h:outputText value="movil"/>
+                <h:outputText value="Movil"/>
                 <h:inputText id ="movil" value="#{alumno.alumno.movil}"/>
                 <h:message for="movil"/>
                 
-                <h:outputText value="telefono"/>
+                <h:outputText value="Telefono"/>
                 <h:inputText id ="telefono" value="#{alumno.alumno.telefono}"/>
                 <h:message for="telefono"/>
                 
-                
-                <h:outputText value="direccion"/>
+                <h:outputText value="Direccion"/>
                 <h:inputText id ="direccion" value="#{alumno.alumno.direccion}"/>
                 <h:message for="direccion"/>
-            
-                 <h:outputText value="localidad"/>
+                
+                
+                <h:outputText value="Localidad"/>
                 <h:inputText id ="localidad" value="#{alumno.alumno.localidad}"/>
                 <h:message for="localidad"/>
                 
-                <h:outputText value="provincia"/>
+                <h:outputText value="Provincia"/>
                 <h:inputText id ="provincia" value="#{alumno.alumno.provincia}"/>
                 <h:message for="provincia"/>
                 
-                
-                <h:outputText value="cp"/>
+                <h:outputText value="CP"/>
                 <h:inputText id ="cp" value="#{alumno.alumno.cp}"/>
                 <h:message for="cp"/>
-                
-                <h:outputText value="expedientes"/>
-                <h:inputText id ="expedientes" value="#{alumno.alumno.expedientes}"/>
-                <h:message for="expedientes"/>
-                
-                
                 
                 <h:commandButton value="#{alumno.accion}" action="#{alumno.ejecutarAccion()}"/>
                 <h:commandButton value="Volver" action="Alumnos.xhtml"/>
 
                 <h:inputHidden value="#{alumno.modo}"/>
-                <h:inputHidden value="#{alumno.alumno.id}"/>
+				<h:inputHidden value="#{alumno.alumno.nombre}"/>
+				
 
             </h:panelGrid>
 		</h:form>		
@@ -90,7 +78,5 @@
 		</f:view>
 
 	</h:body>
-	
-	
 	
 </html>

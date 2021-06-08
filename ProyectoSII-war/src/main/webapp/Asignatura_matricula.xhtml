@@ -13,13 +13,14 @@
 	<h:body>
 		<h:form id="asig_matri"> 
 			<p:growl id="msgs" showDetail="true"/>
-			<p:dataTable value="#{asig_matri.listaAsignatura_matricula()}" var="a_m" widgetVar="AsigMatriTable"
+			<p:dataTable id="asigsMatris" value="#{asig_matri.listaAsignatura_matricula()}" var="a_m" widgetVar="AsigMatriTable"
             emptyMessage="Ningun asignatura matricula con esos filtros"
             filteredValue="#{asig_matri.asigMatriFiltro}"
             editable="true"
             style="margin-bottom:20px">
             
             <p:ajax event="rowEdit" listener="#{asig_matri.onRowEdit}" update=":asig_matri:msgs"/>
+            <p:ajax event="rowEditCancel" listener="#{asig_matri.onRowCancel}" update=":asig_matri:msgs"/>
             
 					<f:facet name="header">
 		                <div class="p-d-flex p-ai-center p-jc-between">
@@ -32,15 +33,15 @@
                  	<h:outputText id="salidaAsignatura" value="#{a_m.asignatura.nombre}"/>
                 </p:column>  
                 
-                <p:column id="Matricula" headerText="Matricula" sortBy="#{a_m.matricula}" filterBy="#{a_m.matricula}">
-                 	<h:outputText id="salidaMatricula" value="#{a_m.matricula}"/>
+                <p:column id="Matricula" headerText="Matricula" sortBy="#{a_m.matricula.curso_academico}" filterBy="#{a_m.matricula.curso_academico}">
+                 	<h:outputText id="salidaMatricula" value="#{a_m.matricula.curso_academico}"/>
                 </p:column>
                 
             	<p:column id="Grupo" headerText="Grupo" sortBy="#{a_m.grupo}" filterBy="#{a_m.grupo}">
                  	<h:outputText id="salidaGrupo" value="#{a_m.grupo}"/>
                 </p:column>
                 
-            	<p:column id="Idioma" headerText="Idioma" sortBy="#{a_m.idioma}" filterBy="#{a_m.idioma}">
+            	<p:column id="Idiom" headerText="Idioma" sortBy="#{a_m.idioma}" filterBy="#{a_m.idioma}">
                  	<p:cellEditor>
                     <f:facet name="output">
                         <h:outputText id="salidaIdioma" value="#{a_m.idioma}"/>
@@ -51,7 +52,7 @@
                 	</p:cellEditor>
                 </p:column>
                 
-                <p:column id="AsignacionManual" headerText="Asignacion Manual" sortBy="#{a_m.asignacionManual}" filterBy="#{a_m.asignacionManual}">
+                <p:column id="AsignacionManu" headerText="Asignacion Manual" sortBy="#{a_m.asignacionManual}" filterBy="#{a_m.asignacionManual}">
                  	<p:cellEditor>
                     <f:facet name="output">
                         <h:outputText id="salidaAsignacionManual" value="#{a_m.asignacionManual}"/>
@@ -67,7 +68,7 @@
 				
 			</p:dataTable>
 		</h:form>
-		<h:form>
+		<h:form id="formularioVolver">
 			<h:commandButton id="btonVolverAsig" action="index.xhtml" value="Volver" />
 		</h:form>
 	</h:body>

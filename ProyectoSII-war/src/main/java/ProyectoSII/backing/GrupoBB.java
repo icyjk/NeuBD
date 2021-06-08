@@ -61,8 +61,6 @@ public class GrupoBB {
 	            return true;
 	        }
 	        Boolean filterBoolean = getBoolean(filterText);
-	        Long filterlong = getlong(filterText);
-	        Double filterdouble = getdouble(filterText);
 	        Integer filterInt = getint(filterText);
 	        
 	        Grupo e = (Grupo) value;
@@ -93,14 +91,7 @@ public class GrupoBB {
 	    
 	    
 	    
-	    private long getlong(String string) {
-	        try {
-	            return Long.parseLong(string);
-	        }
-	        catch (Exception e) {
-	            return 0;
-	        }
-	    }
+	   
 	    
 	    private int getint(String string) {
 	        try {
@@ -110,16 +101,7 @@ public class GrupoBB {
 	            return 0;
 	        }
 	    }
-	    
-	    
-	    private Double getdouble (String string) {
-	        try {
-	            return Double.parseDouble(string);
-	        }
-	        catch (Exception e) {
-	            return 0.0;
-	        }
-	    }
+	  
 	    
 	 
 
@@ -247,10 +229,7 @@ public class GrupoBB {
 				
 				gestionGrupo.modificarGrupo(grupo);
 				break;
-			case ELIMINAR:
-				gestionGrupo.eliminarGrupo(grupo.getId());
-				break;
-
+		
 			case CREAR:
 				Titulacion aux = gestionTitulacion.visualizartitulacion(refTit);
 				grupo.setTitulacion(aux);
@@ -274,34 +253,13 @@ public class GrupoBB {
 		return "index.xhtml";
 	}
 
-	public Grupo visualizarGrupo(Grupo g) throws NeuBDExceptions {
-		Grupo gr=null;
-
-		try {
-
-			gr = gestionGrupo.visualizarGrupo(g.getId());
-
-		} catch (GrupoNoEncontrado e) {
-			System.out.println("Grupo no encontrado");
-		}
-		return gr;
-	}
+	
 
 	public String crearGrupo() {
 		setModo(Modo.CREAR);
 		return "edicionGrupos.xhtml";
 	}
 
-
-	public void asociarGrupo(Grupo g1, Grupo g2) throws NeuBDExceptions {
-
-		try {
-			gestionGrupo.asociarGrupo(g1, g2);
-		} catch (GrupoNoEncontrado e) {
-			// TODO: handle exception
-			System.out.println("Grupo no encontrado");
-		}
-	}
 
 
 	public List<Grupo> listaGrupo() throws NeuBDExceptions {

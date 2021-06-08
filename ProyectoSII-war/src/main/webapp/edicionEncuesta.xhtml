@@ -17,19 +17,12 @@
 
 		<h:form id="encuesta">
         	<h:panelGrid columns="3">
-            	<p:outputLabel id="calendario" for="popup" value="Fecha_de_envio"/>
-            	<p:calendar id="popup" value="#{encuesta.encuesta.fecha_de_envio}"/>
-            	<p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-            	 	 <p:panelGrid id="display" columns="2" columnClasses="label,value">
-            	 	 	<h:outputText value="Popup:"/>
-						<h:outputText value="#{encuesta.encuesta.fecha_de_envio}">
-							<f:convertDateTime pattern="MM/dd/yyyy"/>
-						</h:outputText>
-					</p:panelGrid>
-            	</p:dialog>
+            	<h:outputText id="encFecha" value="Fecha_de_envio"/>
+            	<h:inputText id ="fecha_de_envio" value="#{encuesta.encuesta.fecha_de_envio}"/>
+                <h:message for="fecha_de_envio"/>
             	
             	<h:outputText id="outputExpedientesEn" value="Expediente"/>
-                <h:outputText id ="expediente" value="#{encuesta.encuesta.expedientes}"/>
+                <h:outputText id ="expediente" value="#{encuesta.encuesta.expedientes.num_expediente}"/>
                 <h:message for="expediente"/>
                                 
                 <h:commandButton id="BtonAccionEnc" value="#{encuesta.accion}" action="#{encuesta.ejecutarAccion()}"/>

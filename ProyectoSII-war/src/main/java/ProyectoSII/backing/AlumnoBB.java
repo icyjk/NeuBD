@@ -5,15 +5,21 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.util.LangUtils;
 
 import NeuBDProyectoSII.Alumno;
+import NeuBDProyectoSII.Expedientes;
 import NeuBDProyectoSII.Matricula;
 import NeuBDProyectoSIIEjb.GestionAlumno;
+import NeuBDProyectoSIIEjb.GestionExpediente;
 import NeuBDProyectoSIIEjb.GestionMatricula;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 import ProyectoSII.backing.MatriculaBB.Modo;
@@ -31,11 +37,15 @@ public class AlumnoBB {
 	private Alumno alumno;
 	private Modo modo;
 	private List<Alumno> listaAlumnos; 
-	
+	private List<Expedientes> exp;
+
 	private List<Alumno> alumnoFiltro;
     private List<FilterMeta> filterBy;
 	@Inject
 	private GestionAlumno gestionAlumno;
+	
+	@Inject
+	GestionExpediente gestionExpediente;
 	
 	private AlumnoBB() {
 		alumno = new Alumno();
@@ -71,7 +81,8 @@ public class AlumnoBB {
         		|| a.getCp() == filterText;
     }
 	
-    private Integer getint (String string) {
+    
+	private Integer getint (String string) {
     	try {
 			return Integer.parseInt(string);
 		} catch (Exception e) {
@@ -79,7 +90,15 @@ public class AlumnoBB {
 		}
     }
 	
-    
+	
+	
+	public GestionExpediente getGestionExpediente() {
+		return gestionExpediente;
+	}
+	public void setGestionExpediente(GestionExpediente gestionExpediente) {
+		this.gestionExpediente = gestionExpediente;
+	}
+	
     public List<Alumno> getListaAlumnos() {
 		return listaAlumnos;
 	}
@@ -136,6 +155,7 @@ public class AlumnoBB {
 
 	public String modificar(Alumno a) {
 		alumno = a;
+	
 		setModo(Modo.MODIFICAR);
 		return "edicionAlumno.xhtml";
 	}
@@ -145,14 +165,16 @@ public class AlumnoBB {
 		try {
 			switch (modo) {
 			case MODIFICAR:
+				alumno.setExpedientes(exp);
 				gestionAlumno.modificarAlumno(alumno);
 				break;
+				
 			case ELIMINAR:
 				gestionAlumno.eliminarAlumno(alumno.getId());
 				break;
 			}
 
-			return "edicionAlumno.xhtml";
+			return "Alumnos.xhtml";
 		} catch (NeuBDExceptions e) {
 			return "index.xhtml";
 		}
@@ -193,9 +215,30 @@ public class AlumnoBB {
         } catch (NeuBDExceptions e) {
             return "index.xhtml";
         }
-        return null;
+        return "index.xhtml";
     }
  
+	
+	
+	public void onRowEdit(RowEditEvent<Alumno> event) throws NeuBDExceptions {
+		alumno  = event.getObject();
+		gestionAlumno.modificarAlumno(alumno);
+    }
+
+    public void onRowCancel(RowEditEvent<Matricula> event) {
+        
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    
 	
 
 	

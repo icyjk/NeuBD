@@ -75,7 +75,6 @@ public class asig_matriBB implements Serializable {
         Boolean filterBoolean = getBoolean(filterText);
         
         Asignatura_matricula g = (Asignatura_matricula) value;
-        
         return g.getGrupo().toString().toLowerCase().contains(filterText) 
         		|| g.getAsignatura().getNombre().toLowerCase().contains(filterText)
         		|| g.getMatricula().getCurso_academico().toLowerCase().contains(filterText)
@@ -204,6 +203,10 @@ public class asig_matriBB implements Serializable {
 			asignatura_matricula  = event.getObject();
 			gestionAsigMatri.modificarAsigMatri(asignatura_matricula);;
 	    }
+		
+		 public void onRowCancel(RowEditEvent<Grupos_por_asignatura> event) {
+		        
+		   }
 		
 		public void onCellEdit(CellEditEvent event) {
 	        Object oldValue = event.getOldValue();

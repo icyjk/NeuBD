@@ -186,31 +186,7 @@ public class ExpedienteBB {
 	        }
 	        return null;
 	    }
-	 
-	  public Expedientes buscarExpediente(int referencia) throws NeuBDExceptions {
-		  Expedientes ex=null;
-		  
-		  try {
-	           
-			   ex = gestionExpediente.visualizarExpediente(ex);
-	    
-	        } catch (NeuBDExceptions e) {
-	            System.out.println("Expediente no encontrada");
-	        }
-	        return ex;
-	    }
-	  
-		public void ImportarExpediente(Expedientes ex) throws NeuBDExceptions {
-			
-			  
-			  try {
-		           gestionExpediente.importarExpediente(ex);
-		        } catch (NeuBDExceptions e) {
-		            System.out.println("Expediente no encontrada");
-		        }
-		}
-	  
-	  
+
 		
 		public List<Expedientes> listaExpediente() throws NeuBDExceptions {
 			return gestionExpediente.listaExpedientes();

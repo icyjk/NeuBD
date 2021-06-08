@@ -127,9 +127,6 @@ public class CentroBB {
 	    }
 	  
 	  
-	  
-
-	  
 	  public String modificar(Centro enc) {
 	        centro = enc;
 	        setModo(Modo.MODIFICAR);
@@ -155,32 +152,11 @@ public class CentroBB {
 	        }
 	    }
 	  
-	  
-	
-	 
-	  public Centro buscarCentro(int id) throws NeuBDExceptions {
-		  Centro enc=null;
-		  
-		  try {
-	           
-			   enc = gestionCentro.buscarCentro(id);
-	    
-	        } catch (NeuBDExceptions e) {
-	            System.out.println("Centro no encontrada");
-	        }
-	        return enc;
-	    }
 
-	  
 	  
 	  public String crearCentro() {
 	        setModo(Modo.CREAR);
 	        return "edicionCentro.xhtml";
-	    }
-	  
-	  public void eliminarCentro(Centro c) throws NeuBDExceptions {
-		  gestionCentro.eliminarCentro(c);
-	        
 	    }
 	  
 

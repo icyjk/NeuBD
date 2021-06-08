@@ -13,6 +13,7 @@
     </h:head>
     <h:body>
     	<h:form id="formLeerCSV" enctype="multipart/form-data">
+    		Seleccione lo que quiere Importar: 
     		<h:selectOneMenu id="selectorImportacion" value="#{Leercsv.strModo}">
     			<f:selectItem id="opcionAlumno" itemLabel="Alumno" itemValue="al"/>
     			<f:selectItem id="opcionTitulacion" itemLabel="Titulacion" itemValue="ti"/>
@@ -21,9 +22,10 @@
     			<f:selectItem id="opcionEncuesta" itemLabel="Encuesta" itemValue="en"/>
     			<f:selectItem id="opcionClase" itemLabel="Clase" itemValue="cl"/>
     		</h:selectOneMenu> 
-    		<p:selectOneMenu id="titulacion" value="#{Leercsv.strTitu}">
+    		Seleccione la titulacion de la optativa: 
+    		<h:selectOneMenu id="titulacion" value="#{Leercsv.strTitu}">
                         <f:selectItems id="titulacionSeleccionada" value="#{Leercsv.titulaciones}" />
-            </p:selectOneMenu>
+            </h:selectOneMenu>
 	    	<hr/>
 	    	<h:inputFile id="file"  value="#{Leercsv.part}" />
 	    	<h:commandButton id="botonInsertar" value="Insertar" action="#{Leercsv.ejecutarAccion()}"/>

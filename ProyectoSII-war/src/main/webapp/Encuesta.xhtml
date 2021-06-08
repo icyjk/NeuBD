@@ -11,8 +11,12 @@
     </h:head>
 
 	<h:body>
-		<h:form id="encuesta">           
-			<p:dataTable value="#{encuesta.listaEncuesta}" var="e" widgetVar="EncuestaTable"
+	<h:form>
+	<h:commandButton id="BtonInicioEncuesta" value="Inicio" action="index.xhtml"  />
+	</h:form>
+		<h:form id="encuesta">
+			<p:growl id="msgs" showDetail="true"/>        
+			<p:dataTable id="dataTableEnc" value="#{encuesta.listaEncuesta}" var="e" widgetVar="EncuestaTable"
             emptyMessage="Ninguna encuesta con esos filtros"
             filteredValue="#{encuesta.encuestaFiltro}">
             	
@@ -21,24 +25,22 @@
 		                    <span>Lista de Encuesta</span>
 		                    <p:inputText id="globalFilter" onkeyup="PF('EncuestaTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
 		                </div>
-		            </f:facet>
+		            </f:facet>e.fecha_de_envio
 	
-            	<p:column id="fechaEnvio" headerText="Fecha envio" sortBy="#{e.fecha_de_envio}" filterBy="#{e.fecha_de_envio}">
-                 	<h:outputText id="salidafechaEnvio" value="#{e.fecha_de_envio}"/>
+            	<p:column id="FechaEnEncuesta" headerText="Fecha de envio" sortBy="#{e.fecha_de_envio}" filterBy="#{e.fecha_de_envio}">
+                 	<h:outputText id="salidaFechaenEncuesta" value="#{e.fecha_de_envio}"/>
                 </p:column>
                 
             	<p:column id="ExpedientesEncuesta" headerText="Expediente" sortBy="#{e.expedientes.num_expediente}" filterBy="#{e.expedientes.num_expediente}">
                  	<h:outputText id="salidaExpedientesEncuesta" value="#{e.expedientes.num_expediente}"/>
                 </p:column>
-	
-                <p:column>
-                	<h:commandButton id="BtonModificarEncuesta" value="Modificar" action="#{encuesta.modificar(e)}"/>
-                	<h:commandButton id="BtonEliminarEncuesta" value="Eliminar" action="#{encuesta.eliminar(e)}"/>
-                </p:column>
-                        
+                
+           		
+           		<p:column>
+                	<h:commandButton id="BotonEliminar" value="Eliminar" action="#{encuesta.eliminar(e)}"/>
+                </p:column>  
 			</p:dataTable>
 			
-			<h:commandButton id="BtonInicioEncuesta" value="Inicio" action="index.xhtml"  />
 		</h:form>
 	</h:body>
 	</html>

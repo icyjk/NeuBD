@@ -55,7 +55,7 @@ public class MatriculaBB implements Serializable{
     private List<FilterMeta> filterBy;
     private Modo modo;
     private Matricula matri;
-    private Expedientes exp;
+    
 	
     @PostConstruct
     public void init() throws NeuBDExceptions {
@@ -100,15 +100,6 @@ public class MatriculaBB implements Serializable{
   		this.modo = modo;
   	}
   	
-    public String getAccion() throws NeuBDExceptions {
-        switch (modo) {
-            case MODIFICAR:
-                return "Modificar";
-            case ELIMINAR:
-                return "Eliminar";
-        }
-        return null;
-	}
     
   
 	
@@ -143,18 +134,24 @@ public class MatriculaBB implements Serializable{
 	public void setmatri(Matricula matri) {
 		this.matri = matri;
 	}
-	public Expedientes getExp() {
-		return exp;
-	}
-	public void setExp(Expedientes exp) {
-		this.exp = exp;
-	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public String getAccion() throws NeuBDExceptions {
+        switch (modo) {
+            case MODIFICAR:
+                return "Modificar";
+            case ELIMINAR:
+                return "Eliminar";
+        }
+        return null;
+	}
+    
+	
 	public String modificar(Matricula m) throws NeuBDExceptions {
 	        matri = m;
-	        exp = gestionExpediente.visualizarExpediente(m.getExpedientes()); 
 	        setModo(Modo.MODIFICAR);
 	        return "edicionMatricula.xhtml";
 	    }
@@ -162,9 +159,12 @@ public class MatriculaBB implements Serializable{
 	        try {
 	            switch (modo) {
 	                case MODIFICAR:
-	                    matri.setExpedientes(exp);
+	                    
 	               	 	gestionMatricula.modificarMatricula(matri);
 	                    break;
+	                case ELIMINAR:
+	    				gestionMatricula.eliminarMatricula(matri);
+	    				break;
 	            }   
 	            return "Matricula.xhtml";
 	        } catch (NeuBDExceptions e) {

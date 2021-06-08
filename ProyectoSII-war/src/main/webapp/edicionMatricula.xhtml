@@ -45,12 +45,10 @@
                 <h:message for="nuevo_ingreso"/>
                 
                 <h:outputText value="Listado Asignaturas"/>
-                <h:inputText id ="listado_asignatura" value="#{matricula.matri.listado_asignatura}"/>
-                <h:message for="listado_asignatura"/>
+                <h:inputText id ="listado_asignatura" value="#{matricula.matri.listado_asignaturas}"/>
+                <h:message for="listado_asignaturas"/>
                 
-                <h:outputText value="Asignatura Matricula"/>
-                <h:inputText id ="asignatura_matricula" value="#{matricula.matri.asignatura_matricula}"/>
-                <h:message for="asignatura_matricula"/>
+                
                 
                 
                 <h:commandButton id= "BtonAccion" value="#{matricula.accion}" action="#{matricula.ejecutarAccion()}"/>
@@ -58,7 +56,7 @@
 
                 <h:inputHidden value="#{matricula.modo}"/>
 				<h:inputHidden value="#{matricula.matri.curso_academico}"/>
-				<h:inputHidden value="#{matricula.exp}"/>
+				
 				
 
             </h:panelGrid>

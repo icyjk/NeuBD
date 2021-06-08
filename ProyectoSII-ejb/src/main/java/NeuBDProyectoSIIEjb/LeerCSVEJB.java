@@ -272,6 +272,20 @@ public class LeerCSVEJB implements GestionLeerCSV{
 	        e.printStackTrace();
 	 } 
 	}
+	
+	private Alumno buscarAlumno(String dni) {
+		Alumno al = null; int cont = 0; boolean encontrado = false;
+		List<Alumno> lista = em.createNamedQuery("Alumno.todos", Alumno.class).getResultList();
+		while(!encontrado && cont<lista.size()) {
+			if(lista.get(cont).getDni().equals(dni)) {
+				encontrado=true;
+				al=lista.get(cont);
+			}
+			cont++;
+		}
+		return al;
+	}
+	
 	@Override
 	public void insertarEncuestaCSV(String route) throws NeuBDExceptions{
 		try { 
@@ -284,8 +298,11 @@ public class LeerCSVEJB implements GestionLeerCSV{
             	if(csvRecord.getRecordNumber() !=1) {
             		String fecha = csvRecord.get(0);
             		Date fechax=cambiarAFecha(fecha);
-            		long refExp = Long.parseLong(csvRecord.get(1));
-            		Expedientes exp = em.find(Expedientes.class, refExp);
+            		String dni = csvRecord.get(1);
+            		Alumno a = buscarAlumno(dni);
+            		List<Expedientes> lista =  a.getExpedientes();
+            		//Decidimos coger el ultimo expediente que ha sido guardado de este alumno
+            		Expedientes exp = a.getExpedientes().get(lista.size()-1);
             		Encuesta enc=new Encuesta(fechax, exp, null);
             		em.merge(enc);
             	}
@@ -325,11 +342,10 @@ public class LeerCSVEJB implements GestionLeerCSV{
 		int titulacion = Integer.parseInt(refGrupo.substring(3, 7));
 		
 	    int cnt = 0; boolean encontrado = false;Grupo g = null;
-	    while(!encontrado || cnt<lista.size()) {
+	    while(!encontrado && cnt<lista.size()) {
 	    	g=lista.get(cnt);
 	    	if(g.getCurso()==curso && g.getLetra() == letra.charAt(0) && g.getTitulacion().getCodigo() == titulacion) {
-	    		encontrado = true;
-	    		
+	    		encontrado = true;	
 	    	}
 	    	cnt++;
 	    }

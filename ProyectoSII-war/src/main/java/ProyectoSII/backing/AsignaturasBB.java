@@ -47,9 +47,7 @@ public class AsignaturasBB {
         if (LangUtils.isValueBlank(filterText)) {
             return true;
         }
-        Boolean filterBoolean = getBoolean(filterText);
-        Long filterlong = getlong(filterText);
-        Double filterdouble = getdouble(filterText);
+     
         Integer filterInt = getint(filterText);
         
         Asignatura e = (Asignatura) value;
@@ -111,23 +109,9 @@ public class AsignaturasBB {
 	}
 
 
-	private Boolean getBoolean(String string) {
-        try {
-            return Boolean.getBoolean(string);
-        }
-        catch (Exception e) {
-            return null;
-        }
-    }
+	
     
-    private long getlong(String string) {
-        try {
-            return Long.parseLong(string);
-        }
-        catch (Exception e) {
-            return 0;
-        }
-    }
+    
     
     private int getint(String string) {
         try {
@@ -139,14 +123,7 @@ public class AsignaturasBB {
     }
     
     
-    private Double getdouble (String string) {
-        try {
-            return Double.parseDouble(string);
-        }
-        catch (Exception e) {
-            return 0.0;
-        }
-    }
+   
     
 	public AsignaturasBB() {
 		asignatura= new Asignatura();
@@ -217,46 +194,7 @@ public class AsignaturasBB {
 	        }
 	        return "index.xhtml";
 	    }
-	 
-	  public Asignatura buscarAsignatura(int referencia) throws NeuBDExceptions {
-		  Asignatura asig=null;
-		  
-		  try {
-	           
-			   asig = gestionAsignatura.buscarAsignatura(referencia);
-	    
-	        } catch (AsignaturaNoEncontradaException e) {
-	            System.out.println("Asignatura no encontrada");
-	        }
-	        return asig;
-	    }
-	  
-	  public List<Asignatura> buscarAsignaturaPorTitulacion(int referencia) throws NeuBDExceptions {
-		  List<Asignatura> listAsig=null; 
-		  
-		  try {
-	           listAsig = gestionAsignatura.buscarAsignaturaPorTitulacion(referencia);
-	    
-	        } catch (AsignaturaNoEncontradaException e) {
-	            System.out.println("Asignatura no encontrada");
-	        }
-	        return listAsig;
-	    }
-	  
-		
-		public void ImportarAsignatura(Asignatura asignatura) throws NeuBDExceptions {
-			
-			  
-			  try {
-		           gestionAsignatura.ImportarAsignatura(asignatura);
-		    
-		        } catch (AsignaturaNoEncontradaException e) {
-		            System.out.println("Asignatura no encontrada");
-		        }
-		}
-	  
-	  
-		
+	 		
 		public List<Asignatura> listaAsignatura() throws NeuBDExceptions {
 			return gestionAsignatura.listaAsignatura();
 		}

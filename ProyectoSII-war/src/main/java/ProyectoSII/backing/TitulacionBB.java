@@ -164,36 +164,7 @@ public class TitulacionBB {
 	        }
 	        return null;
 	    }
-	 
-	  public Titulacion visualizarTitulacion(Titulacion tit) throws NeuBDExceptions {
-		  Titulacion t=null;
-		  
-		  try {
-	           
-			   t = gestionTitulacion.visualizartitulacion(titulacion.getCodigo());
-	    
-	        } catch (NeuBDExceptions e) {
-	            System.out.println("Titulacion no encontrada");
-	        }
-	        return t;
-	    }
-	  
-	  
-	  
-		
-		public void ImportarTitulacion(Titulacion Titulacion) throws NeuBDExceptions {
-			
-			  
-			  try {
-		           gestionTitulacion.ImportarTitulacion(Titulacion);
-		    
-		        } catch (NeuBDExceptions e) {
-		            System.out.println("Titulacion no encontrada");
-		        }
-		}
-	  
-	  
-		
+
 		public List<Titulacion> listaTitulacion() throws NeuBDExceptions {
 			return gestionTitulacion.listaTitulacion();
 		}

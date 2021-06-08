@@ -32,11 +32,14 @@ public class BaseDatos {
 		
 		//centro
 		Centro centroETSI = new Centro("ETSI","Calle ruben del pozo","639004675",null);
+		Centro centroBuscar = new Centro("Buscador","Buscador","635004675",null);
+		
 		
 		List<Centro> listacentros = new ArrayList<Centro>();
 		listacentros.add(centroETSI);
 		
 		em.persist(centroETSI);
+		em.persist(centroBuscar);
 		//Titulacion
 		Titulacion titulacionInf = new Titulacion(66,"Informatica", 360,listacentros, null, null, null);
 		
@@ -51,7 +54,7 @@ public class BaseDatos {
 		Optativa iaJuegosOpta = new Optativa(30, "Informatica",null);
 		
 		iaJuegosOpta.setCodigo(311);
-		iaJuegosOpta.setNombre("IA Juegos");
+		iaJuegosOpta.setNombre("IAJuegos");
 		iaJuegosOpta.setReferencia(69);
 		em.persist(iaJuegosOpta);
 		//Grupo
