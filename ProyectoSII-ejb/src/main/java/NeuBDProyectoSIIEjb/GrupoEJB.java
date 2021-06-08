@@ -70,7 +70,7 @@ public class GrupoEJB implements GestionGrupo {
         while(i<lista.size()) {
             Grupo g = lista.get(i);
 
-            if(grupo.getCurso()==g.getCurso() && grupo.getLetra()==g.getLetra()) {
+            if(grupo.getCurso()==g.getCurso() && grupo.getLetra()==g.getLetra() && grupo.getTitulacion().getCodigo()==g.getTitulacion().getCodigo()) {
                 throw new GrupoNoEncontrado();
             }
 

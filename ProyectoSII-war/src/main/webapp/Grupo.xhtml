@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 
     <h:head>
@@ -11,58 +12,70 @@
 
 	<h:body>
 		<h:form id="Grupos">           
-			<h:dataTable value="#{grupo.listaGrupo()}" var="g">
-	
-            	<h:column>
-                	<f:facet name="header">ID</f:facet>
-                 	<h:outputText value="#{g.id}"/>
-                </h:column>
-                
-            	<h:column>
-                	<f:facet name="header">Curso</f:facet>
-                 	<h:outputText value="#{g.curso}"/>
-                </h:column>        
-                	
-            	<h:column>
-                	<f:facet name="header">Letra</f:facet>
-                 	<h:outputText value="#{g.letra}"/>
-                </h:column>
-             	<h:column>
-                	<f:facet name="header">Turno</f:facet>
-                 	<h:outputText value="#{g.turno_mañana_tarde}"/>
-                </h:column>  
-                
-                <h:column>
-                	<f:facet name="header">Ingles</f:facet>
-                 	<h:outputText value="#{g.ingles}"/>
-                </h:column>               
-                <h:column>
-                	<f:facet name="header">Visible</f:facet>
-                 	<h:outputText value="#{g.visible}"/>
-                </h:column>               
-                <h:column>
-                	<f:facet name="header">Asignar</f:facet>
-                 	<h:outputText value="#{g.asignar}"/>
-                </h:column>               
-                <h:column>
-                	<f:facet name="header">plazas</f:facet>
-                 	<h:outputText value="#{g.plazas}"/>
-                </h:column>               
-                <h:column>
-                	<f:facet name="header">Titulacion</f:facet>
-                 	<h:outputText value="#{g.titulacion.nombre}"/>
-                </h:column>               
-                <h:column>
-                	<h:commandButton value="Modificar" action="#{grupo.modificar(g)}"/>
-                	<h:commandButton value="Eliminar" action="#{grupo.eliminar(g)}"/>
-                	<h:commandButton value="Horario" action="#{horario.verHorarioGrupo(g)}"/>
-                	
-                </h:column>
-                        
-			</h:dataTable>
 			
-			<h:commandButton action="index.xhtml" value="Inicio" />
-			<h:commandButton value="Crear" action="#{grupo.crearGrupo()}"/>
+			<h:commandButton id="Boton_IndiceG" action="index.xhtml" value="Inicio" />
+			<h:commandButton id="Boton_CrearG" value="Crear" action="#{grupo.crearGrupo()}"/>
+			
+			<p:dataTable id="TablaGrupos" value="#{grupo.listagrupos}" var="g" widgetVar="GrupoTable"
+            emptyMessage="Ningun grupo con esos filtros"
+            filteredValue="#{grupo.grupofiltro}">
+	
+		
+            		<f:facet name="header">
+		                <div class="p-d-flex p-ai-center p-jc-between">
+		                    <span>Lista de Grupos</span>
+		                    <p:inputText id="globalFilter" onkeyup="PF('GrupoTable').filter()" style="width:10rem" placeholder="Introduzca keyword" />
+		                </div>
+		            </f:facet>
+	
+	
+            	<p:column id="Cid" headerText="id" sortBy="#{g.id}" filterBy="#{g.id}">
+                 	<h:outputText id="id" value="#{g.id}"/>
+                </p:column>
+                
+            	<p:column id="Ccurso" headerText="curso" sortBy="#{g.curso}" filterBy="#{g.curso}">
+                 	<h:outputText id="curso" value="#{g.curso}"/>
+                </p:column>        
+                	
+                	
+            	<p:column id="Cletra" headerText="letra" sortBy="#{g.letra}" filterBy="#{g.letra}">
+                 	<h:outputText id="letra" value="#{g.letra}"/>
+                </p:column>
+                
+             	<p:column id="Cturno" headerText="Turno" sortBy="#{g.turno_mañana_tarde}" filterBy="#{g.turno_mañana_tarde}">
+                 	<h:outputText id="turno" value="#{g.turno_mañana_tarde}"/>
+                </p:column> 
+                 
+                
+                <p:column id="Cingles" headerText="Ingles" sortBy="#{g.ingles}" filterBy="#{g.ingles}" >
+                 	<h:outputText id="ingles" value="#{g.ingles}"/>
+                </p:column>
+                               
+                <p:column id="Cvisible" headerText="visible" sortBy="#{g.visible}" filterBy="#{g.visible}" >
+                 	<h:outputText id="visible" value="#{g.visible}"/>
+                </p:column>           
+                    
+                <p:column id="Casignar" headerText="asignar" sortBy="#{g.asignar}" filterBy="#{g.asignar}" >
+                
+                 	<h:outputText value="#{g.asignar}"/>
+                </p:column>
+                               
+                <p:column id="Cplazas" headerText="plazas" sortBy="#{g.plazas}" filterBy="#{g.plazas}">
+                 	<h:outputText id ="plazas" value="#{g.plazas}"/>
+                </p:column> 
+                              
+                <p:column id="Ctitulacion_nombre" headerText="titulacion" sortBy="#{g.titulacion.nombre}" filterBy="#{g.titulacion.nombre}">
+                 	<h:outputText id="titulacion_nombre" value="#{g.titulacion.nombre}"/>
+                </p:column>               
+                <p:column>
+                	<h:commandButton id="BotonModificar" value="Modificar" action="#{grupo.modificar(g)}"/>
+                	<h:commandButton id="BotonEliminar"  value="Eliminar" action="#{grupo.eliminar(g)}"/>
+                	<h:commandButton id="BotonHorario"   value="Horario" action="#{horario.verHorarioGrupo(g)}"/>
+                	
+                </p:column>
+                        
+			</p:dataTable>
+			
 			
 		</h:form>
 	</h:body>

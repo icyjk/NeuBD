@@ -28,35 +28,18 @@ public class PruebaLeerCSVIT {
     driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
-    //BaseDatos.inicializaBaseDatos(UNIDAD_PERSISTENCIA);
-    File directory = new File("./");
-    System.out.println("\n\n"+directory.getAbsolutePath());
+    BaseDatos.inicializaBaseDatos(UNIDAD_PERSISTENCIA);
   }
   @After
   public void tearDown() {
     driver.quit();
   }
   
-  private void crearCentro() {
-	    driver.findElement(By.id("formIndex:botonCentros")).click();
-	    driver.findElement(By.id("Centros:BotonCrear")).click();
-	    driver.findElement(By.id("centro:nombre")).click();
-	    driver.findElement(By.id("centro:nombre")).sendKeys("ETSi");
-	    driver.findElement(By.id("centro:direccion")).click();
-	    driver.findElement(By.id("centro:direccion")).sendKeys("Teatin");
-	    driver.findElement(By.id("centro:telefono")).click();
-	    driver.findElement(By.id("centro:telefono")).sendKeys("6");
-	    driver.findElement(By.id("centro:BotonAccion")).click();
-  }
 
   @Test
-  @Ignore
   public void pruebaInsertarTiulaciones(){
 	  driver.get("http://localhost:8080/ProyectoSII-war/");
 	    driver.manage().window().setSize(new Dimension(767, 699));
-	    //Creo un centro para poder insertar las titulaciones
-	    crearCentro();
-	    
 	    //Me meto en insertar Titulaciones
 	    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
 	    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
@@ -75,29 +58,21 @@ public class PruebaLeerCSVIT {
 	    
 	    //Comprobar si se han introducido las titulaciones
 	    driver.findElement(By.id("formIndex:botonTitulaciones")).click();
-	    //driver.findElement(By.id("Titulaciones:TablaTitulacion:0:SalidaCodigo")).click();
-	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr/td")).getText(), is("1041"));
-	    //driver.findElement(By.id("Titulaciones:TablaTitulacion:0:SalidaNombre")).click();
-	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:0:SalidaNombre")).getText(), is("Grado en Ingeniería Informática"));
-	    //driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr/td[3]")).click();
-	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr/td[3]")).getText(), is("240"));
-	    //driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td")).click();
-	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:4:SalidaNombre")).getText(), is("Doble Grado en Ingeniería Informatica y Matemáticas"));
-	    //driver.findElement(By.id("Titulaciones:TablaTitulacion:4:SalidaNombre")).click();
-	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td")).getText(), is("1073"));
-	    //driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td[3]")).click();
-	    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Titulaciones:TablaTitulacion_data\']/tr[5]/td[3]")).getText(), is("372"));
+	    //Segunda ya que la primera es la que se importa de la bd de prueba
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:1:SalidaCodigo")).getText(), is("1041"));
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:1:SalidaNombre")).getText(), is("Grado en Ingeniería Informática"));
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:1:SalidaCreditos")).getText(), is("240"));
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:5:SalidaCodigo")).getText(), is("1073"));
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:5:SalidaNombre")).getText(), is("Doble Grado en Ingeniería Informatica y Matemáticas"));
+	    assertThat(driver.findElement(By.id("Titulaciones:TablaTitulacion:5:SalidaCreditos")).getText(), is("372"));
 	    driver.findElement(By.id("Titulaciones:BotonInicio")).click();
   }
   @Test
-  @Ignore
   public void importarAsignaturaIT() {
     driver.get("http://localhost:8080/ProyectoSII-war/");
     driver.manage().window().setSize(new Dimension(767, 708));
     
-    //Creo un centro para poder insertar las titulaciones
-    crearCentro();
-    
+    //Necesitamos importar las titulaciones primero para poder referenciarlas con las asignaturas de pruebas que tenemos
     driver.findElement(By.id("formIndex:botonLeerCSV")).click();
     driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
     {
@@ -135,27 +110,118 @@ public class PruebaLeerCSVIT {
     //Comprobar que se han insertado
     //La primera deberia de ser Calculo para la computación
     driver.findElement(By.id("formIndex:botonAsignaturas")).click();
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:AReferencia")).getText(), is("50658"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:ACodigo")).getText(), is("101"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:Anombre")).getText(), is("Cálculo para la Computación"));
-    assertThat(driver.findElement(By.xpath("//tbody[@id=\'Asignaturas:TablaAsignaturas_data\']/tr/td[4]")).getText(), is("0"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:ACPractica")).getText(), is("6"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:ACTeoria")).getText(), is("1"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:ADuracion")).getText(), is("60"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:Aunidad_temporal")).getText(), is("6"));
-    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:0:Aidioma_imparticion")).getText(), is("-"));
+    //Probamos el segundo ya que el primero de la fila es decir el 0 es el que importa la bd de prueba
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:AReferencia")).getText(), is("50658"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:ACodigo")).getText(), is("101"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:Anombre")).getText(), is("Cálculo para la Computación"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:ACreditos")).getText(), is("0"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:ACPractica")).getText(), is("6"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:ACTeoria")).getText(), is("1"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:ADuracion")).getText(), is("60"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:Aunidad_temporal")).getText(), is("6"));
+    assertThat(driver.findElement(By.id("Asignaturas:TablaAsignaturas:1:Aidioma_imparticion")).getText(), is("-"));
     //Ahora comprobaremos si se ha insertado esa asignatura optativa que queriamos dentro del apratado Optativas de asignatura 
     driver.findElement(By.id("Asignaturas:botonOptativasA")).click();
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Oreferencia")).getText(), is("51040"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Ocodigo")).getText(), is("865"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Onombre")).getText(), is("Programación de Robots"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Ocreditos")).getText(), is("0"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:OCpractica")).getText(), is("6"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:OCteoria")).getText(), is("3"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Oduracion")).getText(), is("60"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Ounidad_temporal")).getText(), is("6"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Oidioma_de_imparticion")).getText(), is("35"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Oplazas")).getText(), is("999"));
-    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:0:Omencion")).getText(), is("Informática"));
+    //Igual que pasa en la prueba de asignaturas pasa aqui
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Oreferencia")).getText(), is("51040"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Ocodigo")).getText(), is("865"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Onombre")).getText(), is("Programación de Robots"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Ocreditos")).getText(), is("0"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:OCpractica")).getText(), is("6"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:OCteoria")).getText(), is("3"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Oduracion")).getText(), is("60"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Ounidad_temporal")).getText(), is("6"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Oidioma_de_imparticion")).getText(), is("35"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Oplazas")).getText(), is("999"));
+    assertThat(driver.findElement(By.id("Optativas:TablaOptativas:1:Omencion")).getText(), is("Informática"));
   }
+  @Test
+  public void pruebaAlumno() {
+    driver.get("http://localhost:8080/ProyectoSII-war/");
+    driver.manage().window().setSize(new Dimension(1015, 726));
+    
+    //Necesitamos importar las titulaciones primero para poder referenciarlas con las asignaturas de pruebas que tenemos
+    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
+    driver.findElement(By.id("formLeerCSV:selectorImportacion")).click();
+    {
+      WebElement dropdown = driver.findElement(By.id("formLeerCSV:selectorImportacion"));
+      dropdown.findElement(By.xpath("//option[. = 'Titulacion']")).click();
+    }
+    driver.findElement(By.xpath("//select[@id=\'formLeerCSV:selectorImportacion\']/option[2]")).click();
+    
+    File titulacion = new File("Titulacion.csv");
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys(titulacion.getAbsolutePath());
+    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
+    
+    //Creamos dos grupos, que serán los grupos a los que los alumnos se van a matricular 1A y 2A de la titulacion que se acaba de insertar
+    driver.findElement(By.id("formIndex:botonGrupo")).click();
+    driver.findElement(By.id("Grupos:Boton_CrearG")).click();
+    driver.findElement(By.id("grupo:curso")).sendKeys("1");
+    driver.findElement(By.id("grupo:letra")).sendKeys("A");
+    driver.findElement(By.id("grupo:turno")).sendKeys("Mañana");
+    driver.findElement(By.id("grupo:plazas")).sendKeys("90");
+    driver.findElement(By.id("grupo:titulacion")).sendKeys("1041");
+    driver.findElement(By.name("grupo:j_idt27")).click();
+    driver.findElement(By.name("grupo:j_idt28")).click();
+    driver.findElement(By.id("Grupos:Boton_IndiceG")).click();
+    driver.findElement(By.id("formIndex:botonGrupo")).click();
+    driver.findElement(By.id("Grupos:Boton_CrearG")).click();
+    driver.findElement(By.id("grupo:curso")).click();
+    driver.findElement(By.id("grupo:curso")).sendKeys("2");
+    driver.findElement(By.id("grupo:letra")).sendKeys("A");
+    driver.findElement(By.id("grupo:turno")).sendKeys("Mañana");
+    driver.findElement(By.id("grupo:plazas")).sendKeys("90");
+    driver.findElement(By.id("grupo:titulacion")).sendKeys("1041");
+    driver.findElement(By.name("grupo:j_idt27")).click();
+    driver.findElement(By.name("grupo:j_idt28")).click();
+    driver.findElement(By.id("Grupos:Boton_IndiceG")).click();
+    
+    //Ya creado los grupoos, es hora de importar estos alumnos
+    
+    driver.findElement(By.id("formIndex:botonLeerCSV")).click();
+    
+    
+    File alumnos = new File("Alumnos1Fila.csv");
+    driver.findElement(By.id("formLeerCSV:file")).sendKeys(alumnos.getAbsolutePath());
+    driver.findElement(By.id("formLeerCSV:botonInsertar")).click();
+    driver.findElement(By.id("formIndex:botonAlumnos")).click();
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(1)")).getText(), is("7"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(2)")).getText(), is("Carmelita"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(3)")).getText(), is("Enríquez"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(4)")).getText(), is("Navarro"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(5)")).getText(), is("CarmelitaEnriquezNavarro@gustr.com"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(6)")).getText(), is("06104200001@uma.es"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(7)")).getText(), is("795 115 697"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(8)")).getText(), is("795 115 697"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(9)")).getText(), is("Ventanilla de Beas 72"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(10)")).getText(), is("Ourol"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(11)")).getText(), is("MÁLAGA"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(12)")).getText(), is("27865"));
+    driver.findElement(By.name("alumno:j_idt37")).click();
+    driver.findElement(By.id("formIndex:botonMatriucla")).click();
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:expedientes")).getText(), is("[num_expediente=8]"));
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:cursoacademico")).getText(), is("2020/2021"));
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:estado")).getText(), is("inactivo"));
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:numeroarchivo")).getText(), is("306000001"));
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:turnopreferete")).getText(), is("Mañana"));
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:fechamatricula")).getText(), is("2020-09-22 15:06:00.0"));
+    assertThat(driver.findElement(By.id("matricula:dataTableMatricula:1:listadoasignatura")).getText(), is("101-,102-,103-,104-,105-,201-"));
+    
+    
+    driver.findElement(By.name("j_idt17:j_idt18")).click();
+    
+    driver.findElement(By.id("formIndex:botonExpedientes")).click();
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaNumexpediente")).getText(), is("8"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaActivo")).getText(), is("true"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaNotaMedia")).getText(), is("6.32"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaCreditosS")).getText(), is("150.0"));
+    assertThat(driver.findElement(By.cssSelector(".ui-datatable-odd > td:nth-child(5)")).getText(), is("60"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaCreditosob")).getText(), is("78"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaCreditosop")).getText(), is("12.0"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaCreditoscf")).getText(), is("0"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaCreditospe")).getText(), is("0"));
+    assertThat(driver.findElement(By.id("Expedientes:TablaExpedientes:1:SalidaCreditostf")).getText(), is("0"));
+    driver.findElement(By.id("Expedientes:BotonInicio")).click();
+  }
+  
 }
