@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="NeuBDProyectoSIIEjbTest.TestLeerCSV" time="6.558" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="NeuBDProyectoSIIEjbTest.TestLeerCSV" time="7.61" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.4.0-73-generic"/>
+    <property name="os.version" value="5.4.0-74-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/alumno"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
@@ -62,9 +62,9 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVOptativa" time="0.566"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVTitulacion" time="0.034"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVAsignatura" time="0.142"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVEncuesta" time="0.125"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVAlumno" time="5.691"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVOptativa" time="0.184"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVTitulacion" time="0.037"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVAsignatura" time="0.173"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVEncuesta" time="2.137"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestLeerCSV" name="TestLeerCSVAlumno" time="5.079"/>
 </testsuite>

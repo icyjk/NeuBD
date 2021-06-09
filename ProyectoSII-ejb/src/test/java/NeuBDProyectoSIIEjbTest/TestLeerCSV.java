@@ -87,7 +87,7 @@ public class TestLeerCSV {
 	public void TestLeerCSVAlumno() {	
 		try {
 			
-			String route="/home/alumno/Escritorio/AlumnoPrueba.csv";
+			String route="AlumnoPrueba.csv";
 			
 			int tam=gestionAlumno.listaAlumno().size();
 			int tamExpedientes = gestionExpediente.listaExpedientes().size();
@@ -123,7 +123,7 @@ public class TestLeerCSV {
 	public void TestLeerCSVTitulacion() {
 		try {
 			Centro cen = gestionCentro.buscarTodosCentros().get(0);
-			String route="/home/alumno/Escritorio/Titulacion.csv";
+			String route="Titulacion.csv";
 			
 			
 			int tam=gestionTitulacion.listaTitulacion().size();
@@ -143,8 +143,8 @@ public class TestLeerCSV {
 	@Test
 	public void TestLeerCSVAsignatura() {
 		try {
-			String route="/home/alumno/Escritorio/Oferta-asignaturas.csv";
-			String route2="/home/alumno/Escritorio/Titulacion.csv";
+			String route="Oferta-asignaturas.csv";
+			String route2="Titulacion.csv";
 			Centro cen = gestionCentro.buscarTodosCentros().get(0);
 			
 			int tam=gestionAsignatura.listaAsignatura().size();
@@ -167,9 +167,9 @@ public class TestLeerCSV {
 			
 			Titulacion titu = gestionTitulacion.listaTitulacion().get(0);
 			Centro cen = gestionCentro.buscarTodosCentros().get(0);
-			String route="/home/alumno/Escritorio/OptativaPrueba.csv";
-			String route2="/home/alumno/Escritorio/Oferta-asignaturas.csv";
-			String route3="/home/alumno/Escritorio/Titulacion.csv";
+			String route="OptativaPrueba.csv";
+			String route2="Oferta-asignaturas.csv";
+			String route3="Titulacion.csv";
 			int tam=gestionOptativa.listaOptativa().size();
 			gestionLeerCSV.insertarTitulacionCSV(cen, route3);//Necesito que esten insertadas las titulaciones para hacer la referencia a ellas
 			gestionLeerCSV.insertarAsignaturaCSV(route2);
@@ -186,11 +186,14 @@ public class TestLeerCSV {
 	
 	@Requisitos({"RF-01,RF-02"})
 	@Test
-	public void TestLeerCSVEncuesta() {
+	public void TestLeerCSVEncuesta() throws ParseException {
 		try {
-			String route="/home/alumno/Escritorio/EncuestaPrueba.csv";
+			
+			String route="EncuestaPrueba.csv";
+			String route2="AlumnoPrueba.csv";
 			int tam=gestionEncuesta.listaEncuestas().size();
 			
+			gestionLeerCSV.insertarAlumnoCSV(route2);
 			gestionLeerCSV.insertarEncuestaCSV(route);
 			
 			int tam2=gestionEncuesta.listaEncuestas().size();

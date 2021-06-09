@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -19,10 +18,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import NeuBDProyectoSII.Centro;
 import NeuBDProyectoSII.Grupo;
 import NeuBDProyectoSII.Titulacion;
 import NeuBDProyectoSIIEjb.GestionGrupo;
+import NeuBDProyectoSIIEjb.GestionTitulacion;
 import NeuBDProyectoSIIexceptions.NeuBDExceptions;
 import es.uma.informatica.sii.anotaciones.Requisitos;
 
@@ -32,6 +31,7 @@ public class TestGrupo {
 	private static final Logger LOG = Logger.getLogger(TestGrupo.class.getCanonicalName());
 
 	private static final String Grupo_EJB = "java:global/classes/GrupoEJB";
+	private static final String Titulacion_EJB = "java:global/classes/TitulacionEJB";
 	private static final String GLASSFISH_CONFIGI_FILE_PROPERTY = "org.glassfish.ejb.embedded.glassfish.configuration.file";
 	private static final String CONFIG_FILE = "target/test-classes/META-INF/domain.xml";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "ProyectoTest";
@@ -40,6 +40,7 @@ public class TestGrupo {
 	private static Context ctx;
 	
 	private GestionGrupo gestionGrupo;
+	private GestionTitulacion gestionTitulacion;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -52,6 +53,7 @@ public class TestGrupo {
 	@Before
 	public void setup() throws NamingException  {
 		gestionGrupo = (GestionGrupo) ctx.lookup(Grupo_EJB);
+		gestionTitulacion = (GestionTitulacion) ctx.lookup(Titulacion_EJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 	}
 	
@@ -190,7 +192,8 @@ public class TestGrupo {
 		try {
 			int numgrupos = gestionGrupo.listaGrupos().size();
 			
-			Grupo grupoAinf = new Grupo(1,'A',"Mañana",true, true, "", 50 , null, null, null,null,null);
+			Titulacion titulacion = gestionTitulacion.listaTitulacion().get(0);
+			Grupo grupoAinf = new Grupo(1,'A',"Mañana",true, true, "", 50 , titulacion, null, null,null,null);
 			
 			gestionGrupo.crearGrupo(grupoAinf); //Tendria que estar dentro de la BD
 			

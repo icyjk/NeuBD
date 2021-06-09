@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="NeuBDProyectoSIIEjbTest.TestAsigMatri" time="0.667" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="NeuBDProyectoSIIEjbTest.TestAsigMatri" time="0.284" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.4.0-73-generic"/>
+    <property name="os.version" value="5.4.0-74-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/alumno"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
@@ -62,10 +62,10 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatriMAL" time="0.08"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatriMAL" time="0.217"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matricula" time="0.223"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatri" time="0.063"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatriMAL" time="0.052"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatriMAL" time="0.037"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matricula" time="0.071"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testModificarAsigMatri" time="0.044"/>
   <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testVisualizarAsigMatri" time="0.055"/>
-  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matriculaMAL" time="0.029"/>
+  <testcase classname="NeuBDProyectoSIIEjbTest.TestAsigMatri" name="testAnyadirAsignatura_matriculaMAL" time="0.025"/>
 </testsuite>

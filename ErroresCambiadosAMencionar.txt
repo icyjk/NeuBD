@@ -1,8 +1,10 @@
 Eliminar las anotacions de los NewId que teniamos en las entidades y poner @Temporal en los date ya que estos fallos no nos permitian deplegar la aplicación.
 Matricula tenia una relación OneToMany que ha sido eliminada ya que esa relacion no tiene sentido, es solo un strig con los codigos de las asignaturas
-Cambios en los test de LeerCSV los cuales estaban incompletos y no se comprobaba todos los posibles casos que podian ocurrir.
+Cambios en los test de LeerCSV los cuales estaban incompletos y no se comprobaba todos los posibles casos que podian ocurrir. Añadimos también en los test que necesitan de otros csv esos csv, ya que hacen referencia a ellos
 Cambiado el id de Matricula, ya que cursoAcademico era string y con ello el cambio perminente con las entidadades que tenian ese atributo.
 Cambio en el test leerCSV.asignatura y Optativa, hemos añadido antes de hacer la prueba la titulación para poder hacer la referencia a ella en asignatura
+Cambiado el equals de grupo para que también sea igual si tienen la misma titulacion ademas de letra y curso
+Cambiado el test de Grupo, ateniendose a los cambios realizados en el equals
 MappedBy de Matricula con AsigMatri
 MappedBy de Alumno con Expediente
 AsigMatriEJB ya se crean leyendo todas las matriculas
@@ -12,5 +14,6 @@ EJBGrupo, habia verHorarioPorGrupo que en vez de pasarse un String pase un int y
 Asignatura para devolver la lista de clases, hemos decidido que sea de fetch eager, para la implementación de verHorario. Este mismo error también lo hemos cambiado en Matricula con el fetch eager en asig matri
 EJBGrupo, a la hora de crearlo, solo se podian crear grupos tipo 1ºA pero solo 1, ahora se puede con distintas titulaciones, es decir 1ºA de informatica, de teleco...
 LeerCSVEJB esta casi hecho de nuevo, ya que en la última entrega, la persona que le tocaba hacerlo no lo hizo, asi que en esta entrega se ha terminado
+Con todos los cambias realizados, asig matriTest ya si va, por lo tanto se quitan los ignore
 
 
