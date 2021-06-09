@@ -172,7 +172,7 @@ public class asig_matriBB implements Serializable {
 		gr = gestionGrupo.visualizarGrupo(asig.getGrupo().getId());
 		ma = gestionMatricula.visualizarMatricula(asig.getMatricula());
 	    setModo(Modo.MODIFICAR);
-	    return "edicionAsignatura_matriculas.xhtml";
+	    return "Asignatura_matricula.xhtml";
 	}
 	  
 	  

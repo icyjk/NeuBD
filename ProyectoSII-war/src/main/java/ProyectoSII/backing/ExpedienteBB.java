@@ -176,7 +176,7 @@ public class ExpedienteBB {
 	        }
 	    }
 	  
-	  
+	  /*
 	  public String eliminar(Expedientes ex) throws NeuBDExceptions {
 	        try {
 	            gestionExpediente.eliminarExpediente(ex);
@@ -186,7 +186,7 @@ public class ExpedienteBB {
 	        }
 	        return null;
 	    }
-
+	  */
 		
 		public List<Expedientes> listaExpediente() throws NeuBDExceptions {
 			return gestionExpediente.listaExpedientes();

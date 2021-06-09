@@ -1,0 +1,3 @@
+Para los tets hemos tenido que usar una estructura de un for junto con un try catch ya que algunas veces saltaba la excepcion StaleElementReferenceException y otras veces no. 
+Hemos visto aqui 'https://www.softwaretestingmaterial.com/stale-element-reference-exception-selenium-webdriver' que se soluciona asi. Aun así, creemos que puede dar algun tipo de fallo esporádico,
+solo en usar filtros, que hay veces que selenium no entiende lo que debe de hacer y hay veces que pasa el test y veces que no, pero si se hace manual sin test, si va todo.

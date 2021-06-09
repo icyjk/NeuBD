@@ -217,7 +217,7 @@ public class PruebaLeerCSVIT {
     assertThat(driver.findElement(By.id("alumno:dataTableGrupAsig:1:localidad")).getText(), is("Ourol"));
     assertThat(driver.findElement(By.id("alumno:dataTableGrupAsig:1:provincia")).getText(), is("MÁLAGA"));
     assertThat(driver.findElement(By.id("alumno:dataTableGrupAsig:1:cp")).getText(), is("27865"));
-    driver.findElement(By.name("form2:volver")).click();
+    driver.findElement(By.id("form2:volver")).click();
     
     
     //No se comprueba expediente de Matricula porque es autogenerado

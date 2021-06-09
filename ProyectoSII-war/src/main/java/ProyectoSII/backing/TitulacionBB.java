@@ -154,7 +154,7 @@ public class TitulacionBB {
 	        }
 	    }
 	  
-	  
+	  /*
 	  public String eliminar(Titulacion t) throws NeuBDExceptions {
 	        try {
 	            gestionTitulacion.eliminarTitulacion(t.getCodigo());
@@ -164,7 +164,7 @@ public class TitulacionBB {
 	        }
 	        return null;
 	    }
-
+*/
 		public List<Titulacion> listaTitulacion() throws NeuBDExceptions {
 			return gestionTitulacion.listaTitulacion();
 		}

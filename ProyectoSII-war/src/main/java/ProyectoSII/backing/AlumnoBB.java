@@ -181,33 +181,13 @@ public class AlumnoBB {
 	}
 	
 	
-	public Alumno visualizarAlumno(Alumno al) throws NeuBDExceptions{
-		Alumno a=null;
-
-		try {
-
-			a = gestionAlumno.visualizarAlumno(al.getId());
-
-		} catch (NeuBDExceptions e) {
-			System.out.println("Alumno no encontrado");
-		}
-		return a;
-
-	}
+	
 	
 	public List<Alumno> listaAlumnos() throws NeuBDExceptions {
 		return gestionAlumno.listaAlumno();
 	}
 
-	public void anyadirAlumno(Alumno a) throws NeuBDExceptions {
-
-		try {
-			gestionAlumno.anyadirAlumno(a);
-
-		} catch (NeuBDExceptions e) {
-			System.out.println("Alumno no encontrado");
-		}
-	}
+	
 	
 	public String eliminar(int id) throws NeuBDExceptions {
         try {

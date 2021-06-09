@@ -150,7 +150,8 @@ public class GruposAsigBB implements Serializable{
 	        gr = gestionGrupo.visualizarGrupo(g.getGrupo().getId());
 	        setModo(Modo.MODIFICAR);
 	        return "edicionGrupoAsignatura.xhtml";
-	    }
+	}
+	/*
 	 public String ejecutarAccion() {
 	        try {
 	            switch (modo) {
@@ -164,7 +165,7 @@ public class GruposAsigBB implements Serializable{
 	            return "index.xhtml";
 	        }
 	    }
-	
+	*/
 	public String eliminar(Grupos_por_asignatura g) throws NeuBDExceptions {
         try {
             gestionGrupoAsig.eliminarGruposPorAsignatura(g);
